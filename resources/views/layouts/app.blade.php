@@ -456,16 +456,26 @@
     <!-- Scripts (Root Relative) -->
     <script src="/js/audio-player.js"></script>
     <script>
-        // Global Video Trailer Modal Controller
+        // Global Video Trailer Modal Controller (Supports YouTube & Local MP4)
         window.openTrailerModal = function(title, trailerUrl, movieUrl) {
             const modal = document.getElementById('videoPreviewModal');
-            const player = document.getElementById('videoModalPlayer');
+            const wrap = modal.querySelector('.video-preview-player-wrap');
             const titleEl = document.getElementById('videoModalTitle');
             const actionBtn = document.getElementById('videoModalActionBtn');
-            if (!modal || !player) return;
+            if (!modal || !wrap) return;
             
             titleEl.textContent = title || 'Cuplikan Film';
-            player.src = trailerUrl;
+
+            // Detect YouTube URL
+            const ytMatch = (trailerUrl || '').match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+            if (ytMatch && ytMatch[1]) {
+                wrap.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0" style="width:100%;height:100%;border:none;border-radius:12px;aspect-ratio:16/9;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                wrap.innerHTML = `<video id="videoModalPlayer" playsinline controls preload="metadata" style="width:100%;height:100%;border-radius:12px;" src="${trailerUrl}"></video>`;
+                const player = wrap.querySelector('video');
+                if (player) player.play().catch(() => {});
+            }
+
             if (actionBtn && movieUrl) {
                 actionBtn.href = movieUrl;
                 actionBtn.style.display = 'inline-flex';
@@ -474,17 +484,13 @@
             }
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            player.play().catch(() => {});
         };
 
         window.closeTrailerModal = function() {
             const modal = document.getElementById('videoPreviewModal');
-            const player = document.getElementById('videoModalPlayer');
             if (!modal) return;
-            if (player) {
-                player.pause();
-                player.src = '';
-            }
+            const wrap = modal.querySelector('.video-preview-player-wrap');
+            if (wrap) wrap.innerHTML = '';
             modal.style.display = 'none';
             document.body.style.overflow = '';
         };

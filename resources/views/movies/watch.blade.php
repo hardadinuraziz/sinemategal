@@ -52,12 +52,25 @@
     <div class="cinema-layout">
         <!-- Main Theater Column -->
         <div class="cinema-main">
-            <!-- Video Player -->
+            <!-- Video Player (Supports YouTube & Local MP4) -->
             <div class="video-player-container">
-                <video id="cinemaVideo" class="video-element" controls autoplay poster="{{ $movie->banner_url }}" preload="metadata">
-                    <source src="{{ $movie->video_url }}" type="video/mp4">
-                    Browser sampeyan ora ndhukung tag video HTML5.
-                </video>
+                @php
+                    $watchYtId = null;
+                    if (preg_match('/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/', $movie->video_url ?? '', $ytMatches)) {
+                        $watchYtId = $ytMatches[1];
+                    }
+                @endphp
+                @if($watchYtId)
+                    <iframe src="https://www.youtube-nocookie.com/embed/{{ $watchYtId }}?autoplay=1&rel=0" 
+                            style="width: 100%; height: 500px; border: none; border-radius: var(--radius-lg); aspect-ratio: 16/9;" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                @else
+                    <video id="cinemaVideo" class="video-element" controls autoplay poster="{{ $movie->banner_url }}" preload="metadata">
+                        <source src="{{ $movie->video_url }}" type="video/mp4">
+                        Browser sampeyan ora ndhukung tag video HTML5.
+                    </video>
+                @endif
             </div>
 
             <!-- Video Info & Culture Notes Card -->
