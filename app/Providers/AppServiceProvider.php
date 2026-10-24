@@ -44,13 +44,15 @@ class AppServiceProvider extends ServiceProvider
 
         if ($this->app->environment('production') ||
             (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') ||
-            (isset($_SERVER['HTTP_HOST']) && str_contains($_SERVER['HTTP_HOST'], 'railway.app'))) {
+            (isset($_SERVER['HTTP_HOST']) && (str_contains($_SERVER['HTTP_HOST'], 'railway.app') || str_contains($_SERVER['HTTP_HOST'], 'vercel.app')))) {
             URL::forceScheme('https');
         }
         try {
-            $dbPath = database_path('database.sqlite');
-            if (! file_exists($dbPath)) {
-                @touch($dbPath);
+            if (config('database.default') === 'sqlite') {
+                $dbPath = database_path('database.sqlite');
+                if (! file_exists($dbPath)) {
+                    @touch($dbPath);
+                }
             }
 
             // Self-healing: auto-migrate and seed if tables are missing in fresh cloud deployment
