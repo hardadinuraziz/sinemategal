@@ -4,13 +4,14 @@ RUN apk add --no-cache \
     sqlite \
     sqlite-dev \
     sqlite-libs \
+    postgresql-dev \
     curl \
     git \
     unzip \
     libzip-dev \
     oniguruma-dev
 
-RUN docker-php-ext-install pdo pdo_sqlite mbstring zip bcmath
+RUN docker-php-ext-install pdo pdo_sqlite pdo_pgsql mbstring zip bcmath
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
