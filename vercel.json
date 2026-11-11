@@ -3,8 +3,7 @@
   "framework": null,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.9.0",
-      "excludeFiles": "{public/audio/**,public/videos/**,public/images/**,tests/**,storage/**,node_modules/**}"
+      "runtime": "vercel-php@0.9.0"
     }
   },
   "routes": [
