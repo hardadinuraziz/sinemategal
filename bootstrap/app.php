@@ -6,8 +6,11 @@ use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
 
 if (env('DB_CONNECTION') === 'sqlite') {
-    $dbFile = dirname(__DIR__) . '/database/database.sqlite';
-    if (!file_exists($dbFile)) {
+    $dbFile = env('DB_DATABASE') ?: dirname(__DIR__).'/database/database.sqlite';
+    if (! str_starts_with($dbFile, '/') && $dbFile !== ':memory:') {
+        $dbFile = dirname(__DIR__).'/'.$dbFile;
+    }
+    if ($dbFile !== ':memory:' && ! file_exists($dbFile)) {
         @touch($dbFile);
     }
 }

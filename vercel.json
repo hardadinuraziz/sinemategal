@@ -1,11 +1,10 @@
 {
   "version": 2,
   "framework": null,
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.9.0"
+      "runtime": "vercel-php@0.9.0",
+      "excludeFiles": "{public/audio/**,public/videos/**,public/images/**,tests/**,storage/**,node_modules/**}"
     }
   },
   "routes": [
@@ -24,14 +23,19 @@
   ],
   "env": {
     "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "APP_KEY": "base64:9u5ClZ+qDebsfCvhsmt65K639DQWn0zxzSH0mOCPmkQ=",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
     "APP_ROUTES_CACHE": "/tmp/routes.php",
     "APP_SERVICES_CACHE": "/tmp/services.php",
     "VIEW_COMPILED_PATH": "/tmp/views",
-    "CACHE_STORE": "database",
-    "SESSION_DRIVER": "database",
+    "DB_CONNECTION": "sqlite",
+    "DB_DATABASE": "/tmp/database.sqlite",
+    "CACHE_STORE": "array",
+    "SESSION_DRIVER": "cookie",
+    "QUEUE_CONNECTION": "sync",
     "LOG_CHANNEL": "stderr",
     "VERCEL": "1"
   }

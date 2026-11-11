@@ -1,6 +1,6 @@
 <?php
 
-// Ensure /tmp directory structure exists for serverless runtime on Vercel
+// Ensure /tmp directory structure and SQLite database exist for serverless runtime on Vercel
 $storageDirs = [
     '/tmp/views',
     '/tmp/storage/framework/views',
@@ -11,10 +11,14 @@ $storageDirs = [
 ];
 
 foreach ($storageDirs as $dir) {
-    if (!is_dir($dir)) {
+    if (! is_dir($dir)) {
         @mkdir($dir, 0755, true);
     }
 }
 
+if (! file_exists('/tmp/database.sqlite')) {
+    @touch('/tmp/database.sqlite');
+}
+
 // Forward the request to Laravel public front controller
-require __DIR__ . '/../public/index.php';
+require __DIR__.'/../public/index.php';
