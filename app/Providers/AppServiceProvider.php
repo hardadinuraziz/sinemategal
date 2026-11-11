@@ -27,6 +27,10 @@ class AppServiceProvider extends ServiceProvider
 
         if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || env('VERCEL')) {
             config([
+                'app.debug' => true,
+                'database.default' => 'sqlite',
+                'database.connections.sqlite.database' => '/tmp/database.sqlite',
+                'database.connections.sqlite.url' => null,
                 'view.compiled' => '/tmp/views',
                 'session.driver' => 'cookie',
                 'cache.default' => 'array',

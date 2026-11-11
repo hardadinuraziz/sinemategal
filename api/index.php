@@ -23,7 +23,8 @@ if (! file_exists('/tmp/database.sqlite')) {
 // Force safe serverless environment variables on Vercel even if Dashboard Env Vars override vercel.json
 $vercelOverrides = [
     'VERCEL' => '1',
-    'APP_KEY' => $_ENV['APP_KEY'] ?? $_SERVER['APP_KEY'] ?? 'base64:9u5ClZ+qDebsfCvhsmt65K639DQWn0zxzSH0mOCPmkQ=',
+    'APP_DEBUG' => 'true',
+    'APP_KEY' => (! empty($_ENV['APP_KEY'] ?? '') ? $_ENV['APP_KEY'] : 'base64:9u5ClZ+qDebsfCvhsmt65K639DQWn0zxzSH0mOCPmkQ='),
     'APP_CONFIG_CACHE' => '/tmp/config.php',
     'APP_EVENTS_CACHE' => '/tmp/events.php',
     'APP_PACKAGES_CACHE' => '/tmp/packages.php',
@@ -36,6 +37,7 @@ $vercelOverrides = [
     'LOG_CHANNEL' => 'stderr',
     'DB_CONNECTION' => 'sqlite',
     'DB_DATABASE' => '/tmp/database.sqlite',
+    'DB_URL' => '',
 ];
 
 foreach ($vercelOverrides as $key => $value) {
