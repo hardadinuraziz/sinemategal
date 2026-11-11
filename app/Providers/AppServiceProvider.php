@@ -24,6 +24,15 @@ class AppServiceProvider extends ServiceProvider
         if (empty(config('app.key'))) {
             config(['app.key' => 'base64:9u5ClZ+qDebsfCvhsmt65K639DQWn0zxzSH0mOCPmkQ=']);
         }
+
+        if (isset($_ENV['VERCEL']) || isset($_SERVER['VERCEL']) || env('VERCEL')) {
+            config([
+                'view.compiled' => '/tmp/views',
+                'session.driver' => 'cookie',
+                'cache.default' => 'array',
+                'logging.default' => 'stderr',
+            ]);
+        }
     }
 
     /**
