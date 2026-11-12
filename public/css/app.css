@@ -3816,3 +3816,238 @@ body > footer {
 @media (prefers-reduced-motion: reduce) {
   .aero-fx-layer, .aero-bubble { display: none; }
 }
+
+/* ==========================================================================
+   MORE FRUTIGER AERO ANIMATIONS
+   (Sun rays, seagulls, drifting leaves, sparkles, water waves, click splash, gel shine)
+   ========================================================================== */
+
+/* Rotating God-Rays from the sun (single composited layer, rotate only) */
+.aero-sun-rays {
+  position: absolute;
+  top: -60vmax;
+  left: calc(18% - 60vmax + 260px);
+  width: 120vmax;
+  height: 120vmax;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.16) 0deg 6deg,
+    rgba(255, 255, 255, 0) 6deg 18deg
+  );
+  -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.6) 30%, transparent 62%);
+  mask-image: radial-gradient(circle, #000 0%, rgba(0, 0, 0, 0.6) 30%, transparent 62%);
+  will-change: transform;
+  animation: aeroRaysSpin 90s linear infinite;
+}
+
+@keyframes aeroRaysSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* Seagulls gliding across the sky */
+.fx-gull {
+  position: absolute;
+  left: 0;
+  will-change: transform;
+  animation: fxGullFly 30s linear infinite;
+}
+
+.fx-gull img { display: block; width: 100%; height: auto; opacity: 0.92; }
+.fx-gull.fg1 { top: 9%;  width: 54px; animation-duration: 32s; animation-delay: -6s; }
+.fx-gull.fg2 { top: 13%; width: 36px; animation-duration: 32s; animation-delay: -8.5s; }
+.fx-gull.fg3 { top: 6%;  width: 28px; animation-duration: 40s; animation-delay: -22s; }
+
+@keyframes fxGullFly {
+  0%   { transform: translate3d(-12vw, 4vh, 0) rotate(4deg); }
+  25%  { transform: translate3d(22vw, -1vh, 0) rotate(-3deg); }
+  50%  { transform: translate3d(52vw, 3vh, 0) rotate(3deg); }
+  75%  { transform: translate3d(82vw, -2vh, 0) rotate(-4deg); }
+  100% { transform: translate3d(112vw, 2vh, 0) rotate(2deg); }
+}
+
+/* Glossy green leaves drifting down (eco-optimism) */
+.fx-leaf {
+  position: absolute;
+  top: -60px;
+  will-change: transform;
+  animation: fxLeafFall 20s linear infinite;
+}
+
+.fx-leaf img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: fxLeafSpin 4s ease-in-out infinite alternate;
+}
+
+.fx-leaf.fl1 { left: 12%; width: 30px; animation-duration: 22s; animation-delay: -3s; }
+.fx-leaf.fl2 { left: 36%; width: 22px; animation-duration: 26s; animation-delay: -14s; }
+.fx-leaf.fl3 { left: 62%; width: 34px; animation-duration: 24s; animation-delay: -8s; }
+.fx-leaf.fl4 { left: 84%; width: 24px; animation-duration: 28s; animation-delay: -19s; }
+
+@keyframes fxLeafFall {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  6%   { opacity: 0.95; }
+  25%  { transform: translate3d(48px, 28vh, 0); }
+  50%  { transform: translate3d(-36px, 56vh, 0); }
+  75%  { transform: translate3d(42px, 84vh, 0); opacity: 0.95; }
+  100% { transform: translate3d(-20px, 112vh, 0); opacity: 0; }
+}
+
+@keyframes fxLeafSpin {
+  0%   { transform: rotate(-35deg) scaleX(1); }
+  50%  { transform: rotate(10deg) scaleX(0.55); }
+  100% { transform: rotate(45deg) scaleX(1); }
+}
+
+/* Twinkling lens-flare sparkles */
+.fx-sparkle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background:
+    linear-gradient(90deg, transparent 44%, #fff 50%, transparent 56%),
+    linear-gradient(0deg, transparent 44%, #fff 50%, transparent 56%),
+    radial-gradient(circle, #fff 0%, rgba(186, 230, 253, 0.8) 18%, transparent 46%);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fxSparkle 4.5s ease-in-out infinite;
+}
+
+.fx-sparkle.fs1 { top: 14%; left: 30%; animation-delay: 0s; }
+.fx-sparkle.fs2 { top: 34%; left: 72%; animation-delay: 1.2s; width: 24px; height: 24px; }
+.fx-sparkle.fs3 { top: 58%; left: 18%; animation-delay: 2.4s; }
+.fx-sparkle.fs4 { top: 22%; left: 56%; animation-delay: 3.1s; width: 14px; height: 14px; }
+.fx-sparkle.fs5 { top: 74%; left: 64%; animation-delay: 1.8s; width: 22px; height: 22px; }
+.fx-sparkle.fs6 { top: 46%; left: 44%; animation-delay: 3.8s; }
+
+@keyframes fxSparkle {
+  0%, 100% { transform: scale(0.2) rotate(0deg); opacity: 0; }
+  45%      { transform: scale(1.15) rotate(45deg); opacity: 1; }
+  60%      { transform: scale(0.9) rotate(60deg); opacity: 0.8; }
+}
+
+/* Rolling crystal water waves along the bottom edge */
+.aero-waves {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  will-change: transform;
+}
+
+.aero-wave.w1 path { fill: rgba(125, 211, 252, 0.45); }
+.aero-wave.w2 path { fill: rgba(255, 255, 255, 0.35); }
+.aero-wave.w1 { animation: aeroWaveRoll 14s linear infinite; }
+.aero-wave.w2 { animation: aeroWaveRoll 9s linear infinite reverse; height: 75%; }
+
+@keyframes aeroWaveRoll {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Water-drop splash on click/tap */
+.aero-click-splash {
+  position: fixed;
+  z-index: 2000;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.aero-click-splash::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 0 10px rgba(125, 211, 252, 0.8);
+  animation: aeroRipple 0.65s ease-out forwards;
+}
+
+.aero-click-splash i {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff 0%, rgba(186, 230, 253, 0.9) 40%, rgba(56, 189, 248, 0.5) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  animation: aeroDrop 0.7s ease-out forwards;
+}
+
+@keyframes aeroRipple {
+  from { transform: scale(0.1); opacity: 1; }
+  to   { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes aeroDrop {
+  from { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+  to   { transform: translate3d(var(--dx), var(--dy), 0) scale(0.3); opacity: 0; }
+}
+
+/* Glossy gel shine sweep on primary buttons (hover only) */
+.btn-primary,
+.btn-crimson,
+.playlist-play-all {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.btn-crimson::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: translate3d(-160%, 0, 0) skewX(-22deg);
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-crimson:hover::after {
+  animation: aeroShineSweep 0.7s ease forwards;
+}
+
+@keyframes aeroShineSweep {
+  to { transform: translate3d(320%, 0, 0) skewX(-22deg); }
+}
+
+/* Breathing glow on the active nav orb */
+.nav-link.active {
+  animation: aeroOrbBreath 3s ease-in-out infinite;
+}
+
+@keyframes aeroOrbBreath {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.06); }
+}
+
+@media (max-width: 768px) {
+  .fx-gull.fg3, .fx-leaf.fl2, .fx-leaf.fl4, .fx-sparkle.fs4, .fx-sparkle.fs6 { display: none; }
+  .aero-waves { height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-sun-rays, .aero-waves { display: none; }
+  .nav-link.active { animation: none; }
+}

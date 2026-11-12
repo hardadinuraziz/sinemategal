@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 60">
+  <path fill="#ffffff" stroke="#0c4a6e" stroke-opacity="0.35" stroke-width="1.5" stroke-linejoin="round"
+        d="M4 30 Q30 6 58 30 Q62 26 66 30 Q92 6 116 30 Q92 18 66 36 L60 40 L54 36 Q30 18 4 30 Z">
+    <animate attributeName="d" dur="0.9s" repeatCount="indefinite"
+      values="M4 30 Q30 6 58 30 Q62 26 66 30 Q92 6 116 30 Q92 18 66 36 L60 40 L54 36 Q30 18 4 30 Z;
+              M4 40 Q30 34 58 30 Q62 26 66 30 Q92 34 116 40 Q92 38 66 36 L60 40 L54 36 Q30 38 4 40 Z;
+              M4 30 Q30 6 58 30 Q62 26 66 30 Q92 6 116 30 Q92 18 66 36 L60 40 L54 36 Q30 18 4 30 Z"/>
+  </path>
+</svg>

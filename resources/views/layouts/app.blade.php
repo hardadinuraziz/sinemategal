@@ -19,6 +19,7 @@
 <body>
     <!-- Frutiger Aero Ambient World (GPU-Composited Fixed Layer for 60fps Scroll) -->
     <div class="frutiger-aero-scene" aria-hidden="true">
+        <div class="aero-sun-rays"></div>
         <div class="aero-sunflare"></div>
         <div class="aero-globe-orb"></div>
         <div class="aero-bubble b1"><span class="bubble-fish">🐠</span></div>
@@ -46,6 +47,28 @@
         <div class="fx-fish ff2 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-blue.svg" alt=""></div></div>
         <div class="fx-fish ff3"><div class="fx-fish-bob"><img src="/images/aero-fish-clown.svg" alt=""></div></div>
         <div class="fx-fish ff4 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-gold.svg" alt=""></div></div>
+
+        <div class="fx-gull fg1"><img src="/images/aero-gull.svg" alt=""></div>
+        <div class="fx-gull fg2"><img src="/images/aero-gull.svg" alt=""></div>
+        <div class="fx-gull fg3"><img src="/images/aero-gull.svg" alt=""></div>
+
+        <div class="fx-leaf fl1"><img src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl2"><img src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl3"><img src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl4"><img src="/images/aero-leaf.svg" alt=""></div>
+
+        <span class="fx-sparkle fs1"></span>
+        <span class="fx-sparkle fs2"></span>
+        <span class="fx-sparkle fs3"></span>
+        <span class="fx-sparkle fs4"></span>
+        <span class="fx-sparkle fs5"></span>
+        <span class="fx-sparkle fs6"></span>
+    </div>
+
+    <!-- Frutiger Aero Bottom Water Waves -->
+    <div class="aero-waves" aria-hidden="true">
+        <svg class="aero-wave w1" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60 Q180 10 360 60 T720 60 T1080 60 T1440 60 V120 H0 Z"/></svg>
+        <svg class="aero-wave w2" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 70 Q180 30 360 70 T720 70 T1080 70 T1440 70 V120 H0 Z"/></svg>
     </div>
 
     <!-- Navigation Header (Minimalist Modern) -->
@@ -626,6 +649,28 @@
                 }
             }
         });
+    </script>
+    <script>
+        // Frutiger Aero click splash: water ripple + mini bubbles at pointer position
+        (() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return;
+            }
+            document.addEventListener('pointerdown', (event) => {
+                const splash = document.createElement('span');
+                splash.className = 'aero-click-splash';
+                splash.style.left = `${event.clientX}px`;
+                splash.style.top = `${event.clientY}px`;
+                for (let i = 0; i < 5; i++) {
+                    const drop = document.createElement('i');
+                    drop.style.setProperty('--dx', `${Math.round(Math.cos(i * 1.256) * 34)}px`);
+                    drop.style.setProperty('--dy', `${Math.round(Math.sin(i * 1.256) * 34 - 14)}px`);
+                    splash.appendChild(drop);
+                }
+                document.body.appendChild(splash);
+                setTimeout(() => splash.remove(), 750);
+            }, { passive: true });
+        })();
     </script>
     @yield('scripts')
 </body>
