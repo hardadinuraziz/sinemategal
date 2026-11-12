@@ -17,20 +17,16 @@
     @yield('styles')
 </head>
 <body>
-    <!-- Frutiger Aero Ambient World (Sky, Crystal Water, Lens Flare, 3D Bubbles & Tropical Fish) -->
+    <!-- Frutiger Aero Ambient World (GPU-Composited Fixed Layer for 60fps Scroll) -->
     <div class="frutiger-aero-scene" aria-hidden="true">
         <div class="aero-sunflare"></div>
         <div class="aero-globe-orb"></div>
         <div class="aero-bubble b1"><span class="bubble-fish">🐠</span></div>
         <div class="aero-bubble b2"></div>
         <div class="aero-bubble b3"><span class="bubble-fish">🐟</span></div>
-        <div class="aero-bubble b4"></div>
-        <div class="aero-bubble b5"><span class="bubble-fish">🐡</span></div>
-        <div class="aero-bubble b6"></div>
-        <div class="aero-bubble b7"><span class="bubble-fish">🐠</span></div>
-        <div class="aero-bubble b8"></div>
-        <div class="aero-bubble b9"><span class="bubble-fish">🐟</span></div>
-        <div class="aero-bubble b10"></div>
+        <div class="aero-bubble b4"><span class="bubble-fish">🐡</span></div>
+        <div class="aero-bubble b5"><span class="bubble-fish">🐠</span></div>
+        <div class="aero-bubble b6"><span class="bubble-fish">🐟</span></div>
     </div>
 
     <!-- Navigation Header (Minimalist Modern) -->
@@ -558,7 +554,7 @@
             }
 
             // ==========================================================================
-            // Hover-to-Play Video Trailer on Movie Poster Cards (Instant & Smooth)
+            // Hover-to-Play Video Trailer on Movie Poster Cards (Lazy Loaded for 60fps Scroll)
             // ==========================================================================
             let activePlayingWrap = null;
 
@@ -568,26 +564,24 @@
                 const trailerUrl = wrap.dataset.trailer;
                 if (!trailerUrl) return;
 
-                // Pre-create video element with muted autoplay attributes
-                let video = wrap.querySelector('.movie-card-video');
-                if (!video) {
-                    video = document.createElement('video');
-                    video.className = 'movie-card-video';
-                    video.muted = true;
-                    video.defaultMuted = true;
-                    video.playsInline = true;
-                    video.loop = true;
-                    video.setAttribute('muted', '');
-                    video.setAttribute('playsinline', '');
-                    video.setAttribute('webkit-playsinline', '');
-                    video.preload = 'metadata';
-                    video.src = trailerUrl;
-                    wrap.insertBefore(video, wrap.firstChild);
-                }
-
                 card.addEventListener('mouseenter', () => {
                     if (activePlayingWrap && activePlayingWrap !== wrap) {
                         stopPosterVideo(activePlayingWrap);
+                    }
+                    let video = wrap.querySelector('.movie-card-video');
+                    if (!video) {
+                        video = document.createElement('video');
+                        video.className = 'movie-card-video';
+                        video.muted = true;
+                        video.defaultMuted = true;
+                        video.playsInline = true;
+                        video.loop = true;
+                        video.setAttribute('muted', '');
+                        video.setAttribute('playsinline', '');
+                        video.setAttribute('webkit-playsinline', '');
+                        video.preload = 'none';
+                        video.src = trailerUrl;
+                        wrap.insertBefore(video, wrap.firstChild);
                     }
                     wrap.classList.add('is-playing-video');
                     activePlayingWrap = wrap;

@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 220" width="820" height="220" role="img" aria-label="Sinema Tegal - Winamp Style Logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 220" width="940" height="220" role="img" aria-label="Sinema Tegal - Winamp Style Logo">
   <defs>
     <!-- Gold Face Gradient for Text & Lightning -->
     <linearGradient id="winampGold" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFE055"/>
+      <stop offset="0%" stop-color="#FFE46B"/>
       <stop offset="45%" stop-color="#F1C22E"/>
-      <stop offset="100%" stop-color="#DDA214"/>
+      <stop offset="100%" stop-color="#D99B10"/>
     </linearGradient>
 
     <!-- 3D Bevel Orange-Gold Gradient for Lightning Depth -->
@@ -12,17 +12,11 @@
       <stop offset="0%" stop-color="#E59819"/>
       <stop offset="100%" stop-color="#B86B09"/>
     </linearGradient>
-
-    <!-- Soft White Glow so Black Outlines Pop on Both Light & Aero Glass Backgrounds -->
-    <filter id="aeroPop" x="-8%" y="-12%" width="116%" height="128%">
-      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#ffffff" flood-opacity="0.85"/>
-      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#012a4a" flood-opacity="0.45"/>
-    </filter>
   </defs>
 
-  <g filter="url(#aeroPop)">
+  <g>
     <!-- ================= LEFT: ICONIC WINAMP DIAMOND & 3D LIGHTNING BOLT ================= -->
-    <g transform="translate(15, 10)">
+    <g transform="translate(16, 10)">
       <!-- Outer Black Diamond -->
       <polygon points="95,12 183,100 95,188 7,100" fill="#FFFFFF" stroke="#000000" stroke-width="11" stroke-linejoin="miter"/>
       <!-- Inner Diamond Frame Line -->
@@ -46,62 +40,73 @@
     </g>
 
     <!-- ================= TOP RIGHT: LLAMA/POCI BADGE + "BAHARI PANTURA" ================= -->
-    <g transform="translate(212, 24)">
+    <g transform="translate(215, 24)">
       <!-- Classic Black Square Icon Box -->
-      <rect x="0" y="2" width="34" height="34" rx="3" fill="#000000" stroke="#FFFFFF" stroke-width="2"/>
-      <!-- White Silhouette inside Box (Winamp Llama / Poci Hybrid) -->
+      <rect x="0" y="2" width="34" height="34" rx="3" fill="#000000" stroke="#FFFFFF" stroke-width="2.5"/>
+      <!-- White Silhouette inside Box -->
       <path d="M9,29 L9,17 L6,15 L6,9 L10,9 L11,13 L15,13 L15,18 L24,18 L26,14 L28,16 L26,23 L26,29 L23,29 L23,24 L13,24 L13,29 Z"
             fill="#FFFFFF"/>
 
       <!-- Bold Wide Geometric Uppercase Label (NULLSOFT Style) -->
       <text x="44" y="30"
             font-family="'Outfit', 'Arial Black', 'Impact', sans-serif"
-            font-size="31"
+            font-size="30"
             font-weight="900"
-            letter-spacing="4.5"
+            letter-spacing="4"
             fill="#000000"
             stroke="#FFFFFF"
-            stroke-width="4"
+            stroke-width="5"
             paint-order="stroke fill">BAHARI PANTURA</text>
     </g>
 
     <!-- ================= BOTTOM RIGHT: HUGE WINAMP BLOCK "SINEMA TEGAL" ================= -->
-    <g transform="translate(210, 168) skewX(-6)">
+    <g transform="translate(215, 166) skewX(-6)">
+      <!-- Outer White Sticker Rim so it Pops on Any Background -->
+      <text x="4" y="5"
+            font-family="'Outfit', 'Arial Black', 'Impact', sans-serif"
+            font-size="78"
+            font-weight="900"
+            letter-spacing="1.5"
+            fill="#FFFFFF"
+            stroke="#FFFFFF"
+            stroke-width="24"
+            stroke-linejoin="round"
+            paint-order="stroke fill">SINEMA TEGAL</text>
+
       <!-- 3D Black Extruded Block Shadow -->
       <text x="6" y="7"
             font-family="'Outfit', 'Arial Black', 'Impact', sans-serif"
-            font-size="82"
+            font-size="78"
             font-weight="900"
-            letter-spacing="1"
+            letter-spacing="1.5"
             fill="#000000"
             stroke="#000000"
-            stroke-width="18"
-            stroke-linejoin="miter"
+            stroke-width="17"
+            stroke-linejoin="round"
             paint-order="stroke fill">SINEMA TEGAL</text>
 
       <!-- Main Thick Black Outline + Winamp Gold Fill -->
       <text x="0" y="0"
             font-family="'Outfit', 'Arial Black', 'Impact', sans-serif"
-            font-size="82"
+            font-size="78"
             font-weight="900"
-            letter-spacing="1"
+            letter-spacing="1.5"
             fill="url(#winampGold)"
             stroke="#000000"
-            stroke-width="16"
-            stroke-linejoin="miter"
+            stroke-width="15"
+            stroke-linejoin="round"
             paint-order="stroke fill">SINEMA TEGAL</text>
 
       <!-- Crisp Top Specular Highlight inside Gold Letters -->
       <text x="0" y="-2"
             font-family="'Outfit', 'Arial Black', 'Impact', sans-serif"
-            font-size="82"
+            font-size="78"
             font-weight="900"
-            letter-spacing="1"
+            letter-spacing="1.5"
             fill="none"
-            stroke="#FFF59D"
-            stroke-width="1.6"
-            opacity="0.75">SINEMA TEGAL</text>
+            stroke="#FFF9C4"
+            stroke-width="1.5"
+            opacity="0.8">SINEMA TEGAL</text>
     </g>
   </g>
 </svg>
-
