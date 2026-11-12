@@ -3153,9 +3153,13 @@ body {
 .aero-bubble.b9 { left: 83%; width: 64px; height: 64px; animation-duration: 16s; animation-delay: 7s; }
 .aero-bubble.b10 { left: 92%; width: 42px; height: 42px; animation-duration: 14s; animation-delay: 2s; }
 
-main, .site-navbar, .bottom-player, body > footer {
+main, body > footer {
   position: relative;
   z-index: 2;
+}
+
+.site-navbar, .bottom-player {
+  z-index: 1000;
 }
 
 /* Extruded Glossy Aero Glass Panels with Top Specular Horizon */
