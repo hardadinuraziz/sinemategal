@@ -7,7 +7,7 @@
 
     @if(!$isAdmin)
         <!-- Access Gate for Non-Admin Testing -->
-        <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 3.5rem 2rem; text-align: center; max-width: 680px; margin: 3rem auto; box-shadow: var(--shadow-lg);">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 3.5rem 2rem; text-align: center; max-width: 680px; margin: 3rem auto; box-shadow: var(--shadow-lg);">
             <div style="font-size: 3.5rem; margin-bottom: 1rem;">🔐</div>
             <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-main); margin-bottom: 0.75rem;">
                 Gerbang Kurator & Admin Sinema Tegal
@@ -261,7 +261,7 @@
                         @forelse($recentTickets as $ticket)
                         <tr>
                             <td>
-                                <span style="font-family: monospace; font-weight: 700; background: #f1f5f9; padding: 2px 8px; border-radius: 6px; font-size: 0.85rem;">
+                                <span style="font-family: monospace; font-weight: 700; background: var(--bg-subtle); color: var(--text-main); border: 1px solid var(--border-subtle); padding: 2px 8px; border-radius: 6px; font-size: 0.85rem;">
                                     {{ $ticket->ticket_code }}
                                 </span>
                             </td>
@@ -354,7 +354,7 @@
                             </td>
                             <td>
                                 <div style="font-weight: 600; color: var(--text-main);">
-                                    Rp {{ number_format($u->balance, 0, ',', '.') }}
+                                    Rp {{ number_format($u->wallet_balance, 0, ',', '.') }}
                                 </div>
                             </td>
                             <td style="text-align: right;">
@@ -389,7 +389,7 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
                 
                 <!-- Form Tambah Film -->
-                <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
                     <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
                         <span>🎬</span> Tambah Film / Dokumenter Anyar
                     </h3>
@@ -514,7 +514,7 @@
                 </div>
 
                 <!-- Form Tambah Lagu -->
-                <div style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
                     <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
                         <span>🎵</span> Tambah Tembang / Musik Tegalan
                     </h3>

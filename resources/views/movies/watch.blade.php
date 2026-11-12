@@ -112,11 +112,11 @@
                 </p>
 
                 <!-- Cultural Commentary / Catatan Budaya Tegal -->
-                <div style="background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 12px; padding: 1.25rem;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #92400E; font-weight: 800; margin-bottom: 0.4rem; font-size: 0.92rem;">
+                <div style="background: rgba(217, 119, 6, 0.12); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 12px; padding: 1.25rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: #fbbf24; font-weight: 800; margin-bottom: 0.4rem; font-size: 0.92rem;">
                         <span>🏮</span> Catatan Budaya & Nilai Pesisiran:
                     </div>
-                    <div style="font-size: 0.88rem; color: #78350F; line-height: 1.6;">
+                    <div style="font-size: 0.88rem; color: #fde68a; line-height: 1.6;">
                         Karya film kiye ngangkat kearifan lokal Tegal kang nyawiji antarane tradisi maritim lan budi pekerti wong cilik. Nggambarake semangat guyub, kejujuran basa ngapak kang blak-blakan nanging kebak tresna asih.
                     </div>
                 </div>

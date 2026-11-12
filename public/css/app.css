@@ -2655,8 +2655,57 @@ html, body { background-color: var(--bg-main); color: var(--text-main); }
 .section[style], footer[style] { background: #111 !important; }
 .stats-grid, .stat-card, .movie-card, .movie-info, .culture-gallery-card,
 .form-control, .flash-message, .user-wallet-badge, .user-menu-pill,
-.playlist-card, .album-card, .music-player, .pagination a, .pagination span {
+.playlist-card, .album-card, .music-player, .pagination a, .pagination span,
+.admin-header, .admin-tabs, .admin-table-container, .wallet-card, .ticket-card,
+.pricing-card, .modal-dialog, .lyrics-drawer, .music-header-card {
   background-color: var(--bg-surface); color: var(--text-main); border-color: var(--border-color);
+}
+.admin-table th {
+  background-color: var(--bg-subtle);
+  color: var(--text-muted);
+  border-bottom-color: var(--border-color);
+}
+.admin-table td {
+  border-bottom-color: var(--border-color);
+  color: var(--text-body);
+}
+.admin-table tr:hover td {
+  background-color: var(--bg-hover);
+}
+.badge-neutral {
+  background: var(--bg-subtle);
+  color: var(--text-body);
+  border: 1px solid var(--border-color);
+}
+.badge-vip {
+  background: rgba(217, 119, 6, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+}
+.badge-ticket {
+  background: rgba(225, 29, 72, 0.18);
+  color: #fda4af;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+}
+.badge-free {
+  background: rgba(5, 150, 105, 0.18);
+  color: #6ee7b7;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.flash-success {
+  background: rgba(5, 150, 105, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #6ee7b7;
+}
+.flash-error {
+  background: rgba(225, 29, 72, 0.16);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #fda4af;
+}
+.flash-warning {
+  background: rgba(217, 119, 6, 0.16);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: #fde68a;
 }
 .btn-secondary { background: #1b1b1b; border-color: #363636; color: var(--text-body); }
 .mobile-nav-link, .nav-link { color: var(--text-body); }

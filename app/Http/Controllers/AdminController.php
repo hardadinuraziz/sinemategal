@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Movie;
+use App\Models\Subscription;
+use App\Models\Ticket;
+use App\Models\Track;
+use App\Models\User;
+use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use App\Models\Movie;
-use App\Models\Track;
-use App\Models\User;
-use App\Models\Ticket;
-use App\Models\Subscription;
-use App\Models\Category;
-use App\Models\WalletTransaction;
 
 class AdminController extends Controller
 {
@@ -74,43 +74,43 @@ class AdminController extends Controller
             'banner_file' => 'nullable|image|max:10240',
         ]);
 
-        if (!file_exists(public_path('videos'))) {
+        if (! file_exists(public_path('videos'))) {
             @mkdir(public_path('videos'), 0777, true);
         }
-        if (!file_exists(public_path('images'))) {
+        if (! file_exists(public_path('images'))) {
             @mkdir(public_path('images'), 0777, true);
         }
 
         // Handle uploaded video file
         if ($request->hasFile('video_file')) {
             $file = $request->file('video_file');
-            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('videos'), $filename);
-            $validated['video_url'] = '/videos/' . $filename;
+            $validated['video_url'] = '/videos/'.$filename;
         }
 
         // Handle uploaded trailer file
         if ($request->hasFile('trailer_file')) {
             $file = $request->file('trailer_file');
-            $filename = 'trailer_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'trailer_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('videos'), $filename);
-            $validated['trailer_url'] = '/videos/' . $filename;
+            $validated['trailer_url'] = '/videos/'.$filename;
         }
 
         // Handle uploaded poster image
         if ($request->hasFile('poster_file')) {
             $file = $request->file('poster_file');
-            $filename = 'poster_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'poster_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('images'), $filename);
-            $validated['poster_url'] = '/images/' . $filename;
+            $validated['poster_url'] = '/images/'.$filename;
         }
 
         // Handle uploaded banner image
         if ($request->hasFile('banner_file')) {
             $file = $request->file('banner_file');
-            $filename = 'banner_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'banner_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('images'), $filename);
-            $validated['banner_url'] = '/images/' . $filename;
+            $validated['banner_url'] = '/images/'.$filename;
         }
 
         // Fallbacks
@@ -119,7 +119,7 @@ class AdminController extends Controller
         $validated['video_url'] = $validated['video_url'] ?? '/videos/trailer-sintren.mp4';
         $validated['trailer_url'] = $validated['trailer_url'] ?? $validated['video_url'];
 
-        $validated['slug'] = Str::slug($validated['title']) . '-' . rand(100, 999);
+        $validated['slug'] = Str::slug($validated['title']).'-'.rand(100, 999);
         $validated['ticket_price'] = $validated['access_type'] === 'ticket' ? ($validated['ticket_price'] ?? 15000) : 0;
         $validated['featured'] = $request->has('featured');
 
@@ -157,43 +157,43 @@ class AdminController extends Controller
             'banner_file' => 'nullable|image|max:10240',
         ]);
 
-        if (!file_exists(public_path('videos'))) {
+        if (! file_exists(public_path('videos'))) {
             @mkdir(public_path('videos'), 0777, true);
         }
-        if (!file_exists(public_path('images'))) {
+        if (! file_exists(public_path('images'))) {
             @mkdir(public_path('images'), 0777, true);
         }
 
         // Handle uploaded video file
         if ($request->hasFile('video_file')) {
             $file = $request->file('video_file');
-            $filename = time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('videos'), $filename);
-            $validated['video_url'] = '/videos/' . $filename;
+            $validated['video_url'] = '/videos/'.$filename;
         }
 
         // Handle uploaded trailer file
         if ($request->hasFile('trailer_file')) {
             $file = $request->file('trailer_file');
-            $filename = 'trailer_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'trailer_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('videos'), $filename);
-            $validated['trailer_url'] = '/videos/' . $filename;
+            $validated['trailer_url'] = '/videos/'.$filename;
         }
 
         // Handle uploaded poster image
         if ($request->hasFile('poster_file')) {
             $file = $request->file('poster_file');
-            $filename = 'poster_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'poster_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('images'), $filename);
-            $validated['poster_url'] = '/images/' . $filename;
+            $validated['poster_url'] = '/images/'.$filename;
         }
 
         // Handle uploaded banner image
         if ($request->hasFile('banner_file')) {
             $file = $request->file('banner_file');
-            $filename = 'banner_' . time() . '_' . Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.' . $file->getClientOriginalExtension();
+            $filename = 'banner_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
             $file->move(public_path('images'), $filename);
-            $validated['banner_url'] = '/images/' . $filename;
+            $validated['banner_url'] = '/images/'.$filename;
         }
 
         $validated['ticket_price'] = $validated['access_type'] === 'ticket' ? ($validated['ticket_price'] ?? 15000) : 0;
@@ -230,7 +230,7 @@ class AdminController extends Controller
             'featured' => 'nullable',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']) . '-' . rand(100, 999);
+        $validated['slug'] = Str::slug($validated['title']).'-'.rand(100, 999);
         $validated['featured'] = $request->has('featured');
 
         Track::create($validated);
@@ -285,13 +285,14 @@ class AdminController extends Controller
     public function toggleUserVip($id)
     {
         $targetUser = User::findOrFail($id);
-        $targetUser->is_vip = !$targetUser->is_vip;
+        $targetUser->is_vip = ! $targetUser->is_vip;
         if ($targetUser->is_vip) {
             $targetUser->vip_expires_at = now()->addDays(30);
         }
         $targetUser->save();
 
         $statusText = $targetUser->is_vip ? 'VIP Aktif (30 dina)' : 'VIP Dinonaktifkan';
+
         return back()->with('success', "Status pengguna {$targetUser->name} saiki: {$statusText}.");
     }
 
@@ -299,8 +300,8 @@ class AdminController extends Controller
     {
         $targetUser = User::findOrFail($id);
         $amount = (int) $request->input('amount', 50000);
-        
-        $targetUser->balance += $amount;
+
+        $targetUser->wallet_balance += $amount;
         $targetUser->save();
 
         WalletTransaction::create([
@@ -308,11 +309,11 @@ class AdminController extends Controller
             'amount' => $amount,
             'type' => 'topup',
             'description' => 'Top-up manual dening Kurator Admin Sinema Tegal',
-            'reference_id' => 'ADM-' . strtoupper(Str::random(8)),
+            'reference_id' => 'ADM-'.strtoupper(Str::random(8)),
             'status' => 'completed',
         ]);
 
-        return back()->with('success', "Kasil nambahi saldo Rp " . number_format($amount, 0, ',', '.') . " maring {$targetUser->name}.");
+        return back()->with('success', 'Kasil nambahi saldo Rp '.number_format($amount, 0, ',', '.')." maring {$targetUser->name}.");
     }
 
     public function updateUserRole(Request $request, $id)
@@ -320,7 +321,7 @@ class AdminController extends Controller
         $targetUser = User::findOrFail($id);
         $role = $request->input('role', 'user');
 
-        if (!in_array($role, ['user', 'creator', 'admin'])) {
+        if (! in_array($role, ['user', 'creator', 'admin'])) {
             $role = 'user';
         }
 

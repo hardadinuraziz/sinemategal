@@ -71,7 +71,7 @@
                 @endforeach
             </div>
         @else
-            <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 3rem; text-align: center; box-shadow: var(--shadow-sm);">
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 3rem; text-align: center; box-shadow: var(--shadow-sm);">
                 <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.35rem;">Belum Ada Tiket Aktif</h3>
                 <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto;">
                     Anda belum memiliki tiket film premiere aktif. Silakan pilih film bioskop rakyat yang ingin Anda tonton.
@@ -91,7 +91,7 @@
         </h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
             @foreach($expiredTickets as $et)
-                <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; opacity: 0.8;">
+                <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 1rem; opacity: 0.8;">
                     <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">
                         <span style="font-family: monospace;">{{ $et->ticket_code }}</span>
                         <span>Kedaluwarsa: {{ $et->valid_until->format('d/m/Y') }}</span>

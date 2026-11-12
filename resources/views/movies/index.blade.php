@@ -104,7 +104,7 @@
             {{ $movies->links() }}
         </div>
     @else
-        <div style="text-align: center; padding: 4rem 1.5rem; background: #ffffff; border-radius: var(--radius-xl); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+        <div style="text-align: center; padding: 4rem 1.5rem; background: var(--bg-surface); border-radius: var(--radius-xl); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
             <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.5rem;">Tidak Ada Film yang Ditemukan</h3>
             <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
                 Silakan ubah kata kunci pencarian atau sesuaikan kembali filter kategori akses.

@@ -83,7 +83,7 @@
     <div class="detail-grid">
         <!-- Left: Synopsis & Info -->
         <div>
-            <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
                 <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
                     Sinopsis & Latar Cerita
                 </h3>
@@ -114,7 +114,7 @@
 
         <!-- Right: Access Status & Ticket Box -->
         <div>
-            <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-sm);">
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 1.75rem; box-shadow: var(--shadow-sm);">
                 <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
                     Status Akses Anda
                 </div>
@@ -240,14 +240,14 @@
             <div class="form-group">
                 <label class="form-label" style="font-weight: 700; font-size: 0.85rem;">Metode Pembayaran:</label>
                 <div style="display: flex; flex-direction: column; gap: 0.6rem;">
-                    <label style="display: flex; align-items: center; gap: 0.75rem; background: #ffffff; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
+                    <label style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
                         <input type="radio" name="payment_method" value="dompet_bahari" checked>
                         <div>
                             <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">Dompet Bahari (Instan 1-Klik)</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">Potong langsung dari saldo dompet</div>
                         </div>
                     </label>
-                    <label style="display: flex; align-items: center; gap: 0.75rem; background: #ffffff; border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
+                    <label style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
                         <input type="radio" name="payment_method" value="qris">
                         <div>
                             <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">QRIS Instan</div>

@@ -42,7 +42,7 @@
         </div>
 
         <!-- Right: Top-up Form -->
-        <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; box-shadow: var(--shadow-sm);">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; box-shadow: var(--shadow-sm);">
             <div style="margin-bottom: 1.25rem;">
                 <span class="badge badge-free" style="font-size: 0.72rem;">INSTANT TOP-UP</span>
                 <h3 style="font-size: 1.25rem; color: var(--text-main); font-weight: 800; margin-top: 0.35rem;">
@@ -86,7 +86,7 @@
     </div>
 
     <!-- Transaction History Table -->
-    <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; margin-bottom: 3.5rem; box-shadow: var(--shadow-sm);">
+    <div style="background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2.25rem; margin-bottom: 3.5rem; box-shadow: var(--shadow-sm);">
         <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
             <div>
                 <h3 style="font-size: 1.25rem; color: var(--text-main); font-weight: 800;">
