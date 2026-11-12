@@ -3156,6 +3156,11 @@ main, body > footer {
 .vip-cinematic-banner {
   position: relative;
   background-color: #0284c7 !important;
+  background-image:
+    linear-gradient(125deg, rgba(14, 165, 233, 0.58) 0%, rgba(2, 132, 199, 0.42) 45%, rgba(16, 185, 129, 0.52) 100%),
+    url('/images/frutiger-aero-sky.jpg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
   border: 2.5px solid rgba(255, 255, 255, 0.92) !important;
   box-shadow: var(--neu-raised-lg), inset 0 4px 12px rgba(255, 255, 255, 0.85) !important;
   border-radius: 26px !important;
@@ -3188,16 +3193,17 @@ main, body > footer {
 .vip-cinematic-overlay {
   background:
     linear-gradient(
-      90deg,
-      rgba(3, 105, 161, 0.88) 0%,
-      rgba(2, 132, 199, 0.62) 32%,
-      rgba(14, 165, 233, 0.12) 58%,
-      rgba(16, 185, 129, 0) 100%
+      95deg,
+      rgba(3, 105, 161, 0.9) 0%,
+      rgba(2, 132, 199, 0.78) 42%,
+      rgba(14, 165, 233, 0.52) 72%,
+      rgba(16, 185, 129, 0.58) 100%
     ),
     linear-gradient(
       0deg,
-      rgba(2, 132, 199, 0.55) 0%,
-      rgba(14, 165, 233, 0) 40%
+      rgba(2, 132, 199, 0.88) 0%,
+      rgba(14, 165, 233, 0.25) 55%,
+      rgba(255, 255, 255, 0.28) 100%
     ) !important;
 }
 
@@ -3699,3 +3705,114 @@ body > footer {
 }
 
 
+
+/* ==========================================================================
+   FRUTIGER AERO FOREGROUND FX: RISING SOAP BUBBLES & FLYING GLOSSY FISH
+   (Transform/opacity only -> GPU composited, no scroll repaint)
+   ========================================================================== */
+.aero-fx-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+.fx-bubble {
+  position: absolute;
+  bottom: -90px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 26%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.4) 12%, transparent 30%),
+    radial-gradient(circle at 70% 78%, rgba(255, 255, 255, 0.5) 0%, transparent 22%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 55%, rgba(125, 211, 252, 0.35) 78%, rgba(187, 247, 208, 0.45) 90%, rgba(255, 255, 255, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fxBubbleRise 14s linear infinite;
+}
+
+.fx-bubble.fb1  { left: 8%;  width: 26px; height: 26px; animation-duration: 13s; animation-delay: 0s; }
+.fx-bubble.fb2  { left: 16%; width: 14px; height: 14px; animation-duration: 10s; animation-delay: 3s; }
+.fx-bubble.fb3  { left: 27%; width: 34px; height: 34px; animation-duration: 16s; animation-delay: 6s; }
+.fx-bubble.fb4  { left: 38%; width: 18px; height: 18px; animation-duration: 11s; animation-delay: 1.5s; }
+.fx-bubble.fb5  { left: 47%; width: 42px; height: 42px; animation-duration: 18s; animation-delay: 8s; }
+.fx-bubble.fb6  { left: 58%; width: 16px; height: 16px; animation-duration: 12s; animation-delay: 4.5s; }
+.fx-bubble.fb7  { left: 66%; width: 30px; height: 30px; animation-duration: 15s; animation-delay: 2s; }
+.fx-bubble.fb8  { left: 75%; width: 12px; height: 12px; animation-duration: 9s;  animation-delay: 7s; }
+.fx-bubble.fb9  { left: 85%; width: 38px; height: 38px; animation-duration: 17s; animation-delay: 5s; }
+.fx-bubble.fb10 { left: 93%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 9s; }
+
+@keyframes fxBubbleRise {
+  0%   { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
+  8%   { opacity: 0.9; }
+  25%  { transform: translate3d(14px, -28vh, 0) scale(0.9); }
+  50%  { transform: translate3d(-12px, -56vh, 0) scale(1); }
+  75%  { transform: translate3d(16px, -84vh, 0) scale(1.05); opacity: 0.85; }
+  92%  { opacity: 0.6; }
+  96%  { transform: translate3d(4px, -104vh, 0) scale(1.35); opacity: 0.4; }
+  100% { transform: translate3d(4px, -106vh, 0) scale(1.6); opacity: 0; }
+}
+
+.fx-fish {
+  position: absolute;
+  left: 0;
+  will-change: transform;
+  animation: fxFishSwimLeft 26s linear infinite;
+}
+
+.fx-fish.is-reverse {
+  animation-name: fxFishSwimRight;
+}
+
+.fx-fish.is-reverse img {
+  transform: scaleX(-1);
+}
+
+.fx-fish-bob {
+  animation: fxFishBob 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+.fx-fish img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.fx-fish.ff1 { top: 18%; width: 74px; animation-duration: 28s; animation-delay: -4s; }
+.fx-fish.ff2 { top: 42%; width: 58px; animation-duration: 34s; animation-delay: -16s; }
+.fx-fish.ff3 { top: 66%; width: 52px; animation-duration: 24s; animation-delay: -10s; }
+.fx-fish.ff4 { top: 80%; width: 44px; animation-duration: 38s; animation-delay: -26s; }
+.fx-fish.ff2 .fx-fish-bob { animation-duration: 3.6s; }
+.fx-fish.ff3 .fx-fish-bob { animation-duration: 2.6s; }
+.fx-fish.ff4 .fx-fish-bob { animation-duration: 4s; }
+
+@keyframes fxFishSwimLeft {
+  0%   { transform: translate3d(110vw, 0, 0); }
+  100% { transform: translate3d(-20vw, -6vh, 0); }
+}
+
+@keyframes fxFishSwimRight {
+  0%   { transform: translate3d(-20vw, 0, 0); }
+  100% { transform: translate3d(110vw, -5vh, 0); }
+}
+
+@keyframes fxFishBob {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  25%      { transform: translate3d(0, -16px, 0) rotate(2deg); }
+  50%      { transform: translate3d(0, 4px, 0) rotate(4deg); }
+  75%      { transform: translate3d(0, 14px, 0) rotate(-2deg); }
+}
+
+@media (max-width: 768px) {
+  .fx-bubble.fb3, .fx-bubble.fb6, .fx-bubble.fb8, .fx-bubble.fb10, .fx-fish.ff4 { display: none; }
+  .fx-fish.ff1 { width: 54px; }
+  .fx-fish.ff2 { width: 44px; }
+  .fx-fish.ff3 { width: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aero-fx-layer, .aero-bubble { display: none; }
+}

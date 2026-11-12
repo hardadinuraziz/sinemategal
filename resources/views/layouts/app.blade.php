@@ -29,6 +29,25 @@
         <div class="aero-bubble b6"><span class="bubble-fish">🐟</span></div>
     </div>
 
+    <!-- Frutiger Aero Foreground FX: Floating Bubbles & Flying Fish (pointer-events: none) -->
+    <div class="aero-fx-layer" aria-hidden="true">
+        <span class="fx-bubble fb1"></span>
+        <span class="fx-bubble fb2"></span>
+        <span class="fx-bubble fb3"></span>
+        <span class="fx-bubble fb4"></span>
+        <span class="fx-bubble fb5"></span>
+        <span class="fx-bubble fb6"></span>
+        <span class="fx-bubble fb7"></span>
+        <span class="fx-bubble fb8"></span>
+        <span class="fx-bubble fb9"></span>
+        <span class="fx-bubble fb10"></span>
+
+        <div class="fx-fish ff1"><div class="fx-fish-bob"><img src="/images/aero-fish-gold.svg" alt=""></div></div>
+        <div class="fx-fish ff2 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-blue.svg" alt=""></div></div>
+        <div class="fx-fish ff3"><div class="fx-fish-bob"><img src="/images/aero-fish-clown.svg" alt=""></div></div>
+        <div class="fx-fish ff4 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-gold.svg" alt=""></div></div>
+    </div>
+
     <!-- Navigation Header (Minimalist Modern) -->
     <header class="site-navbar">
         <div class="container nav-container">

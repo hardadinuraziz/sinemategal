@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff7ed"/>
+      <stop offset="0.35" stop-color="#fb923c"/>
+      <stop offset="1" stop-color="#c2410c"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M148 60 L194 32 Q186 60 194 88 Z" fill="url(#body)" stroke="#fff" stroke-width="3" stroke-linejoin="round">
+      <animateTransform attributeName="transform" type="skewY" values="0;-12;0;12;0" dur="0.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  <path d="M72 26 Q100 4 126 28 Z" fill="url(#body)" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+  <ellipse cx="90" cy="60" rx="64" ry="34" fill="url(#body)" stroke="#fff" stroke-width="3"/>
+  <path d="M60 28 Q72 60 60 92" fill="none" stroke="#fff" stroke-width="11"/>
+  <path d="M110 27 Q120 60 110 93" fill="none" stroke="#fff" stroke-width="10"/>
+  <ellipse cx="84" cy="45" rx="48" ry="12" fill="url(#gloss)"/>
+  <circle cx="42" cy="54" r="8" fill="#fff"/>
+  <circle cx="40" cy="54" r="5" fill="#0f172a"/>
+  <circle cx="38" cy="52" r="1.8" fill="#fff"/>
+</svg>
