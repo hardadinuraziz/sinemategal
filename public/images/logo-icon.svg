@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 210" width="210" height="210" role="img" aria-label="Sinema Tegal Icon">
+  <defs>
+    <linearGradient id="winampGoldIcon" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFE055"/>
+      <stop offset="45%" stop-color="#F1C22E"/>
+      <stop offset="100%" stop-color="#DDA214"/>
+    </linearGradient>
+    <linearGradient id="boltBevelIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E59819"/>
+      <stop offset="100%" stop-color="#B86B09"/>
+    </linearGradient>
+    <filter id="iconPop" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#ffffff" flood-opacity="0.9"/>
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#012a4a" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <g filter="url(#iconPop)" transform="translate(10, 4)">
+    <!-- Outer Black & White Diamond -->
+    <polygon points="95,12 183,100 95,188 7,100" fill="#FFFFFF" stroke="#000000" stroke-width="11" stroke-linejoin="miter"/>
+    <polygon points="95,28 167,100 95,172 23,100" fill="#FFFFFF" stroke="#000000" stroke-width="4"/>
+
+    <!-- 3D Lightning Bolt -->
+    <polygon points="156,18 52,92 52,116 96,116 32,174 32,192 146,112 146,86 104,86 156,34"
+             fill="#000000" stroke="#000000" stroke-width="12" stroke-linejoin="round"/>
+    <polygon points="156,18 52,92 52,114 102,114 32,176 32,190 144,110 144,86 100,86 156,34"
+             fill="url(#boltBevelIcon)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    <polygon points="156,18 52,92 98,92 32,176 144,96 98,96"
+             fill="url(#winampGoldIcon)" stroke="#000000" stroke-width="5" stroke-linejoin="round"/>
+    <polyline points="145,27 65,86 104,86 46,162"
+              fill="none" stroke="#FFF9C4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

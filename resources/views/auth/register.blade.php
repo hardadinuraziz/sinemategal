@@ -6,7 +6,7 @@
 <div class="container" style="padding-top: 3.5rem; max-width: 480px;">
     <div class="auth-card">
         <div style="text-align: center; margin-bottom: 2rem;">
-            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎭</div>
+            <img src="/images/logo.svg" alt="Sinema Tegal" style="height: 68px; width: auto; margin: 0 auto 0.75rem; display: block;">
             <h1 style="font-size: 1.8rem; color: var(--text-main); font-weight: 800; margin-bottom: 0.35rem;">
                 Daftar Warga Sinema Tegal
             </h1>

@@ -36,10 +36,11 @@
     <!-- Navigation Header (Minimalist Modern) -->
     <header class="site-navbar">
         <div class="container nav-container">
-            <!-- Brand Logo -->
+            <!-- Brand Logo (Winamp Style) -->
             <a href="{{ route('home') }}" class="nav-brand">
                 <div class="brand-icon brand-icon-logo">
-                    <img src="/images/logo.png" alt="Sinema Tegal" style="height: 44px; width: auto; object-fit: contain;">
+                    <img src="/images/logo-icon.svg" alt="Sinema Tegal" class="logo-sidebar-icon" style="height: 48px; width: 48px; object-fit: contain;">
+                    <img src="/images/logo.svg" alt="Sinema Tegal" class="logo-mobile-full" style="height: 46px; width: auto; object-fit: contain;">
                 </div>
                 <span class="brand-badge">Platform Budaya</span>
             </a>
@@ -125,7 +126,7 @@
         <div class="mobile-nav-inner">
             <!-- Drawer Brand Header -->
             <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 0.25rem;">
-                <img src="/images/logo.png" alt="Sinema Tegal" style="height: 42px; width: auto; object-fit: contain;">
+                <img src="/images/logo.svg" alt="Sinema Tegal" style="height: 48px; width: auto; object-fit: contain;">
                 <span class="brand-badge">Platform Budaya</span>
             </div>
             <nav class="mobile-nav-links">
@@ -212,6 +213,15 @@
 
     <!-- Main Content -->
     <main style="flex-grow: 1;">
+        <!-- Top Winamp-Style Brand Header Banner -->
+        <div class="container winamp-top-brand-bar" style="padding-top: 1rem; padding-bottom: 0.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+            <a href="{{ route('home') }}" style="display: inline-flex; align-items: center;">
+                <img src="/images/logo.svg" alt="Bahari Pantura - Sinema Tegal" style="height: clamp(54px, 7vw, 76px); width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));">
+            </a>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span class="badge badge-vip" style="font-size: 0.72rem; padding: 0.35rem 0.85rem;">⚡ STREAMING FILM & NADA PANTURA</span>
+            </div>
+        </div>
         @yield('content')
     </main>
 
@@ -220,13 +230,10 @@
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2.5rem; margin-bottom: 2.5rem;">
                 <div>
-                    <div style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.8rem; color: var(--text-main);">
-                        <div class="brand-icon" style="width: 30px; height: 30px;">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                            </svg>
-                        </div>
-                        <span style="font-weight: 800; color: var(--text-main);">SINEMA</span><span style="font-weight: 800; color: var(--gold-600);">TEGAL</span>
+                    <div style="margin-bottom: 0.85rem;">
+                        <a href="{{ route('home') }}" style="display: inline-block;">
+                            <img src="/images/logo.svg" alt="Sinema Tegal" style="height: 58px; width: auto; object-fit: contain;">
+                        </a>
                     </div>
                     <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">
                         Platform digital nguri-uri kabudayan Tegal: Tari Mistik Sintren Muarareja, Dokumenter Ki Enthus Susmono, Drama Komedi Ngapak, sarta tembang Pantura legendaris.

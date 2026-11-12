@@ -3301,6 +3301,17 @@ div[style*="background: var(--bg-subtle)"] {
   animation: aeroBubbleFloat 4.5s ease-in-out infinite;
 }
 
+@media (min-width: 1200px) {
+  .logo-sidebar-icon { display: block !important; width: 52px !important; height: 52px !important; }
+  .logo-mobile-full { display: none !important; }
+}
+
+@media (max-width: 1199px) {
+  .logo-sidebar-icon { display: none !important; }
+  .logo-mobile-full { display: block !important; height: 44px !important; width: auto !important; }
+  .winamp-top-brand-bar { display: none !important; }
+}
+
 /* Tactile Frutiger Aero Glass Buttons & Capsules */
 .btn,
 .btn-secondary,
