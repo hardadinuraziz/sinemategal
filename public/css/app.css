@@ -3156,11 +3156,6 @@ main, body > footer {
 .vip-cinematic-banner {
   position: relative;
   background-color: #0284c7 !important;
-  background-image:
-    linear-gradient(125deg, rgba(14, 165, 233, 0.58) 0%, rgba(2, 132, 199, 0.42) 45%, rgba(16, 185, 129, 0.52) 100%),
-    url('/images/frutiger-aero-sky.jpg') !important;
-  background-size: cover !important;
-  background-position: center center !important;
   border: 2.5px solid rgba(255, 255, 255, 0.92) !important;
   box-shadow: var(--neu-raised-lg), inset 0 4px 12px rgba(255, 255, 255, 0.85) !important;
   border-radius: 26px !important;
@@ -3193,17 +3188,16 @@ main, body > footer {
 .vip-cinematic-overlay {
   background:
     linear-gradient(
-      95deg,
-      rgba(3, 105, 161, 0.9) 0%,
-      rgba(2, 132, 199, 0.78) 42%,
-      rgba(14, 165, 233, 0.52) 72%,
-      rgba(16, 185, 129, 0.58) 100%
+      90deg,
+      rgba(3, 105, 161, 0.88) 0%,
+      rgba(2, 132, 199, 0.62) 32%,
+      rgba(14, 165, 233, 0.12) 58%,
+      rgba(16, 185, 129, 0) 100%
     ),
     linear-gradient(
       0deg,
-      rgba(2, 132, 199, 0.88) 0%,
-      rgba(14, 165, 233, 0.25) 55%,
-      rgba(255, 255, 255, 0.28) 100%
+      rgba(2, 132, 199, 0.55) 0%,
+      rgba(14, 165, 233, 0) 40%
     ) !important;
 }
 
