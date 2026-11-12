@@ -146,27 +146,75 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" style="font-size: 0.85rem; font-weight: 700;">Metode Pembayaran:</label>
+                <label class="form-label" style="font-size: 0.85rem; font-weight: 700;">Metode Pembayaran (Simulasi Dummy):</label>
                 <div style="display: flex; flex-direction: column; gap: 0.6rem;">
                     <label style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
-                        <input type="radio" name="payment_method" value="dompet_bahari" checked>
+                        <input type="radio" name="payment_method" value="dompet_bahari" checked onchange="toggleSubPaymentDummy(this.value)">
                         <div>
                             <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">Dompet Bahari (Instan 1-Klik)</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted);">Potong otomatis dari saldo akun</div>
                         </div>
                     </label>
                     <label style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
-                        <input type="radio" name="payment_method" value="qris">
+                        <input type="radio" name="payment_method" value="qris" onchange="toggleSubPaymentDummy(this.value)">
                         <div>
-                            <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">QRIS Instan</div>
-                            <div style="font-size: 0.75rem; color: var(--text-muted);">Simulasi verifikasi cepat</div>
+                            <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">QRIS Instan (GoPay / OVO / DANA / ShopeePay)</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">Tampilkan barcode QRIS simulasi</div>
+                        </div>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.75rem; background: var(--bg-subtle); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer;">
+                        <input type="radio" name="payment_method" id="subBankRadio" value="tf_bca" onchange="toggleSubPaymentDummy(this.value)">
+                        <div style="flex: 1;">
+                            <div style="font-weight: 700; color: var(--text-main); font-size: 0.88rem;">Transfer Bank / Virtual Account</div>
+                            <div style="font-size: 0.75rem; color: var(--text-muted);">BCA, BRI, Mandiri, BNI (Simulasi Dummy)</div>
                         </div>
                     </label>
                 </div>
             </div>
 
+            <!-- Dummy QRIS Box for Subscription -->
+            <div id="subQrisDummy" style="display: none; background: var(--bg-subtle); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+                <div style="display: inline-block; background: rgba(229, 9, 20, 0.15); color: #f87171; border: 1px solid rgba(229, 9, 20, 0.35); font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 0.4rem;">
+                    SIMULASI QRIS NASIONAL
+                </div>
+                <div style="font-weight: 800; color: var(--text-main); font-size: 0.88rem;">PT SINEMA BAHARI TEGAL</div>
+                <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.6rem;">NMID: ID1026028009921</div>
+                <div style="background: #ffffff; padding: 0.55rem; border-radius: 8px; display: inline-block; margin-bottom: 0.5rem;">
+                    <svg width="116" height="116" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Simulasi Kode QRIS">
+                        <rect width="29" height="29" fill="#FFFFFF"/>
+                        <path fill="#0F172A" d="M2 2h7v7H2V2zm2 2v3h3V4H4zm16-2h7v7h-7V2zm2 2v3h3V4h-3zM2 20h7v7H2v-7zm2 2v3h3v-3H4zM11 2h2v2h-2V2zm4 0h2v4h-2V2zm-4 4h2v3h-2V6zm2 3h2v2h-2V9zm4-1h2v3h-2V8zM2 11h3v2H2v-2zm5 0h4v2H7v-2zm6 1h3v3h-3v-3zm5-1h3v2h-3v-2zm5 0h4v2h-4v-2zM4 15h3v3H4v-3zm5 1h2v2H9v-2zm8 0h3v3h-3v-3zm6-1h4v3h-4v-3zM11 20h3v2h-3v-2zm5 0h2v4h-2v-4zm4 1h3v2h-3v-2zm5 0h2v3h-2v-3zM11 24h2v3h-2v-3zm3 1h3v2h-3v-2zm5 0h4v2h-4v-2zm6-1h2v3h-2v-3z"/>
+                        <rect x="12" y="12" width="5" height="5" rx="1" fill="#E50914"/>
+                    </svg>
+                </div>
+                <div style="font-size: 0.74rem; color: var(--text-muted);">
+                    Klik tombol konfirmasi di bawah untuk mensimulasikan pembayaran QRIS berhasil.
+                </div>
+            </div>
+
+            <!-- Dummy Bank Transfer Box for Subscription -->
+            <div id="subBankDummy" style="display: none; background: var(--bg-subtle); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.25rem;">
+                <div style="margin-bottom: 0.65rem;">
+                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.35rem;">Pilih Bank Tujuan:</label>
+                    <select id="subBankSelect" class="form-control" style="padding: 0.45rem 0.65rem; font-size: 0.85rem;" onchange="changeSubBankDummy(this.value)">
+                        <option value="tf_bca">Bank BCA — Virtual Account</option>
+                        <option value="tf_bri">Bank BRI — BRIVA</option>
+                        <option value="tf_mandiri">Bank Mandiri — Mandiri VA</option>
+                        <option value="tf_bni">Bank BNI — Virtual Account</option>
+                    </select>
+                </div>
+                <div style="font-size: 0.74rem; color: var(--text-muted); margin-bottom: 0.25rem;">Nomor Virtual Account (Dummy):</div>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--bg-main); border: 1px solid var(--border-color); padding: 0.55rem 0.75rem; border-radius: var(--radius-sm); margin-bottom: 0.5rem;">
+                    <span id="subVaNumber" style="font-family: monospace; font-size: 0.98rem; font-weight: 800; color: var(--text-main); letter-spacing: 0.05em;">8801 0283 9941 001</span>
+                    <button type="button" onclick="copySubVa(this)" class="btn btn-secondary btn-sm" style="padding: 0.2rem 0.55rem; font-size: 0.72rem;">Salin</button>
+                </div>
+                <div style="font-size: 0.73rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                    <span>a.n. <strong style="color: var(--text-main);">PT Sinema Bahari Tegal</strong></span>
+                    <span style="color: var(--accent-emerald); font-weight: 700;">Verifikasi Dummy Instan</span>
+                </div>
+            </div>
+
             <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.92rem;">
-                Aktifkan Paket Langganan
+                Konfirmasi Pembayaran & Aktifkan VIP
             </button>
         </form>
     </div>
@@ -184,6 +232,51 @@
         document.getElementById('subPlanTitle').textContent = name;
         document.getElementById('subPlanPrice').textContent = 'Rp ' + Number(price).toLocaleString('id-ID');
         document.getElementById('subModal').classList.add('is-open');
+    }
+
+    function toggleSubPaymentDummy(val) {
+        const qrisBox = document.getElementById('subQrisDummy');
+        const bankBox = document.getElementById('subBankDummy');
+        if (!qrisBox || !bankBox) return;
+
+        if (val === 'qris') {
+            qrisBox.style.display = 'block';
+            bankBox.style.display = 'none';
+        } else if (val.startsWith('tf_')) {
+            qrisBox.style.display = 'none';
+            bankBox.style.display = 'block';
+        } else {
+            qrisBox.style.display = 'none';
+            bankBox.style.display = 'none';
+        }
+    }
+
+    function changeSubBankDummy(bankCode) {
+        const radio = document.getElementById('subBankRadio');
+        const vaSpan = document.getElementById('subVaNumber');
+        if (radio) {
+            radio.value = bankCode;
+            radio.checked = true;
+        }
+        const vaNumbers = {
+            'tf_bca': '8801 0283 9941 001',
+            'tf_bri': '1120 0098 7761 234',
+            'tf_mandiri': '8902 2001 4451 889',
+            'tf_bni': '9881 4420 7781 002'
+        };
+        if (vaSpan) {
+            vaSpan.textContent = vaNumbers[bankCode] || vaNumbers['tf_bca'];
+        }
+    }
+
+    function copySubVa(btn) {
+        const text = document.getElementById('subVaNumber')?.textContent?.replace(/\s+/g, '') || '';
+        if (navigator.clipboard && text) {
+            navigator.clipboard.writeText(text).catch(() => {});
+        }
+        const orig = btn.textContent;
+        btn.textContent = 'Tersalin!';
+        setTimeout(() => { btn.textContent = orig; }, 1500);
     }
 </script>
 @endsection

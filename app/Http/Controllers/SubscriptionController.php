@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription;
 use App\Models\WalletTransaction;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscriptionController extends Controller
 {
@@ -73,7 +73,7 @@ class SubscriptionController extends Controller
     public function subscribe(Request $request)
     {
         $user = Auth::user();
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('login')->with('warning', 'Mangga mlebu akun dhisit nggo langganan VIP.');
         }
 
@@ -92,9 +92,19 @@ class SubscriptionController extends Controller
         $price = $plan['price'];
         $paymentMethod = $validated['payment_method'];
 
+        $methodLabels = [
+            'dompet_bahari' => 'Dompet Bahari',
+            'qris' => 'QRIS Instan',
+            'tf_bca' => 'Transfer Bank BCA (VA)',
+            'tf_bri' => 'Transfer Bank BRI (VA)',
+            'tf_mandiri' => 'Transfer Bank Mandiri (VA)',
+            'tf_bni' => 'Transfer Bank BNI (VA)',
+        ];
+        $methodLabel = $methodLabels[$paymentMethod] ?? strtoupper($paymentMethod);
+
         if ($paymentMethod === 'dompet_bahari') {
             if ($user->wallet_balance < $price) {
-                return back()->with('error', 'Saldo Dompet Bahari sampeyan ora cukup (Kurang Rp ' . number_format($price - $user->wallet_balance, 0, ',', '.') . '). Mangga top-up saldo dhisik.');
+                return back()->with('error', 'Saldo Dompet Bahari sampeyan ora cukup (Kurang Rp '.number_format($price - $user->wallet_balance, 0, ',', '.').'). Mangga top-up saldo dhisik utawa pilih metode QRIS / Transfer Bank.');
             }
 
             $user->wallet_balance -= $price;
@@ -126,10 +136,10 @@ class SubscriptionController extends Controller
             'user_id' => $user->id,
             'type' => 'purchase_subscription',
             'amount' => $price,
-            'reference_id' => 'SUB-' . strtoupper(uniqid()),
-            'description' => "Langganan VIP: {$plan['name']} ({$paymentMethod})",
+            'reference_id' => 'SUB-'.strtoupper(uniqid()),
+            'description' => "Langganan VIP: {$plan['name']} ({$methodLabel})",
         ]);
 
-        return redirect()->route('subscriptions.index')->with('success', "Sugeng! Sampeyan saiki dadi Anggota VIP Sinema Tegal ({$plan['name']}) tekan tanggal " . $expiresAt->format('d M Y') . '!');
+        return redirect()->route('subscriptions.index')->with('success', "Pembayaran via {$methodLabel} berhasil! Sampeyan saiki dadi Anggota VIP Sinema Tegal ({$plan['name']}) tekan tanggal ".$expiresAt->format('d M Y').'!');
     }
 }

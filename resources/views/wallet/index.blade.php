@@ -69,17 +69,56 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" style="font-size: 0.82rem; font-weight: 700;">Metode Pembayaran:</label>
-                    <select name="method" class="form-control">
-                        <option value="QRIS">QRIS (Gopay / OVO / Dana / ShopeePay)</option>
-                        <option value="Virtual Account BCA">Virtual Account Bank BCA</option>
-                        <option value="Virtual Account BRI">Virtual Account Bank BRI</option>
-                        <option value="Virtual Account Mandiri">Virtual Account Bank Mandiri</option>
+                    <label class="form-label" style="font-size: 0.82rem; font-weight: 700;">Metode Pembayaran (Simulasi Dummy):</label>
+                    <select name="method" id="walletMethodSelect" class="form-control" onchange="updateWalletPaymentPreview()">
+                        <option value="QRIS">QRIS Instan (GoPay / OVO / DANA / ShopeePay / m-Banking)</option>
+                        <option value="Virtual Account BCA">Transfer Bank — Virtual Account BCA</option>
+                        <option value="Virtual Account BRI">Transfer Bank — Virtual Account BRI</option>
+                        <option value="Virtual Account Mandiri">Transfer Bank — Virtual Account Mandiri</option>
+                        <option value="Virtual Account BNI">Transfer Bank — Virtual Account BNI</option>
                     </select>
                 </div>
 
+                <!-- Dummy QRIS Preview Box -->
+                <div id="walletQrisPreview" style="background: var(--bg-subtle); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.25rem; text-align: center;">
+                    <div style="display: inline-block; background: rgba(229, 9, 20, 0.15); color: #f87171; border: 1px solid rgba(229, 9, 20, 0.35); font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-bottom: 0.5rem;">
+                        QRIS NASIONAL • MODE SIMULASI
+                    </div>
+                    <div style="font-weight: 800; color: var(--text-main); font-size: 0.9rem;">PT SINEMA BAHARI TEGAL</div>
+                    <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.75rem;">NMID: ID1026028009921 • Terminal: A01</div>
+                    <div style="background: #ffffff; padding: 0.65rem; border-radius: 10px; display: inline-block; margin-bottom: 0.65rem;">
+                        <svg width="128" height="128" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Simulasi Kode QRIS">
+                            <rect width="29" height="29" fill="#FFFFFF"/>
+                            <path fill="#0F172A" d="M2 2h7v7H2V2zm2 2v3h3V4H4zm16-2h7v7h-7V2zm2 2v3h3V4h-3zM2 20h7v7H2v-7zm2 2v3h3v-3H4zM11 2h2v2h-2V2zm4 0h2v4h-2V2zm-4 4h2v3h-2V6zm2 3h2v2h-2V9zm4-1h2v3h-2V8zM2 11h3v2H2v-2zm5 0h4v2H7v-2zm6 1h3v3h-3v-3zm5-1h3v2h-3v-2zm5 0h4v2h-4v-2zM4 15h3v3H4v-3zm5 1h2v2H9v-2zm8 0h3v3h-3v-3zm6-1h4v3h-4v-3zM11 20h3v2h-3v-2zm5 0h2v4h-2v-4zm4 1h3v2h-3v-2zm5 0h2v3h-2v-3zM11 24h2v3h-2v-3zm3 1h3v2h-3v-2zm5 0h4v2h-4v-2zm6-1h2v3h-2v-3z"/>
+                            <rect x="12" y="12" width="5" height="5" rx="1" fill="#E50914"/>
+                        </svg>
+                    </div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); line-height: 1.45;">
+                        Simulasi QRIS Otomatis: Tidak perlu transfer uang asli. Klik tombol di bawah untuk langsung menambah saldo.
+                    </div>
+                </div>
+
+                <!-- Dummy Bank Transfer Preview Box -->
+                <div id="walletBankPreview" style="display: none; background: var(--bg-subtle); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1.25rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <span style="font-size: 0.7rem; font-weight: 800; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.05em;">
+                            SIMULASI TRANSFER VIRTUAL ACCOUNT
+                        </span>
+                        <span id="walletBankNameBadge" class="badge badge-ticket" style="font-size: 0.68rem;">BANK BCA</span>
+                    </div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); margin-bottom: 0.25rem;">Nomor Virtual Account (Dummy):</div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; background: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); margin-bottom: 0.6rem;">
+                        <span id="walletVaNumber" style="font-family: monospace; font-size: 1.05rem; font-weight: 800; color: var(--text-main); letter-spacing: 0.06em;">8801 0283 9941 001</span>
+                        <button type="button" onclick="copyDummyVa('walletVaNumber', this)" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;">Salin</button>
+                    </div>
+                    <div style="font-size: 0.76rem; color: var(--text-muted); display: flex; justify-content: space-between;">
+                        <span>Penerima: <strong style="color: var(--text-main);">PT Sinema Bahari Tegal</strong></span>
+                        <span style="color: var(--accent-emerald); font-weight: 700;">Verifikasi Otomatis</span>
+                    </div>
+                </div>
+
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.8rem; font-size: 0.92rem;">
-                    Proses Isi Ulang Saldo
+                    Simulasikan Bayar & Isi Ulang Saldo
                 </button>
             </form>
         </div>
@@ -157,6 +196,45 @@
 <script>
     function setAmount(val) {
         document.getElementById('topupAmount').value = val;
+    }
+
+    function updateWalletPaymentPreview() {
+        const select = document.getElementById('walletMethodSelect');
+        const qrisBox = document.getElementById('walletQrisPreview');
+        const bankBox = document.getElementById('walletBankPreview');
+        const bankBadge = document.getElementById('walletBankNameBadge');
+        const vaNumber = document.getElementById('walletVaNumber');
+
+        if (!select) return;
+        const val = select.value;
+
+        const vaMap = {
+            'Virtual Account BCA': { badge: 'BANK BCA', va: '8801 0283 9941 001' },
+            'Virtual Account BRI': { badge: 'BANK BRI', va: '1120 0098 7761 234' },
+            'Virtual Account Mandiri': { badge: 'BANK MANDIRI', va: '8902 2001 4451 889' },
+            'Virtual Account BNI': { badge: 'BANK BNI', va: '9881 4420 7781 002' }
+        };
+
+        if (val === 'QRIS') {
+            qrisBox.style.display = 'block';
+            bankBox.style.display = 'none';
+        } else {
+            qrisBox.style.display = 'none';
+            bankBox.style.display = 'block';
+            const info = vaMap[val] || vaMap['Virtual Account BCA'];
+            bankBadge.textContent = info.badge;
+            vaNumber.textContent = info.va;
+        }
+    }
+
+    function copyDummyVa(elementId, btn) {
+        const text = document.getElementById(elementId)?.textContent?.replace(/\s+/g, '') || '';
+        if (navigator.clipboard && text) {
+            navigator.clipboard.writeText(text).catch(() => {});
+        }
+        const original = btn.textContent;
+        btn.textContent = 'Tersalin!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
     }
 </script>
 @endsection

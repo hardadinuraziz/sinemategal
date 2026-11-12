@@ -37,9 +37,19 @@
 
                 <form method="POST" action="{{ route('movies.buy-ticket', $movie->id) }}">
                     @csrf
-                    <input type="hidden" name="payment_method" value="dompet_bahari">
+                    <div class="form-group" style="margin-bottom: 1rem;">
+                        <label class="form-label" style="font-size: 0.8rem; font-weight: 700; color: #fff;">Pilih Metode Pembayaran (Simulasi Dummy):</label>
+                        <select name="payment_method" class="form-control" style="background: var(--bg-surface); color: var(--text-main); border-color: var(--border-color);">
+                            <option value="dompet_bahari">Dompet Bahari (Potong Saldo Akun)</option>
+                            <option value="qris">QRIS Instan (GoPay / OVO / DANA / ShopeePay)</option>
+                            <option value="tf_bca">Transfer Bank — Virtual Account BCA (8801 0283 9941 001)</option>
+                            <option value="tf_bri">Transfer Bank — BRIVA BRI (1120 0098 7761 234)</option>
+                            <option value="tf_mandiri">Transfer Bank — Mandiri VA (8902 2001 4451 889)</option>
+                            <option value="tf_bni">Transfer Bank — Virtual Account BNI (9881 4420 7781 002)</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-crimson" style="width: 100%; padding: 0.85rem; font-size: 1rem;">
-                        🎟️ Tuku Tiket Saiki (Potong Saldo Dompet Bahari)
+                        🎟️ Bayar & Aktifkan Tiket Sekarang
                     </button>
                 </form>
             </div>

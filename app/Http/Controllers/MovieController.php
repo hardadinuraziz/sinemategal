@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Movie;
 use App\Models\Category;
+use App\Models\Movie;
 use App\Models\Ticket;
 use App\Models\WalletTransaction;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class MovieController extends Controller
@@ -64,13 +64,13 @@ class MovieController extends Controller
         $movie = Movie::with('category')->where('slug', $slug)->firstOrFail();
         $user = Auth::user();
 
-        if (!$user && $movie->access_type !== 'free') {
+        if (! $user && $movie->access_type !== 'free') {
             return redirect()->route('login')->with('warning', 'Mangga mlebu akun dhisit nggo nonton film kiye.');
         }
 
         $accessCheck = $user ? $user->canAccessMovie($movie) : ['allowed' => true, 'reason' => 'free'];
 
-        if (!$accessCheck['allowed']) {
+        if (! $accessCheck['allowed']) {
             return view('movies.locked', compact('movie', 'accessCheck', 'user'));
         }
 
@@ -88,7 +88,7 @@ class MovieController extends Controller
         $movie = Movie::findOrFail($id);
         $user = Auth::user();
 
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('login')->with('warning', 'Mlebu akun dhisik nggo tuku tiket.');
         }
 
@@ -99,27 +99,28 @@ class MovieController extends Controller
         $paymentMethod = $request->input('payment_method', 'dompet_bahari');
         $ticketPrice = $movie->ticket_price;
 
+        $methodLabels = [
+            'dompet_bahari' => 'Dompet Bahari',
+            'qris' => 'QRIS Instan',
+            'tf_bca' => 'Transfer Bank BCA (VA)',
+            'tf_bri' => 'Transfer Bank BRI (VA)',
+            'tf_mandiri' => 'Transfer Bank Mandiri (VA)',
+            'tf_bni' => 'Transfer Bank BNI (VA)',
+        ];
+        $methodLabel = $methodLabels[$paymentMethod] ?? strtoupper($paymentMethod);
+
         if ($paymentMethod === 'dompet_bahari') {
             if ($user->wallet_balance < $ticketPrice) {
-                return back()->with('error', 'Saldo Dompet Bahari sampeyan ora cukup (Kurang Rp ' . number_format($ticketPrice - $user->wallet_balance, 0, ',', '.') . '). Mangga top-up saldo dhisik.');
+                return back()->with('error', 'Saldo Dompet Bahari sampeyan ora cukup (Kurang Rp '.number_format($ticketPrice - $user->wallet_balance, 0, ',', '.').'). Mangga top-up saldo dhisik utawa pilih metode QRIS / Transfer Bank.');
             }
 
             // Kurangi saldo user
             $user->wallet_balance -= $ticketPrice;
             $user->save();
-
-            // Catat transaksi
-            WalletTransaction::create([
-                'user_id' => $user->id,
-                'type' => 'purchase_ticket',
-                'amount' => $ticketPrice,
-                'reference_id' => 'TGL-' . strtoupper(Str::random(6)),
-                'description' => "Pembelian Tiket Premiere: {$movie->title}",
-            ]);
         }
 
         // Buat tiket
-        $ticketCode = 'TGL-' . strtoupper(Str::random(8));
+        $ticketCode = 'TGL-'.strtoupper(Str::random(8));
         $ticket = Ticket::create([
             'ticket_code' => $ticketCode,
             'user_id' => $user->id,
@@ -130,6 +131,15 @@ class MovieController extends Controller
             'valid_until' => Carbon::now()->addDays(7),
         ]);
 
-        return redirect()->route('movies.watch', $movie->slug)->with('success', "Tiket berhasil dituku! Kode Tiket: {$ticketCode}. Selamat nonton, dulur!");
+        // Catat transaksi
+        WalletTransaction::create([
+            'user_id' => $user->id,
+            'type' => 'purchase_ticket',
+            'amount' => $ticketPrice,
+            'reference_id' => $ticketCode,
+            'description' => "Pembelian Tiket Premiere: {$movie->title} ({$methodLabel})",
+        ]);
+
+        return redirect()->route('movies.watch', $movie->slug)->with('success', "Pembayaran via {$methodLabel} berhasil! Kode Tiket: {$ticketCode}. Selamat nonton, dulur!");
     }
 }

@@ -2657,7 +2657,8 @@ html, body { background-color: var(--bg-main); color: var(--text-main); }
 .form-control, .flash-message, .user-wallet-badge, .user-menu-pill,
 .playlist-card, .album-card, .music-player, .pagination a, .pagination span,
 .admin-header, .admin-tabs, .admin-table-container, .wallet-card, .ticket-card,
-.pricing-card, .modal-dialog, .lyrics-drawer, .music-header-card {
+.pricing-card, .modal-dialog, .modal-box, .track-card, .mobile-menu-toggle,
+.site-player, .lyrics-drawer, .music-header-card {
   background-color: var(--bg-surface); color: var(--text-main); border-color: var(--border-color);
 }
 .admin-table th {
