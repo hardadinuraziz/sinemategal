@@ -17,7 +17,21 @@
     @yield('styles')
 </head>
 <body>
-
+    <!-- Frutiger Aero Ambient World (Sky, Crystal Water, Lens Flare, 3D Bubbles & Tropical Fish) -->
+    <div class="frutiger-aero-scene" aria-hidden="true">
+        <div class="aero-sunflare"></div>
+        <div class="aero-globe-orb"></div>
+        <div class="aero-bubble b1"><span class="bubble-fish">🐠</span></div>
+        <div class="aero-bubble b2"></div>
+        <div class="aero-bubble b3"><span class="bubble-fish">🐟</span></div>
+        <div class="aero-bubble b4"></div>
+        <div class="aero-bubble b5"><span class="bubble-fish">🐡</span></div>
+        <div class="aero-bubble b6"></div>
+        <div class="aero-bubble b7"><span class="bubble-fish">🐠</span></div>
+        <div class="aero-bubble b8"></div>
+        <div class="aero-bubble b9"><span class="bubble-fish">🐟</span></div>
+        <div class="aero-bubble b10"></div>
+    </div>
 
     <!-- Navigation Header (Minimalist Modern) -->
     <header class="site-navbar">
