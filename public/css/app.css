@@ -2893,53 +2893,153 @@ body {
 }
 
 /* ==========================================================================
-   NEUMORPHISM UI (Soft Tactile Dark Cinema Design System)
+   NEUMORPHISM + FRUTIGER AERO UI/UX
+   (Aqua Glossy Gel, Sky-Cyan & Aurora Emerald Palette, Liquid Spring Animations)
    ========================================================================== */
 :root {
   color-scheme: dark;
-  --bg-main: #1b1e25;
-  --bg-surface: #1b1e25;
-  --bg-card: #1d2028;
-  --bg-card-hover: #21252f;
-  --bg-subtle: #16191f;
-  --bg-hover: #222630;
-  --bg-glass: rgba(27, 30, 37, 0.92);
-  --bg-glass-heavy: rgba(24, 27, 33, 0.96);
+  --bg-main: #06253f;
+  --bg-surface: #0b3558;
+  --bg-card: #0d3b61;
+  --bg-card-hover: #114875;
+  --bg-subtle: #051e34;
+  --bg-hover: #124975;
+  --bg-glass: rgba(11, 53, 88, 0.78);
+  --bg-glass-heavy: rgba(7, 35, 61, 0.92);
 
-  --text-main: #f3f4f6;
-  --text-body: #d1d5db;
-  --text-muted: #9ca3af;
-  --text-dim: #6b7280;
+  /* Crisp Ice-White & Sky Typography for 100% Contrast */
+  --text-main: #f0f9ff;
+  --text-body: #e0f2fe;
+  --text-muted: #93c5fd;
+  --text-dim: #60a5fa;
 
-  --border-color: rgba(255, 255, 255, 0.045);
-  --border-subtle: rgba(255, 255, 255, 0.045);
-  --border-strong: rgba(255, 255, 255, 0.09);
+  /* Frutiger Aero Accent Colors (Aqua Cyan, Leaf Emerald, Solar Amber) */
+  --primary: #0ea5e9;
+  --primary-hover: #38bdf8;
+  --accent-emerald: #34d399;
+  --accent-emerald-hover: #10b981;
+  --accent-emerald-subtle: rgba(16, 185, 129, 0.2);
+  --accent-emerald-border: rgba(52, 211, 153, 0.45);
+  --gold-400: #fde047;
+  --gold-500: #facc15;
+  --gold-600: #fde047;
+  --gold-700: #fef08a;
+  --rose-600: #38bdf8;
+  --green-600: #34d399;
+  --green-700: #6ee7b7;
 
-  /* Dual Opposing Neumorphic Shadows */
-  --neu-dark: #101217;
-  --neu-light: #262a34;
-  --neu-surface-grad: linear-gradient(145deg, #1f222a, #181b21);
-  --neu-raised-xs: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
-  --neu-raised-sm: 6px 6px 13px var(--neu-dark), -6px -6px 13px var(--neu-light);
-  --neu-raised: 9px 9px 18px var(--neu-dark), -9px -9px 18px var(--neu-light);
-  --neu-raised-lg: 14px 14px 28px #0e1014, -14px -14px 28px #282c36;
-  --neu-inset-sm: inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light);
-  --neu-inset: inset 6px 6px 12px var(--neu-dark), inset -6px -6px 12px var(--neu-light);
+  --border-color: rgba(125, 211, 252, 0.28);
+  --border-subtle: rgba(125, 211, 252, 0.24);
+  --border-strong: rgba(186, 230, 253, 0.5);
+
+  /* Neumorphic + Frutiger Aero Glossy Shadows & Gradients */
+  --neu-dark: rgba(2, 12, 24, 0.72);
+  --neu-light: rgba(125, 211, 252, 0.18);
+  --aero-glass-specular: inset 0 1.5px 1px rgba(255, 255, 255, 0.45), inset 0 -2px 6px rgba(14, 165, 233, 0.16);
+  --neu-surface-grad: linear-gradient(
+    165deg,
+    rgba(125, 211, 252, 0.24) 0%,
+    rgba(14, 70, 115, 0.84) 47%,
+    rgba(8, 47, 82, 0.9) 52%,
+    rgba(16, 185, 129, 0.2) 100%
+  );
+  --aero-gel-primary: linear-gradient(
+    180deg,
+    #bae6fd 0%,
+    #38bdf8 22%,
+    #0284c7 50%,
+    #0369a1 53%,
+    #10b981 100%
+  );
+  --aero-gel-primary-hover: linear-gradient(
+    180deg,
+    #e0f2fe 0%,
+    #7dd3fc 24%,
+    #0ea5e9 50%,
+    #0284c7 53%,
+    #34d399 100%
+  );
+  --aero-gel-pill: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.26) 0%,
+    rgba(56, 189, 248, 0.18) 49%,
+    rgba(7, 45, 78, 0.85) 51%,
+    rgba(16, 185, 129, 0.22) 100%
+  );
+
+  --neu-raised-xs: 4px 4px 10px var(--neu-dark), -3px -3px 9px var(--neu-light), var(--aero-glass-specular);
+  --neu-raised-sm: 6px 6px 15px var(--neu-dark), -5px -5px 13px var(--neu-light), var(--aero-glass-specular);
+  --neu-raised: 10px 10px 22px var(--neu-dark), -7px -7px 18px var(--neu-light), var(--aero-glass-specular);
+  --neu-raised-lg: 14px 14px 30px rgba(1, 9, 19, 0.82), -8px -8px 22px rgba(56, 189, 248, 0.26), 0 0 25px rgba(14, 165, 233, 0.3), var(--aero-glass-specular);
+  --neu-inset-sm: inset 4px 4px 9px rgba(2, 10, 20, 0.82), inset -3px -3px 8px rgba(56, 189, 248, 0.16);
+  --neu-inset: inset 6px 6px 13px rgba(2, 10, 20, 0.88), inset -4px -4px 10px rgba(56, 189, 248, 0.22);
 
   --shadow-xs: var(--neu-raised-xs);
   --shadow-sm: var(--neu-raised-sm);
   --shadow-md: var(--neu-raised);
   --shadow-lg: var(--neu-raised-lg);
   --shadow-xl: var(--neu-raised-lg);
+
+  --aero-spring: 0.36s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Frutiger Aero Keyframe Animations */
+@keyframes aeroAuroraFlow {
+  0% {
+    background-position: 0% 0%, 100% 100%, 0% 50%;
+  }
+  50% {
+    background-position: 100% 35%, 0% 65%, 100% 50%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 100%, 0% 50%;
+  }
+}
+
+@keyframes aeroBubbleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes aeroGelPulse {
+  0%, 100% {
+    box-shadow: 5px 5px 14px var(--neu-dark), -3px -3px 10px var(--neu-light), inset 0 2px 2px rgba(255, 255, 255, 0.85), 0 0 0 0 rgba(56, 189, 248, 0.55);
+  }
+  50% {
+    box-shadow: 5px 5px 18px var(--neu-dark), -3px -3px 12px var(--neu-light), inset 0 2px 2px rgba(255, 255, 255, 0.9), 0 0 22px 6px rgba(52, 211, 153, 0.45);
+  }
+}
+
+@keyframes aeroGlossShimmer {
+  0% {
+    transform: translateX(-140%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-25deg);
+  }
 }
 
 html, body {
   background-color: var(--bg-main) !important;
-  background-image: none !important;
   color: var(--text-main);
 }
 
-/* Extruded Neumorphic Surfaces & Panels */
+body {
+  background-image:
+    radial-gradient(circle at 16% 18%, rgba(56, 189, 248, 0.34) 0%, transparent 38%),
+    radial-gradient(circle at 84% 22%, rgba(52, 211, 153, 0.28) 0%, transparent 40%),
+    radial-gradient(circle at 52% 88%, rgba(14, 165, 233, 0.3) 0%, transparent 45%),
+    linear-gradient(135deg, #041d33 0%, #083558 38%, #07475b 72%, #05263f 100%) !important;
+  background-size: 140% 140%, 140% 140%, 130% 130%, 100% 100% !important;
+  background-attachment: fixed !important;
+  animation: aeroAuroraFlow 18s ease-in-out infinite alternate;
+}
+
+/* Extruded Neumorphic + Frutiger Aero Glossy Glass Panels */
 .home-dashboard,
 .admin-header,
 .admin-table-container,
@@ -2956,26 +3056,28 @@ html, body {
 .section[style],
 div[style*="background: var(--bg-surface)"] {
   background: var(--neu-surface-grad) !important;
+  backdrop-filter: blur(18px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(180%) !important;
   color: var(--text-main);
-  border: 1px solid rgba(255, 255, 255, 0.045) !important;
+  border: 1px solid rgba(186, 230, 253, 0.32) !important;
   box-shadow: var(--neu-raised) !important;
-  border-radius: 22px;
+  border-radius: 24px;
 }
 
-/* Recessed / Carved Neumorphic Wells */
+/* Recessed / Carved Aqua Wells */
 .admin-tabs,
 .seek-bar-container,
 .volume-slider,
 .player-seeker,
 div[style*="background: var(--bg-main)"],
 div[style*="background: var(--bg-subtle)"] {
-  background: var(--bg-subtle) !important;
-  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  background: rgba(4, 24, 43, 0.76) !important;
+  border: 1px solid rgba(125, 211, 252, 0.2) !important;
   box-shadow: var(--neu-inset-sm) !important;
-  border-radius: 14px;
+  border-radius: 16px;
 }
 
-/* Sculpted Neumorphic Cards */
+/* Sculpted Frutiger Aero Cards with Specular Gloss Sweep */
 .movie-card,
 .track-card,
 .stat-card,
@@ -2983,13 +3085,43 @@ div[style*="background: var(--bg-subtle)"] {
 .cinema-info-card,
 .playlist-card,
 .album-card {
+  position: relative;
+  overflow: hidden;
   background: var(--neu-surface-grad) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px) saturate(175%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(175%) !important;
+  border: 1px solid rgba(186, 230, 253, 0.34) !important;
   box-shadow: var(--neu-raised-sm) !important;
-  border-radius: 18px !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  border-radius: 20px !important;
+  transition: transform var(--aero-spring), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.movie-card::after,
+.stat-card::after,
+.track-card::after,
+.pricing-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+  transform: translateX(-160%) skewX(-25deg);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.movie-card:hover::after,
+.stat-card:hover::after,
+.track-card:hover::after,
+.pricing-card:hover::after {
+  animation: aeroGlossShimmer 0.75s ease forwards;
 }
 
 .movie-card {
@@ -3006,21 +3138,27 @@ div[style*="background: var(--bg-subtle)"] {
 .stat-card:hover,
 .culture-gallery-card:hover,
 .pricing-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.015);
   box-shadow: var(--neu-raised-lg) !important;
-  border-color: rgba(244, 63, 94, 0.22) !important;
+  border-color: rgba(125, 211, 252, 0.75) !important;
 }
 
-/* Recessed Icon Wells inside Stat Cards */
+/* Dewdrop / Bubble Icon Wells inside Stat Cards */
 .stat-icon {
-  background: var(--bg-subtle) !important;
-  box-shadow: var(--neu-inset-sm) !important;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  border-radius: 14px;
-  color: #fb7185 !important;
+  background: radial-gradient(circle at 30% 25%, rgba(186, 230, 253, 0.45), rgba(2, 132, 199, 0.35) 60%, rgba(16, 185, 129, 0.3)) !important;
+  box-shadow: var(--neu-raised-xs), inset 0 2px 3px rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  border-radius: 16px;
+  color: #e0f2fe !important;
+  animation: aeroBubbleFloat 4s ease-in-out infinite;
 }
 
-/* Tactile Neumorphic Buttons & Interactive Chips */
+.brand-icon-logo img {
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.55));
+  animation: aeroBubbleFloat 5s ease-in-out infinite;
+}
+
+/* Tactile Frutiger Aero Glass Buttons & Capsules */
 .btn,
 .btn-secondary,
 .home-category-chip,
@@ -3034,12 +3172,18 @@ div[style*="background: var(--bg-subtle)"] {
 .pagination a,
 .pagination span,
 .modal-close {
-  background: var(--neu-surface-grad) !important;
-  color: var(--text-body) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  background: var(--aero-gel-pill) !important;
+  color: var(--text-main) !important;
+  border: 1px solid rgba(186, 230, 253, 0.38) !important;
   box-shadow: var(--neu-raised-xs) !important;
-  border-radius: 14px;
-  transition: all 0.18s ease;
+  border-radius: 999px;
+  transition: transform var(--aero-spring), box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+}
+
+.nav-link,
+.user-menu-pill,
+.mobile-menu-toggle {
+  border-radius: 16px;
 }
 
 .btn:hover,
@@ -3051,11 +3195,12 @@ div[style*="background: var(--bg-subtle)"] {
 .user-wallet-badge:hover,
 .modal-close:hover {
   color: #ffffff !important;
-  box-shadow: var(--neu-raised-sm) !important;
-  transform: translateY(-1px);
+  border-color: rgba(186, 230, 253, 0.8) !important;
+  box-shadow: var(--neu-raised-sm), 0 0 16px rgba(56, 189, 248, 0.4) !important;
+  transform: translateY(-2px) scale(1.03);
 }
 
-/* Pressed / Inset Active State for Neumorphic Controls */
+/* Pressed / Active State for Aero & Neumorphic Controls */
 .btn:active,
 .btn-secondary:active,
 .home-category-chip.is-active,
@@ -3064,23 +3209,35 @@ div[style*="background: var(--bg-subtle)"] {
 .mobile-nav-link.active,
 .admin-tab.is-active,
 .demo-pill.is-active {
-  background: var(--bg-subtle) !important;
-  color: #fb7185 !important;
-  box-shadow: var(--neu-inset-sm) !important;
-  border-color: rgba(244, 63, 94, 0.22) !important;
+  background: linear-gradient(180deg, #6ee7b7 0%, #10b981 48%, #059669 52%, #0284c7 100%) !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(2, 24, 43, 0.65);
+  box-shadow: var(--neu-inset-sm), 0 0 18px rgba(52, 211, 153, 0.5), inset 0 1.5px 2px rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(167, 243, 208, 0.85) !important;
   transform: translateY(1px);
 }
 
-/* Primary & Crimson CTA Neumorphic Buttons */
+/* Iconic Frutiger Aero Gel Primary CTA Buttons */
 .btn-primary,
 .btn-crimson,
 .player-play-btn,
 .playlist-play-all,
 .track-play-btn {
-  background: linear-gradient(145deg, #e11d48, #be123c) !important;
+  background: var(--aero-gel-primary) !important;
   color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.16) !important;
-  box-shadow: 5px 5px 12px var(--neu-dark), -4px -4px 10px var(--neu-light), inset 1px 1px 2px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: 0 1px 2px rgba(2, 24, 43, 0.75);
+  border: 1px solid rgba(224, 242, 254, 0.75) !important;
+  box-shadow:
+    5px 5px 14px var(--neu-dark),
+    -3px -3px 10px var(--neu-light),
+    inset 0 2px 2px rgba(255, 255, 255, 0.85),
+    inset 0 -3px 6px rgba(16, 185, 129, 0.45),
+    0 6px 18px rgba(14, 165, 233, 0.42) !important;
+}
+
+.pulse-button,
+.player-play-btn {
+  animation: aeroGelPulse 3s ease-in-out infinite;
 }
 
 .btn-primary:hover,
@@ -3088,20 +3245,25 @@ div[style*="background: var(--bg-subtle)"] {
 .player-play-btn:hover,
 .playlist-play-all:hover,
 .track-play-btn:hover {
-  background: linear-gradient(145deg, #f43f5e, #e11d48) !important;
+  background: var(--aero-gel-primary-hover) !important;
   color: #ffffff !important;
-  box-shadow: 7px 7px 16px var(--neu-dark), -5px -5px 12px var(--neu-light), 0 0 18px rgba(225, 29, 72, 0.35) !important;
-  transform: translateY(-1px);
+  border-color: #ffffff !important;
+  box-shadow:
+    7px 7px 18px var(--neu-dark),
+    -4px -4px 12px var(--neu-light),
+    inset 0 2px 3px rgba(255, 255, 255, 0.95),
+    0 0 24px rgba(56, 189, 248, 0.7) !important;
+  transform: translateY(-3px) scale(1.04);
 }
 
 .btn-primary:active,
 .btn-crimson:active {
-  background: #be123c !important;
-  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.12) !important;
-  transform: translateY(1px);
+  background: linear-gradient(180deg, #0284c7 0%, #0369a1 50%, #059669 100%) !important;
+  box-shadow: var(--neu-inset), inset 0 2px 5px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(1px) scale(0.98);
 }
 
-/* Carved Inset Form Controls (Inputs, Selects, Textareas) */
+/* Carved Inset Aqua Form Controls */
 .form-control,
 input[type="text"],
 input[type="email"],
@@ -3111,11 +3273,17 @@ input[type="url"],
 input[type="search"],
 select,
 textarea {
-  background: var(--bg-subtle) !important;
+  background: rgba(4, 24, 43, 0.84) !important;
   color: var(--text-main) !important;
-  border: 1px solid rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid rgba(125, 211, 252, 0.3) !important;
   box-shadow: var(--neu-inset-sm) !important;
-  border-radius: 12px !important;
+  border-radius: 14px !important;
+  transition: box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.form-control::placeholder,
+input::placeholder {
+  color: rgba(147, 197, 253, 0.6) !important;
 }
 
 .form-control:focus,
@@ -3123,38 +3291,38 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none !important;
-  border-color: rgba(244, 63, 94, 0.45) !important;
-  box-shadow: var(--neu-inset), 0 0 0 2px rgba(225, 29, 72, 0.2) !important;
+  border-color: #38bdf8 !important;
+  box-shadow: var(--neu-inset), 0 0 14px rgba(56, 189, 248, 0.45) !important;
 }
 
-/* Neumorphic Badges & Flash Alerts (Soft Inset/Beveled Pills) */
+/* Glossy Gel Badges & Flash Alerts */
 .badge-neutral,
 .brand-badge {
-  background: var(--bg-subtle) !important;
-  color: var(--text-body) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: var(--neu-inset-sm) !important;
+  background: linear-gradient(180deg, rgba(186, 230, 253, 0.28), rgba(14, 116, 144, 0.45)) !important;
+  color: #e0f2fe !important;
+  border: 1px solid rgba(125, 211, 252, 0.45) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .badge-vip {
-  background: linear-gradient(145deg, rgba(217, 119, 6, 0.22), rgba(146, 64, 14, 0.28)) !important;
-  color: #fbbf24 !important;
-  border: 1px solid rgba(251, 191, 36, 0.35) !important;
-  box-shadow: var(--neu-raised-xs);
+  background: linear-gradient(180deg, rgba(254, 240, 138, 0.42) 0%, rgba(234, 179, 8, 0.48) 50%, rgba(180, 83, 9, 0.65) 100%) !important;
+  color: #fef08a !important;
+  border: 1px solid rgba(253, 224, 71, 0.65) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.65), 0 2px 10px rgba(250, 204, 21, 0.28);
 }
 
 .badge-ticket {
-  background: linear-gradient(145deg, rgba(225, 29, 72, 0.22), rgba(159, 18, 57, 0.28)) !important;
-  color: #fda4af !important;
-  border: 1px solid rgba(244, 63, 94, 0.35) !important;
-  box-shadow: var(--neu-raised-xs);
+  background: linear-gradient(180deg, rgba(186, 230, 253, 0.45) 0%, rgba(14, 165, 233, 0.55) 50%, rgba(3, 105, 161, 0.75) 100%) !important;
+  color: #e0f2fe !important;
+  border: 1px solid rgba(125, 211, 252, 0.7) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.65), 0 2px 10px rgba(14, 165, 233, 0.3);
 }
 
 .badge-free {
-  background: linear-gradient(145deg, rgba(5, 150, 105, 0.22), rgba(6, 95, 70, 0.28)) !important;
-  color: #6ee7b7 !important;
-  border: 1px solid rgba(16, 185, 129, 0.35) !important;
-  box-shadow: var(--neu-raised-xs);
+  background: linear-gradient(180deg, rgba(167, 243, 208, 0.42) 0%, rgba(16, 185, 129, 0.52) 50%, rgba(4, 120, 87, 0.72) 100%) !important;
+  color: #d1fae5 !important;
+  border: 1px solid rgba(110, 231, 183, 0.68) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.65), 0 2px 10px rgba(16, 185, 129, 0.28);
 }
 
 .flash-message,
@@ -3162,66 +3330,87 @@ textarea:focus {
 .flash-error,
 .flash-warning {
   box-shadow: var(--neu-raised-sm) !important;
-  border-radius: 16px !important;
+  border-radius: 18px !important;
+  backdrop-filter: blur(14px);
 }
 
-/* Admin Table inside Neumorphic Container */
+/* Hero Title & Eyebrows in Frutiger Aero */
+.hero-title {
+  color: #e0f2fe !important;
+  text-shadow: 0 2px 14px rgba(14, 165, 233, 0.75), 0 0 28px rgba(52, 211, 153, 0.45) !important;
+}
+
+.home-category-heading .eyebrow,
+.right-playlist-eyebrow {
+  color: #6ee7b7 !important;
+}
+
+.seek-bar-fill,
+.volume-slider::-webkit-slider-thumb {
+  background: linear-gradient(90deg, #38bdf8, #34d399) !important;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.75);
+}
+
+/* Admin Table inside Aero Glass-Neumorphic Container */
 .admin-table th {
-  background-color: var(--bg-subtle) !important;
+  background-color: rgba(4, 24, 43, 0.78) !important;
   color: var(--text-muted) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.25) !important;
   box-shadow: var(--neu-inset-sm);
 }
 
 .admin-table td {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.14) !important;
   color: var(--text-body) !important;
 }
 
 .admin-table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.025) !important;
+  background-color: rgba(56, 189, 248, 0.1) !important;
 }
 
-/* Hero & Banners inside Neumorphic Frame */
+/* Hero & Banners inside Glossy Beveled Frame */
 .hero-banner,
 .movie-detail-banner,
 .vip-cinematic-banner {
-  border: 3px solid #1d2028 !important;
-  box-shadow: var(--neu-raised) !important;
-  border-radius: 22px !important;
+  border: 2px solid rgba(186, 230, 253, 0.42) !important;
+  box-shadow: var(--neu-raised), inset 0 2px 4px rgba(255, 255, 255, 0.35) !important;
+  border-radius: 24px !important;
 }
 
-/* Sidebar Navigation & Persistent Right Audio Dock in Neumorphism */
+/* Sidebar Navigation & Persistent Right Audio Dock in Frutiger Aero */
 .site-navbar,
 .bottom-player,
 .mobile-nav-drawer,
 body > footer {
   background: var(--neu-surface-grad) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px) saturate(185%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(185%) !important;
+  border: 1px solid rgba(186, 230, 253, 0.34) !important;
   box-shadow: var(--neu-raised) !important;
 }
 
 .tembang-dolanan-track,
 .musik-jawa-track {
-  border-radius: 12px !important;
-  transition: all 0.18s ease !important;
+  border-radius: 14px !important;
+  transition: transform var(--aero-spring), background 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .tembang-dolanan-track:hover,
 .musik-jawa-track:hover {
-  background: var(--neu-surface-grad) !important;
+  background: var(--aero-gel-pill) !important;
   box-shadow: var(--neu-raised-xs) !important;
-  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(186, 230, 253, 0.45) !important;
+  transform: translateX(3px);
 }
 
 .tembang-dolanan-track.is-playing,
 .musik-jawa-track.is-playing {
-  background: var(--bg-subtle) !important;
-  box-shadow: var(--neu-inset-sm) !important;
-  border-color: rgba(244, 63, 94, 0.25) !important;
+  background: linear-gradient(90deg, rgba(14, 165, 233, 0.32), rgba(16, 185, 129, 0.28)) !important;
+  box-shadow: var(--neu-inset-sm), inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+  border-color: rgba(110, 231, 183, 0.6) !important;
 }
 
-/* Right Playlist Panel Layout in Neumorphism UI */
+/* Right Playlist Panel Layout in Frutiger Aero UI */
 @media (min-width: 1200px) {
   .bottom-player {
     flex-direction: column;
@@ -3233,7 +3422,7 @@ body > footer {
   .bottom-player .player-inner { flex: 0 0 auto; }
   .youtube-player-container {
     width: 100%; margin-top: .8rem; overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, .06); border-radius: 14px;
+    border: 1px solid rgba(125, 211, 252, .32); border-radius: 14px;
     aspect-ratio: 16 / 9; box-shadow: var(--neu-inset-sm);
   }
   .youtube-player-container[hidden] { display: none; }
@@ -3241,15 +3430,15 @@ body > footer {
   .playlist-toggle-btn { display: none !important; }
   .right-playlist-panel {
     display: flex; flex: 1 1 auto; flex-direction: column; width: 100%; min-height: 0;
-    margin-top: 1.25rem; padding-top: 1.05rem; border-top: 1px solid rgba(255, 255, 255, .06); overflow-y: auto;
+    margin-top: 1.25rem; padding-top: 1.05rem; border-top: 1px solid rgba(125, 211, 252, .22); overflow-y: auto;
   }
   .right-playlist-collection + .right-playlist-collection {
-    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .06);
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(125, 211, 252, .22);
   }
   .right-playlist-heading {
     display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: 1rem;
   }
-  .right-playlist-eyebrow { color: #fb7185; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
+  .right-playlist-eyebrow { color: #6ee7b7; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
   .right-playlist-heading h2 { color: var(--text-main); font-size: 1.08rem; line-height: 1.25; font-weight: 800; }
   .right-playlist-heading p { margin-top: .22rem; color: var(--text-muted); font-size: .69rem; }
   .playlist-play-all {
@@ -3264,13 +3453,13 @@ body > footer {
     border: 1px solid transparent; background: transparent; color: inherit;
     text-align: left; cursor: pointer;
   }
-  .playlist-track-number { width: 1.35rem; flex: 0 0 auto; color: #fb7185; font-size: .68rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .playlist-track-number { width: 1.35rem; flex: 0 0 auto; color: #7dd3fc; font-size: .68rem; font-weight: 700; font-variant-numeric: tabular-nums; }
   .playlist-track-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .16rem; }
   .playlist-track-title { overflow: hidden; color: var(--text-main); font-size: .75rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
   .playlist-track-artist { overflow: hidden; color: var(--text-muted); font-size: .61rem; text-overflow: ellipsis; white-space: nowrap; }
   .playlist-track-duration { flex: 0 0 auto; color: var(--text-muted); font-size: .62rem; font-variant-numeric: tabular-nums; }
   .playlist-attribution { margin-top: auto; padding-top: .8rem; color: var(--text-dim); font-size: .55rem; line-height: 1.55; }
-  .playlist-attribution a { color: #fda4af; text-decoration: underline; text-underline-offset: 2px; }
+  .playlist-attribution a { color: #7dd3fc; text-decoration: underline; text-underline-offset: 2px; }
   .playlist-empty { color: var(--text-muted); font-size: .75rem; }
 }
 
@@ -3281,26 +3470,27 @@ body > footer {
   .bottom-player.playlist-is-open .right-playlist-panel {
     position: absolute; left: 0; right: 0; bottom: calc(100% + .6rem); z-index: 2;
     display: flex; flex-direction: column; height: min(68vh, 460px); padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, .06); border-radius: 18px;
+    border: 1px solid rgba(186, 230, 253, .38); border-radius: 18px;
     background: var(--neu-surface-grad); box-shadow: var(--neu-raised-lg);
+    backdrop-filter: blur(20px) saturate(185%);
   }
   .youtube-player-container { width: 100%; margin: .5rem 0; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; }
   .youtube-player-container[hidden] { display: none; }
   .youtube-player-container iframe { display: block; width: 100%; height: 100%; border: 0; }
   .right-playlist-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
-  .right-playlist-eyebrow { color: #fb7185; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
+  .right-playlist-eyebrow { color: #6ee7b7; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
   .right-playlist-heading h2 { color: var(--text-main); font-size: 1rem; font-weight: 800; }
   .right-playlist-heading p { color: var(--text-muted); font-size: .67rem; }
   .playlist-play-all { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; }
   .right-playlist-tracks { display: flex; flex-direction: column; gap: .35rem; margin: 0; padding: .2rem; overflow: auto; list-style: none; }
   .tembang-dolanan-track, .musik-jawa-track { display: flex; width: 100%; align-items: center; gap: .65rem; padding: .65rem .5rem; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--text-main); text-align: left; }
-  .right-playlist-collection + .right-playlist-collection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .06); }
+  .right-playlist-collection + .right-playlist-collection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(125, 211, 252, .22); }
   .playlist-track-number, .playlist-track-duration { color: var(--text-muted); font-size: .65rem; }
   .playlist-track-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .15rem; }
   .playlist-track-title { color: var(--text-main); font-size: .75rem; font-weight: 700; }
   .playlist-track-artist { overflow: hidden; color: var(--text-muted); font-size: .62rem; text-overflow: ellipsis; white-space: nowrap; }
   .playlist-attribution { padding-top: .6rem; color: var(--text-dim); font-size: .55rem; line-height: 1.5; }
-  .playlist-attribution a { color: #fda4af; text-decoration: underline; }
+  .playlist-attribution a { color: #7dd3fc; text-decoration: underline; }
   .playlist-empty { color: var(--text-muted); font-size: .75rem; }
 }
 
