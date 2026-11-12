@@ -240,7 +240,7 @@
     </section>
 
     <!-- Section 2: Nada Tegalan (Minimalist Audio Showcase) -->
-    <section class="section" style="background: #ffffff; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-xs);">
+    <section class="section neu-panel" style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow-sm);">
         <div class="section-header" style="margin-bottom: 1.25rem;">
             <div>
                 <div style="font-size: 0.72rem; text-transform: uppercase; color: var(--gold-600); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.2rem;">

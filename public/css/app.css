@@ -2892,79 +2892,386 @@ body {
   .home-dashboard .grid-movies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Soft ambient graphics and refined editorial type */
+/* ==========================================================================
+   NEUMORPHISM UI (Soft Tactile Dark Cinema Design System)
+   ========================================================================== */
 :root {
-  --shadow-xs: 0 4px 14px rgba(0, 0, 0, .08);
-  --shadow-sm: 0 10px 24px rgba(0, 0, 0, .11);
-  --shadow-md: 0 16px 32px rgba(0, 0, 0, .13);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, .15);
-  --shadow-xl: 0 24px 48px rgba(0, 0, 0, .17);
-}
-h1, h2, h3, h4, h5, h6, .section-title, .home-category-heading h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 600;
-  letter-spacing: -.015em;
-}
-.hero-title { font-family: 'Special Elite', 'Playfair Display', serif; }
-.site-navbar, .bottom-player, .home-dashboard, .movie-card, .track-card,
-.stat-card, .culture-gallery-card, .cinema-info-card {
-  border-color: rgba(255, 255, 255, .08);
-}
-.movie-card, .track-card, .stat-card, .culture-gallery-card,
-.cinema-info-card, .home-category-chip { box-shadow: 0 20px 40px rgba(0, 0, 0, .15); }
-.movie-card:hover, .track-card:hover, .culture-gallery-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, .15), 0 0 24px rgba(255, 255, 255, .035);
-}
-@media (max-width: 1199px) {
-  body { background-position: center, center, left 18px top 80px, right 18px bottom 80px; }
+  color-scheme: dark;
+  --bg-main: #1b1e25;
+  --bg-surface: #1b1e25;
+  --bg-card: #1d2028;
+  --bg-card-hover: #21252f;
+  --bg-subtle: #16191f;
+  --bg-hover: #222630;
+  --bg-glass: rgba(27, 30, 37, 0.92);
+  --bg-glass-heavy: rgba(24, 27, 33, 0.96);
+
+  --text-main: #f3f4f6;
+  --text-body: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+
+  --border-color: rgba(255, 255, 255, 0.045);
+  --border-subtle: rgba(255, 255, 255, 0.045);
+  --border-strong: rgba(255, 255, 255, 0.09);
+
+  /* Dual Opposing Neumorphic Shadows */
+  --neu-dark: #101217;
+  --neu-light: #262a34;
+  --neu-surface-grad: linear-gradient(145deg, #1f222a, #181b21);
+  --neu-raised-xs: 4px 4px 8px var(--neu-dark), -4px -4px 8px var(--neu-light);
+  --neu-raised-sm: 6px 6px 13px var(--neu-dark), -6px -6px 13px var(--neu-light);
+  --neu-raised: 9px 9px 18px var(--neu-dark), -9px -9px 18px var(--neu-light);
+  --neu-raised-lg: 14px 14px 28px #0e1014, -14px -14px 28px #282c36;
+  --neu-inset-sm: inset 4px 4px 8px var(--neu-dark), inset -4px -4px 8px var(--neu-light);
+  --neu-inset: inset 6px 6px 12px var(--neu-dark), inset -6px -6px 12px var(--neu-light);
+
+  --shadow-xs: var(--neu-raised-xs);
+  --shadow-sm: var(--neu-raised-sm);
+  --shadow-md: var(--neu-raised);
+  --shadow-lg: var(--neu-raised-lg);
+  --shadow-xl: var(--neu-raised-lg);
 }
 
-/* Maroon Tembang Dolanan collection in the persistent right media panel */
+html, body {
+  background-color: var(--bg-main) !important;
+  background-image: none !important;
+  color: var(--text-main);
+}
+
+/* Extruded Neumorphic Surfaces & Panels */
+.home-dashboard,
+.admin-header,
+.admin-table-container,
+.wallet-card,
+.ticket-card,
+.pricing-card,
+.modal-dialog,
+.modal-box,
+.auth-card,
+.paywall-card,
+.music-header-card,
+.lyrics-drawer,
+.neu-panel,
+.section[style],
+div[style*="background: var(--bg-surface)"] {
+  background: var(--neu-surface-grad) !important;
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.045) !important;
+  box-shadow: var(--neu-raised) !important;
+  border-radius: 22px;
+}
+
+/* Recessed / Carved Neumorphic Wells */
+.admin-tabs,
+.seek-bar-container,
+.volume-slider,
+.player-seeker,
+div[style*="background: var(--bg-main)"],
+div[style*="background: var(--bg-subtle)"] {
+  background: var(--bg-subtle) !important;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  box-shadow: var(--neu-inset-sm) !important;
+  border-radius: 14px;
+}
+
+/* Sculpted Neumorphic Cards */
+.movie-card,
+.track-card,
+.stat-card,
+.culture-gallery-card,
+.cinema-info-card,
+.playlist-card,
+.album-card {
+  background: var(--neu-surface-grad) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--neu-raised-sm) !important;
+  border-radius: 18px !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.movie-card {
+  padding: 0.55rem;
+}
+
+.movie-card .movie-info {
+  background: transparent !important;
+  padding: 0.65rem 0.35rem 0.25rem !important;
+}
+
+.movie-card:hover,
+.track-card:hover,
+.stat-card:hover,
+.culture-gallery-card:hover,
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--neu-raised-lg) !important;
+  border-color: rgba(244, 63, 94, 0.22) !important;
+}
+
+/* Recessed Icon Wells inside Stat Cards */
+.stat-icon {
+  background: var(--bg-subtle) !important;
+  box-shadow: var(--neu-inset-sm) !important;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  color: #fb7185 !important;
+}
+
+/* Tactile Neumorphic Buttons & Interactive Chips */
+.btn,
+.btn-secondary,
+.home-category-chip,
+.nav-link,
+.mobile-nav-link,
+.admin-tab,
+.demo-pill,
+.user-wallet-badge,
+.user-menu-pill,
+.mobile-menu-toggle,
+.pagination a,
+.pagination span,
+.modal-close {
+  background: var(--neu-surface-grad) !important;
+  color: var(--text-body) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--neu-raised-xs) !important;
+  border-radius: 14px;
+  transition: all 0.18s ease;
+}
+
+.btn:hover,
+.btn-secondary:hover,
+.home-category-chip:hover,
+.nav-link:hover,
+.admin-tab:hover,
+.demo-pill:hover,
+.user-wallet-badge:hover,
+.modal-close:hover {
+  color: #ffffff !important;
+  box-shadow: var(--neu-raised-sm) !important;
+  transform: translateY(-1px);
+}
+
+/* Pressed / Inset Active State for Neumorphic Controls */
+.btn:active,
+.btn-secondary:active,
+.home-category-chip.is-active,
+.home-category-chip:active,
+.nav-link.active,
+.mobile-nav-link.active,
+.admin-tab.is-active,
+.demo-pill.is-active {
+  background: var(--bg-subtle) !important;
+  color: #fb7185 !important;
+  box-shadow: var(--neu-inset-sm) !important;
+  border-color: rgba(244, 63, 94, 0.22) !important;
+  transform: translateY(1px);
+}
+
+/* Primary & Crimson CTA Neumorphic Buttons */
+.btn-primary,
+.btn-crimson,
+.player-play-btn,
+.playlist-play-all,
+.track-play-btn {
+  background: linear-gradient(145deg, #e11d48, #be123c) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: 5px 5px 12px var(--neu-dark), -4px -4px 10px var(--neu-light), inset 1px 1px 2px rgba(255, 255, 255, 0.25) !important;
+}
+
+.btn-primary:hover,
+.btn-crimson:hover,
+.player-play-btn:hover,
+.playlist-play-all:hover,
+.track-play-btn:hover {
+  background: linear-gradient(145deg, #f43f5e, #e11d48) !important;
+  color: #ffffff !important;
+  box-shadow: 7px 7px 16px var(--neu-dark), -5px -5px 12px var(--neu-light), 0 0 18px rgba(225, 29, 72, 0.35) !important;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active,
+.btn-crimson:active {
+  background: #be123c !important;
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.12) !important;
+  transform: translateY(1px);
+}
+
+/* Carved Inset Form Controls (Inputs, Selects, Textareas) */
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="search"],
+select,
+textarea {
+  background: var(--bg-subtle) !important;
+  color: var(--text-main) !important;
+  border: 1px solid rgba(255, 255, 255, 0.035) !important;
+  box-shadow: var(--neu-inset-sm) !important;
+  border-radius: 12px !important;
+}
+
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none !important;
+  border-color: rgba(244, 63, 94, 0.45) !important;
+  box-shadow: var(--neu-inset), 0 0 0 2px rgba(225, 29, 72, 0.2) !important;
+}
+
+/* Neumorphic Badges & Flash Alerts (Soft Inset/Beveled Pills) */
+.badge-neutral,
+.brand-badge {
+  background: var(--bg-subtle) !important;
+  color: var(--text-body) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--neu-inset-sm) !important;
+}
+
+.badge-vip {
+  background: linear-gradient(145deg, rgba(217, 119, 6, 0.22), rgba(146, 64, 14, 0.28)) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(251, 191, 36, 0.35) !important;
+  box-shadow: var(--neu-raised-xs);
+}
+
+.badge-ticket {
+  background: linear-gradient(145deg, rgba(225, 29, 72, 0.22), rgba(159, 18, 57, 0.28)) !important;
+  color: #fda4af !important;
+  border: 1px solid rgba(244, 63, 94, 0.35) !important;
+  box-shadow: var(--neu-raised-xs);
+}
+
+.badge-free {
+  background: linear-gradient(145deg, rgba(5, 150, 105, 0.22), rgba(6, 95, 70, 0.28)) !important;
+  color: #6ee7b7 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+  box-shadow: var(--neu-raised-xs);
+}
+
+.flash-message,
+.flash-success,
+.flash-error,
+.flash-warning {
+  box-shadow: var(--neu-raised-sm) !important;
+  border-radius: 16px !important;
+}
+
+/* Admin Table inside Neumorphic Container */
+.admin-table th {
+  background-color: var(--bg-subtle) !important;
+  color: var(--text-muted) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--neu-inset-sm);
+}
+
+.admin-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  color: var(--text-body) !important;
+}
+
+.admin-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.025) !important;
+}
+
+/* Hero & Banners inside Neumorphic Frame */
+.hero-banner,
+.movie-detail-banner,
+.vip-cinematic-banner {
+  border: 3px solid #1d2028 !important;
+  box-shadow: var(--neu-raised) !important;
+  border-radius: 22px !important;
+}
+
+/* Sidebar Navigation & Persistent Right Audio Dock in Neumorphism */
+.site-navbar,
+.bottom-player,
+.mobile-nav-drawer,
+body > footer {
+  background: var(--neu-surface-grad) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: var(--neu-raised) !important;
+}
+
+.tembang-dolanan-track,
+.musik-jawa-track {
+  border-radius: 12px !important;
+  transition: all 0.18s ease !important;
+}
+
+.tembang-dolanan-track:hover,
+.musik-jawa-track:hover {
+  background: var(--neu-surface-grad) !important;
+  box-shadow: var(--neu-raised-xs) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.tembang-dolanan-track.is-playing,
+.musik-jawa-track.is-playing {
+  background: var(--bg-subtle) !important;
+  box-shadow: var(--neu-inset-sm) !important;
+  border-color: rgba(244, 63, 94, 0.25) !important;
+}
+
+/* Right Playlist Panel Layout in Neumorphism UI */
 @media (min-width: 1200px) {
   .bottom-player {
-    flex-direction: column; overflow: hidden;
-    background: linear-gradient(155deg, rgba(58, 16, 24, .94), rgba(23, 13, 17, .96) 58%, rgba(18, 18, 20, .97));
-    border-color: rgba(248, 113, 113, .18);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .15), 0 0 30px rgba(127, 29, 29, .12);
+    flex-direction: column;
+    overflow: hidden;
   }
   .bottom-player.is-hidden { display: flex !important; }
   .bottom-player.is-hidden::before { display: none; }
   .bottom-player .player-inner.is-hidden { display: none; }
   .bottom-player .player-inner { flex: 0 0 auto; }
-  .youtube-player-container { width: 100%; margin-top: .8rem; overflow: hidden; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; aspect-ratio: 16 / 9; }
+  .youtube-player-container {
+    width: 100%; margin-top: .8rem; overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, .06); border-radius: 14px;
+    aspect-ratio: 16 / 9; box-shadow: var(--neu-inset-sm);
+  }
   .youtube-player-container[hidden] { display: none; }
   .youtube-player-container iframe { display: block; width: 100%; height: 100%; border: 0; }
   .playlist-toggle-btn { display: none !important; }
   .right-playlist-panel {
     display: flex; flex: 1 1 auto; flex-direction: column; width: 100%; min-height: 0;
-    margin-top: 1.25rem; padding-top: 1.05rem; border-top: 1px solid rgba(255, 255, 255, .09); overflow-y: auto;
+    margin-top: 1.25rem; padding-top: 1.05rem; border-top: 1px solid rgba(255, 255, 255, .06); overflow-y: auto;
   }
-  .right-playlist-collection + .right-playlist-collection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .08); }
-  .right-playlist-heading { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: 1rem; }
-  .right-playlist-eyebrow { color: #fda4af; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
-  .right-playlist-heading h2 { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; line-height: 1.25; }
-  .right-playlist-heading p { margin-top: .22rem; color: #c4a7ad; font-size: .69rem; }
+  .right-playlist-collection + .right-playlist-collection {
+    margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .06);
+  }
+  .right-playlist-heading {
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: 1rem;
+  }
+  .right-playlist-eyebrow { color: #fb7185; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
+  .right-playlist-heading h2 { color: var(--text-main); font-size: 1.08rem; line-height: 1.25; font-weight: 800; }
+  .right-playlist-heading p { margin-top: .22rem; color: var(--text-muted); font-size: .69rem; }
   .playlist-play-all {
     display: grid; place-items: center; width: 38px; height: 38px; flex: 0 0 auto;
-    border: 1px solid rgba(255, 255, 255, .12); border-radius: 50%; background: #9f1239;
-    color: white; cursor: pointer; box-shadow: 0 8px 22px rgba(159, 18, 57, .24); transition: transform .2s ease, background .2s ease;
+    border-radius: 50%; cursor: pointer;
   }
-  .playlist-play-all:hover { transform: scale(1.06); background: #be123c; }
-  .right-playlist-tracks { display: flex; flex-direction: column; gap: .28rem; margin: 0; padding: 0; list-style: none; overflow: auto; }
+  .right-playlist-tracks {
+    display: flex; flex-direction: column; gap: .4rem; margin: 0; padding: .25rem; list-style: none; overflow: auto;
+  }
   .tembang-dolanan-track, .musik-jawa-track {
-    display: flex; width: 100%; align-items: center; gap: .65rem; padding: .65rem .5rem;
-    border: 1px solid transparent; border-radius: 11px; background: transparent; color: inherit;
-    text-align: left; cursor: pointer; transition: background .18s ease, border-color .18s ease;
+    display: flex; width: 100%; align-items: center; gap: .65rem; padding: .65rem .6rem;
+    border: 1px solid transparent; background: transparent; color: inherit;
+    text-align: left; cursor: pointer;
   }
-  .tembang-dolanan-track:hover, .tembang-dolanan-track.is-playing, .musik-jawa-track:hover, .musik-jawa-track.is-playing { background: rgba(255, 255, 255, .075); border-color: rgba(255, 255, 255, .07); }
-  .playlist-track-number { width: 1.35rem; flex: 0 0 auto; color: #c08490; font-size: .68rem; font-variant-numeric: tabular-nums; }
+  .playlist-track-number { width: 1.35rem; flex: 0 0 auto; color: #fb7185; font-size: .68rem; font-weight: 700; font-variant-numeric: tabular-nums; }
   .playlist-track-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .16rem; }
-  .playlist-track-title { overflow: hidden; color: #f8f4f5; font-size: .75rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
-  .playlist-track-artist { overflow: hidden; color: #bca9ad; font-size: .61rem; text-overflow: ellipsis; white-space: nowrap; }
-  .playlist-track-duration { flex: 0 0 auto; color: #a98c93; font-size: .62rem; font-variant-numeric: tabular-nums; }
-  .playlist-attribution { margin-top: auto; padding-top: .8rem; color: #9f8c91; font-size: .55rem; line-height: 1.55; }
-  .playlist-attribution a { color: #e4b3bd; text-decoration: underline; text-underline-offset: 2px; }
-  .playlist-empty { color: #c4a7ad; font-size: .75rem; }
+  .playlist-track-title { overflow: hidden; color: var(--text-main); font-size: .75rem; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+  .playlist-track-artist { overflow: hidden; color: var(--text-muted); font-size: .61rem; text-overflow: ellipsis; white-space: nowrap; }
+  .playlist-track-duration { flex: 0 0 auto; color: var(--text-muted); font-size: .62rem; font-variant-numeric: tabular-nums; }
+  .playlist-attribution { margin-top: auto; padding-top: .8rem; color: var(--text-dim); font-size: .55rem; line-height: 1.55; }
+  .playlist-attribution a { color: #fda4af; text-decoration: underline; text-underline-offset: 2px; }
+  .playlist-empty { color: var(--text-muted); font-size: .75rem; }
 }
 
 @media (max-width: 1199px) {
@@ -2974,27 +3281,27 @@ h1, h2, h3, h4, h5, h6, .section-title, .home-category-heading h2 {
   .bottom-player.playlist-is-open .right-playlist-panel {
     position: absolute; left: 0; right: 0; bottom: calc(100% + .6rem); z-index: 2;
     display: flex; flex-direction: column; height: min(68vh, 460px); padding: 1rem;
-    border: 1px solid rgba(248, 113, 113, .2); border-radius: 16px;
-    background: linear-gradient(155deg, #39131b, #171214 70%); box-shadow: 0 20px 40px rgba(0, 0, 0, .15);
+    border: 1px solid rgba(255, 255, 255, .06); border-radius: 18px;
+    background: var(--neu-surface-grad); box-shadow: var(--neu-raised-lg);
   }
-  .youtube-player-container { width: 100%; margin: .5rem 0; overflow: hidden; border-radius: 10px; aspect-ratio: 16 / 9; }
+  .youtube-player-container { width: 100%; margin: .5rem 0; overflow: hidden; border-radius: 12px; aspect-ratio: 16 / 9; }
   .youtube-player-container[hidden] { display: none; }
   .youtube-player-container iframe { display: block; width: 100%; height: 100%; border: 0; }
   .right-playlist-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: .75rem; }
-  .right-playlist-eyebrow { color: #fda4af; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
-  .right-playlist-heading h2 { color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; }
-  .right-playlist-heading p { color: #c4a7ad; font-size: .67rem; }
-  .playlist-play-all { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; background: #9f1239; color: #fff; }
-  .right-playlist-tracks { display: flex; flex-direction: column; gap: .25rem; margin: 0; padding: 0; overflow: auto; list-style: none; }
-  .tembang-dolanan-track, .musik-jawa-track { display: flex; width: 100%; align-items: center; gap: .65rem; padding: .65rem .45rem; border: 1px solid transparent; border-radius: 10px; background: transparent; color: #fff; text-align: left; }
-  .tembang-dolanan-track.is-playing, .musik-jawa-track.is-playing { background: rgba(255, 255, 255, .08); }
-  .right-playlist-collection + .right-playlist-collection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .1); }
-  .playlist-track-number, .playlist-track-duration { color: #d7a2ad; font-size: .65rem; }
+  .right-playlist-eyebrow { color: #fb7185; font-size: .58rem; font-weight: 800; letter-spacing: .12em; }
+  .right-playlist-heading h2 { color: var(--text-main); font-size: 1rem; font-weight: 800; }
+  .right-playlist-heading p { color: var(--text-muted); font-size: .67rem; }
+  .playlist-play-all { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 50%; }
+  .right-playlist-tracks { display: flex; flex-direction: column; gap: .35rem; margin: 0; padding: .2rem; overflow: auto; list-style: none; }
+  .tembang-dolanan-track, .musik-jawa-track { display: flex; width: 100%; align-items: center; gap: .65rem; padding: .65rem .5rem; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--text-main); text-align: left; }
+  .right-playlist-collection + .right-playlist-collection { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255, 255, 255, .06); }
+  .playlist-track-number, .playlist-track-duration { color: var(--text-muted); font-size: .65rem; }
   .playlist-track-copy { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .15rem; }
-  .playlist-track-title { color: #fff; font-size: .75rem; font-weight: 700; }
-  .playlist-track-artist { overflow: hidden; color: #c4a7ad; font-size: .62rem; text-overflow: ellipsis; white-space: nowrap; }
-  .playlist-attribution { padding-top: .6rem; color: #bca9ad; font-size: .55rem; line-height: 1.5; }
+  .playlist-track-title { color: var(--text-main); font-size: .75rem; font-weight: 700; }
+  .playlist-track-artist { overflow: hidden; color: var(--text-muted); font-size: .62rem; text-overflow: ellipsis; white-space: nowrap; }
+  .playlist-attribution { padding-top: .6rem; color: var(--text-dim); font-size: .55rem; line-height: 1.5; }
   .playlist-attribution a { color: #fda4af; text-decoration: underline; }
-  .playlist-empty { color: #c4a7ad; font-size: .75rem; }
+  .playlist-empty { color: var(--text-muted); font-size: .75rem; }
 }
+
 
