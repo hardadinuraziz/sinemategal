@@ -129,6 +129,22 @@ class TembangDolananSeeder extends Seeder
                 'audio_url' => '/audio/musik-jawa/durmagati-kajawi.mp3',
                 'description' => 'Audio KAJAWI dari berkas MP3 yang disediakan pengguna.',
             ],
+            [
+                'title' => 'Angin (Bawalah Jiwaku Melayang)',
+                'slug' => 'angin-bawalah-jiwaku-melayang',
+                'artist' => 'Naff',
+                'duration_seconds' => 236,
+                'audio_url' => '/audio/musik-jawa/angin-bawalah-jiwaku-melayang.mp3',
+                'description' => 'Lagu pilihan pengguna (Angin - Bawalah Jiwaku Melayang).',
+            ],
+            [
+                'title' => 'Dear God',
+                'slug' => 'dear-god-avenged-sevenfold',
+                'artist' => 'Avenged Sevenfold',
+                'duration_seconds' => 393,
+                'audio_url' => '/audio/dear-god-avenged-sevenfold.mp3',
+                'description' => 'Lagu pilihan pengguna (Avenged Sevenfold - Dear God).',
+            ],
         ];
 
         $jawaTracks = [];
@@ -141,7 +157,7 @@ class TembangDolananSeeder extends Seeder
                     'artist' => $song['artist'],
                     'album' => 'Musik Jawa',
                     'release_year' => 2026,
-                    'duration_seconds' => 210,
+                    'duration_seconds' => $song['duration_seconds'] ?? 210,
                     'access_type' => 'free',
                     'audio_url' => $song['audio_url'],
                     'cover_url' => '/images/album-lakalaka.jpg',
