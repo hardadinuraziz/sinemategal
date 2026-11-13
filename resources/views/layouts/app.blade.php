@@ -78,6 +78,24 @@
         <span class="fx-sparkle fs6"></span>
     </div>
 
+    <!-- Hantu Indonesia Foreground FX: Gliding Nusantara Ghosts & Mist Wisps (only visible in hantu-indonesia skin) -->
+    <div class="ghost-fx-layer" aria-hidden="true">
+        <span class="fx-wisp fw1"></span>
+        <span class="fx-wisp fw2"></span>
+        <span class="fx-wisp fw3"></span>
+        <span class="fx-wisp fw4"></span>
+        <span class="fx-wisp fw5"></span>
+        <span class="fx-wisp fw6"></span>
+        <span class="fx-wisp fw7"></span>
+        <span class="fx-wisp fw8"></span>
+
+        <div class="fx-ghost fg-pocong"><div class="fx-ghost-hop"><img decoding="async" src="/images/ghost-pocong.svg" alt=""></div></div>
+        <div class="fx-ghost fg-kunti is-reverse"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-kuntilanak.svg" alt=""></div></div>
+        <div class="fx-ghost fg-tuyul"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-tuyul.svg" alt=""></div></div>
+        <div class="fx-ghost fg-genderuwo is-reverse"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-genderuwo.svg" alt=""></div></div>
+        <div class="fx-ghost fg-banaspati"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-banaspati.svg" alt=""></div></div>
+    </div>
+
     <!-- Frutiger Aero Bottom Water Waves -->
     <div class="aero-waves" aria-hidden="true">
         <svg class="aero-wave w1" viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 60 Q180 10 360 60 T720 60 T1080 60 T1440 60 V120 H0 Z"/></svg>
@@ -763,6 +781,13 @@
                         <small>Brushed Silver Chrome, Royal Blue LCD &amp; LED Biru</small>
                     </div>
                 </button>
+                <button type="button" class="skin-option-card" data-skin-choice="hantu-indonesia">
+                    <span class="skin-swatch" style="background: radial-gradient(circle at 72% 28%, #e2e8f0 0%, #10b981 26%, #0b141a 60%, #05070b 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Hantu Indonesia</strong>
+                        <small>Mistis Nusantara, Pocong, Kuntilanak &amp; Animasi Melayang</small>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
@@ -777,7 +802,8 @@
                 'winamp-bento': 'Winamp Bento',
                 'cyber-synth': 'Cyber Synthwave',
                 'cinema-classic': 'Cinema Film (Original)',
-                'winamp-silver': 'Winamp Silver Blue'
+                'winamp-silver': 'Winamp Silver Blue',
+                'hantu-indonesia': 'Hantu Indonesia'
             };
 
             const modal = document.getElementById('skinBrowserModal');

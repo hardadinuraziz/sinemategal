@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 90" fill="none">
+  <defs>
+    <radialGradient id="banaCore" cx="42%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="45%" stop-color="#f97316"/>
+      <stop offset="85%" stop-color="#dc2626" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#dc2626" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Trailing fire tail -->
+  <path d="M42 22 C66 16, 92 28, 106 38 C88 42, 78 46, 96 56 C76 62, 62 72, 42 68 Z" fill="#f97316" opacity="0.65"/>
+  <path d="M40 28 C60 26, 78 36, 92 44 C76 48, 70 52, 82 58 C66 60, 54 64, 40 60 Z" fill="#facc15" opacity="0.7"/>
+  <!-- Fireball head -->
+  <circle cx="40" cy="45" r="28" fill="url(#banaCore)"/>
+  <!-- Eerie eyes -->
+  <ellipse cx="32" cy="42" rx="3.8" ry="2.6" fill="#0f172a"/>
+  <ellipse cx="46" cy="42" rx="3.8" ry="2.6" fill="#0f172a"/>
+  <circle cx="32" cy="42" r="1.2" fill="#ffffff"/>
+  <circle cx="46" cy="42" r="1.2" fill="#ffffff"/>
+  <path d="M33 52 Q39 56 45 52" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
+</svg>

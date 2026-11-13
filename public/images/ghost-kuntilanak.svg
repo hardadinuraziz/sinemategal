@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 140" fill="none">
+  <defs>
+    <radialGradient id="kuntiGlow" cx="50%" cy="45%" r="52%">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#e2e8f0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kuntiDress" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="65%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="55" cy="70" rx="48" ry="62" fill="url(#kuntiGlow)"/>
+  <!-- Flowing white dress -->
+  <path d="M40 46 C30 66, 20 105, 16 128 L34 120 L48 132 L62 120 L78 130 L94 122 C86 96, 76 64, 68 46 Z" fill="url(#kuntiDress)" stroke="#94a3b8" stroke-width="1.4"/>
+  <!-- Pale arms -->
+  <path d="M38 54 C24 62, 16 74, 14 82" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+  <path d="M70 54 C84 62, 92 74, 94 82" stroke="#e2e8f0" stroke-width="5" stroke-linecap="round"/>
+  <!-- Long dark hair back -->
+  <path d="M34 32 C24 52, 24 88, 32 106 C40 88, 42 64, 42 48 Z" fill="#090d16"/>
+  <path d="M76 32 C86 52, 86 88, 78 106 C70 88, 68 64, 68 48 Z" fill="#090d16"/>
+  <!-- Pale face -->
+  <ellipse cx="55" cy="36" rx="13" ry="15" fill="#e2e8f0"/>
+  <!-- Hair bangs -->
+  <path d="M35 34 C38 14, 72 14, 75 34 C68 25, 58 24, 55 32 C52 24, 42 25, 35 34 Z" fill="#090d16"/>
+  <!-- Eerie red glowing eyes -->
+  <circle cx="49" cy="37" r="2.2" fill="#ef4444"/>
+  <circle cx="61" cy="37" r="2.2" fill="#ef4444"/>
+  <circle cx="49" cy="37" r="0.8" fill="#fecaca"/>
+  <circle cx="61" cy="37" r="0.8" fill="#fecaca"/>
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 140" fill="none">
+  <defs>
+    <radialGradient id="pocongGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kafanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="55%" stop-color="#cbd5e1"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="48" cy="72" rx="44" ry="62" fill="url(#pocongGlow)"/>
+  <!-- Top knot -->
+  <path d="M40 20 C36 6, 44 4, 48 16 C52 4, 60 6, 56 20 Z" fill="url(#kafanGrad)" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Shroud body -->
+  <path d="M35 28 C25 40, 24 88, 30 118 L48 128 L66 118 C72 88, 71 40, 61 28 C57 22, 39 22, 35 28 Z" fill="url(#kafanGrad)" stroke="#64748b" stroke-width="1.8"/>
+  <!-- Face opening -->
+  <ellipse cx="48" cy="43" rx="11" ry="13" fill="#0f172a" stroke="#475569" stroke-width="1.5"/>
+  <!-- Glowing eerie eyes -->
+  <circle cx="43.5" cy="41" r="2.3" fill="#6ee7b7"/>
+  <circle cx="52.5" cy="41" r="2.3" fill="#6ee7b7"/>
+  <circle cx="43.5" cy="41" r="0.9" fill="#ffffff"/>
+  <circle cx="52.5" cy="41" r="0.9" fill="#ffffff"/>
+  <!-- Shroud ties (tali pocong) -->
+  <path d="M34 25 Q48 29 62 25" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+  <path d="M27 72 Q48 77 69 72" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+  <path d="M31 112 Q48 117 65 112" stroke="#475569" stroke-width="3" stroke-linecap="round"/>
+  <!-- Fold lines -->
+  <path d="M36 60 Q45 64 58 60" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  <path d="M34 92 Q48 96 62 92" stroke="#94a3b8" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+</svg>

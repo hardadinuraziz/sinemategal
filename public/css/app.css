@@ -4769,6 +4769,184 @@ html[data-skin="winamp-silver"] .stat-icon {
   color: #ffffff !important;
 }
 
+/* --------------------------------------------------------------------------
+   SKIN 7: HANTU INDONESIA (Mistis Nusantara + Animasi Hantu Melayang)
+   -------------------------------------------------------------------------- */
+.ghost-fx-layer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+html[data-skin="hantu-indonesia"] .ghost-fx-layer {
+  display: block;
+}
+
+.fx-wisp {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a7f3d0 0%, #34d399 45%, rgba(16, 185, 129, 0) 75%);
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.75);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fxBubbleRise 13s linear infinite;
+}
+
+.fx-wisp.fw1 { left: 7%;  width: 10px; height: 10px; animation-duration: 12s; animation-delay: 0s; }
+.fx-wisp.fw2 { left: 19%; width: 14px; height: 14px; animation-duration: 15s; animation-delay: -4s; }
+.fx-wisp.fw3 { left: 32%; width: 8px;  height: 8px;  animation-duration: 10s; animation-delay: -7s; }
+.fx-wisp.fw4 { left: 46%; width: 12px; height: 12px; animation-duration: 14s; animation-delay: -2s; }
+.fx-wisp.fw5 { left: 61%; width: 9px;  height: 9px;  animation-duration: 11s; animation-delay: -6s; }
+.fx-wisp.fw6 { left: 74%; width: 15px; height: 15px; animation-duration: 16s; animation-delay: -9s; }
+.fx-wisp.fw7 { left: 86%; width: 11px; height: 11px; animation-duration: 13s; animation-delay: -3s; }
+.fx-wisp.fw8 { left: 94%; width: 8px;  height: 8px;  animation-duration: 9s;  animation-delay: -5s; }
+
+.fx-ghost {
+  position: absolute;
+  left: 0;
+  will-change: transform;
+  animation: fxFishSwimLeft 28s linear infinite;
+}
+
+.fx-ghost.is-reverse {
+  animation-name: fxFishSwimRight;
+}
+
+.fx-ghost.is-reverse img {
+  transform: scaleX(-1);
+}
+
+.fx-ghost-bob {
+  animation: fxFishBob 3.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.fx-ghost-hop {
+  animation: fxGhostHop 1.35s ease-in-out infinite;
+  will-change: transform;
+}
+
+.fx-ghost img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(16, 185, 129, 0.28));
+}
+
+.fx-ghost.fg-pocong    { top: 20%; width: 64px; animation-duration: 30s; animation-delay: -5s; }
+.fx-ghost.fg-kunti     { top: 36%; width: 82px; animation-duration: 26s; animation-delay: -14s; }
+.fx-ghost.fg-tuyul     { top: 64%; width: 54px; animation-duration: 22s; animation-delay: -9s; }
+.fx-ghost.fg-genderuwo { top: 74%; width: 92px; animation-duration: 36s; animation-delay: -21s; }
+.fx-ghost.fg-banaspati { top: 12%; width: 78px; animation-duration: 19s; animation-delay: -3s; }
+
+@keyframes fxGhostHop {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  45%      { transform: translate3d(0, -26px, 0) rotate(2deg); }
+  75%      { transform: translate3d(0, 4px, 0) rotate(-1deg); }
+}
+
+@media (max-width: 768px) {
+  .fx-ghost.fg-genderuwo, .fx-wisp.fw3, .fx-wisp.fw6, .fx-wisp.fw8 { display: none; }
+  .fx-ghost.fg-pocong { width: 48px; }
+  .fx-ghost.fg-kunti  { width: 60px; }
+  .fx-ghost.fg-tuyul  { width: 42px; }
+  .fx-ghost.fg-banaspati { width: 58px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-fx-layer { display: none !important; }
+}
+
+html[data-skin="hantu-indonesia"] {
+  --bg-main: #06090e;
+  --bg-surface: #0d141c;
+  --bg-card: #111a24;
+  --text-main: #f1f5f9;
+  --text-body: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --primary: #10b981;
+  --neu-surface-grad: linear-gradient(180deg, #16222e 0%, #0e161f 50%, #090e14 100%);
+  --aero-card-grad: linear-gradient(180deg, #16222e 0%, #101923 65%, #0b1118 100%);
+  --aero-gel-primary: linear-gradient(180deg, #34d399 0%, #059669 52%, #065f46 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #6ee7b7 0%, #10b981 52%, #047857 100%);
+  --aero-gel-pill: linear-gradient(180deg, #1e2d3d 0%, #121c27 55%, #0b1219 100%);
+  --neu-raised: 0 10px 26px rgba(0, 0, 0, 0.72), inset 1px 1px 0 rgba(52, 211, 153, 0.18), inset -1px -1px 0 rgba(0, 0, 0, 0.65);
+  --neu-raised-sm: 0 6px 16px rgba(0, 0, 0, 0.65), inset 1px 1px 0 rgba(52, 211, 153, 0.15), inset -1px -1px 0 rgba(0, 0, 0, 0.6);
+  --neu-raised-xs: 0 3px 10px rgba(0, 0, 0, 0.55), inset 1px 1px 0 rgba(52, 211, 153, 0.14), inset -1px -1px 0 rgba(0, 0, 0, 0.55);
+}
+
+html[data-skin="hantu-indonesia"] body {
+  background: #06090e !important;
+}
+
+html[data-skin="hantu-indonesia"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(circle at 82% 14%, rgba(226, 232, 240, 0.22) 0%, rgba(16, 185, 129, 0.1) 14%, transparent 34%),
+    radial-gradient(circle at 22% 78%, rgba(16, 185, 129, 0.14), transparent 50%),
+    linear-gradient(180deg, #070b12 0%, #0c171e 55%, #06090d 100%) !important;
+}
+
+html[data-skin="hantu-indonesia"] .aero-bubble,
+html[data-skin="hantu-indonesia"] .aero-globe-orb,
+html[data-skin="hantu-indonesia"] .aero-sun-rays,
+html[data-skin="hantu-indonesia"] .aero-fx-layer,
+html[data-skin="hantu-indonesia"] .aero-waves {
+  display: none !important;
+}
+
+html[data-skin="hantu-indonesia"] .home-dashboard,
+html[data-skin="hantu-indonesia"] .movie-card,
+html[data-skin="hantu-indonesia"] .stat-card,
+html[data-skin="hantu-indonesia"] .site-navbar,
+html[data-skin="hantu-indonesia"] .bottom-player,
+html[data-skin="hantu-indonesia"] .skin-modal-dialog {
+  border-color: rgba(52, 211, 153, 0.3) !important;
+}
+
+html[data-skin="hantu-indonesia"] .movie-card::before,
+html[data-skin="hantu-indonesia"] .stat-card::before,
+html[data-skin="hantu-indonesia"] .hero-banner::before {
+  display: none !important;
+}
+
+html[data-skin="hantu-indonesia"] .hero-overlay,
+html[data-skin="hantu-indonesia"] .home-dashboard .hero-overlay {
+  background: linear-gradient(90deg, rgba(6, 10, 16, 0.94) 0%, rgba(11, 22, 28, 0.74) 50%, rgba(6, 10, 16, 0.25) 100%) !important;
+}
+
+html[data-skin="hantu-indonesia"] .player-track-title,
+html[data-skin="hantu-indonesia"] .right-playlist-eyebrow {
+  color: #6ee7b7 !important;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.45);
+}
+
+html[data-skin="hantu-indonesia"] .winamp-eq-bars span {
+  background: linear-gradient(180deg, #ef4444 0%, #34d399 45%, #059669 100%) !important;
+}
+
+html[data-skin="hantu-indonesia"] .seek-bar-fill {
+  background: linear-gradient(90deg, #10b981, #ef4444) !important;
+}
+
+html[data-skin="hantu-indonesia"] .home-category-chip.is-active,
+html[data-skin="hantu-indonesia"] .nav-link.active,
+html[data-skin="hantu-indonesia"] .admin-tab.is-active {
+  color: #ffffff !important;
+  border-color: rgba(52, 211, 153, 0.85) !important;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.4) !important;
+}
+
+html[data-skin="hantu-indonesia"] .stat-icon {
+  background: linear-gradient(145deg, #10b981, #065f46) !important;
+  color: #ffffff !important;
+}
+
 /* ==========================================================================
    SCROLL PERFORMANCE GUARD (must stay at the very end of the file)
    ========================================================================== */
@@ -4784,12 +4962,14 @@ html[data-skin="winamp-silver"] .stat-icon {
 
 /* 2. Keep all ambient Frutiger Aero animations running smoothly on their own GPU compositor layers during scroll */
 .aero-fx-layer,
+.ghost-fx-layer,
 .aero-waves {
   transform: translate3d(0, 0, 0);
   will-change: transform;
 }
 
 .aero-fx-layer *,
+.ghost-fx-layer *,
 .frutiger-aero-scene *,
 .aero-waves *,
 .nav-link.active {
