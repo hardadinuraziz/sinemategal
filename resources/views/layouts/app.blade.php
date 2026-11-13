@@ -748,6 +748,14 @@
                         <small>Ungu Malam, Neon Magenta &amp; Cyan Glow</small>
                     </div>
                 </button>
+
+                <button type="button" class="skin-option-card" data-skin-choice="cinema-classic">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #18181b 0%, #0b0b0d 60%, #dc2626 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Cinema Film (Original)</strong>
+                        <small>Gelap Sinematik, Merah Crimson &amp; Batik Tegal</small>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
@@ -760,7 +768,8 @@
                 'aero': 'Frutiger Aero',
                 'winamp-classic': 'Winamp Classic',
                 'winamp-bento': 'Winamp Bento',
-                'cyber-synth': 'Cyber Synthwave'
+                'cyber-synth': 'Cyber Synthwave',
+                'cinema-classic': 'Cinema Film (Original)'
             };
 
             const modal = document.getElementById('skinBrowserModal');

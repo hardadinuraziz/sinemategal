@@ -4492,6 +4492,113 @@ html[data-skin="cyber-synth"] .player-play-btn {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
 }
 
+/* --------------------------------------------------------------------------
+   SKIN 5: CINEMA FILM ORIGINAL (Obsidian Dark + Crimson Red + Batik Accent)
+   -------------------------------------------------------------------------- */
+html[data-skin="cinema-classic"] {
+  --bg-main: #0b0b0d;
+  --bg-surface: #141417;
+  --bg-card: #18181b;
+  --text-main: #fafafa;
+  --text-body: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --primary: #dc2626;
+  --primary-hover: #ef4444;
+  --neu-surface-grad: linear-gradient(180deg, rgba(24, 24, 27, 0.96) 0%, rgba(15, 15, 18, 0.98) 100%);
+  --aero-card-grad: linear-gradient(165deg, rgba(28, 28, 32, 0.96) 0%, rgba(16, 16, 19, 0.98) 100%);
+  --aero-gel-primary: linear-gradient(180deg, #ef4444 0%, #dc2626 55%, #b91c1c 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #f87171 0%, #ef4444 55%, #dc2626 100%);
+  --aero-gel-pill: linear-gradient(180deg, rgba(39, 39, 42, 0.92) 0%, rgba(24, 24, 27, 0.96) 100%);
+  --neu-raised: 0 14px 32px rgba(0, 0, 0, 0.65);
+  --neu-raised-sm: 0 8px 20px rgba(0, 0, 0, 0.55);
+  --neu-raised-xs: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --neu-raised-lg: 0 18px 40px rgba(0, 0, 0, 0.78);
+}
+
+html[data-skin="cinema-classic"] body {
+  background: #0b0b0d !important;
+  text-shadow: none !important;
+}
+
+html[data-skin="cinema-classic"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(ellipse at 50% -15%, rgba(220, 38, 38, 0.14), transparent 52%),
+    linear-gradient(145deg, #151518 0%, #0b0b0d 55%, #111114 100%),
+    url('/images/batik-beras-wutah.svg') !important;
+  background-size: auto, auto, 260px 260px !important;
+  background-repeat: no-repeat, no-repeat, repeat !important;
+}
+
+html[data-skin="cinema-classic"] .aero-bubble,
+html[data-skin="cinema-classic"] .aero-globe-orb,
+html[data-skin="cinema-classic"] .aero-sunflare,
+html[data-skin="cinema-classic"] .aero-sun-rays,
+html[data-skin="cinema-classic"] .aero-fx-layer,
+html[data-skin="cinema-classic"] .aero-waves {
+  display: none !important;
+}
+
+html[data-skin="cinema-classic"] .home-dashboard,
+html[data-skin="cinema-classic"] .movie-card,
+html[data-skin="cinema-classic"] .stat-card,
+html[data-skin="cinema-classic"] .site-navbar,
+html[data-skin="cinema-classic"] .bottom-player,
+html[data-skin="cinema-classic"] .hero-banner,
+html[data-skin="cinema-classic"] .home-dashboard .hero-banner {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+html[data-skin="cinema-classic"] .movie-card::before,
+html[data-skin="cinema-classic"] .stat-card::before,
+html[data-skin="cinema-classic"] .track-card::before,
+html[data-skin="cinema-classic"] .hero-banner::before,
+html[data-skin="cinema-classic"] .home-dashboard .hero-banner::before {
+  display: none !important;
+}
+
+html[data-skin="cinema-classic"] .hero-overlay,
+html[data-skin="cinema-classic"] .home-dashboard .hero-overlay,
+html[data-skin="cinema-classic"] .movie-detail-gradient,
+html[data-skin="cinema-classic"] .vip-cinematic-overlay {
+  background: linear-gradient(90deg, rgba(9, 9, 11, 0.94) 0%, rgba(9, 9, 11, 0.72) 44%, rgba(9, 9, 11, 0.18) 100%) !important;
+}
+
+html[data-skin="cinema-classic"] .movie-card-overlay,
+html[data-skin="cinema-classic"] .culture-gallery-overlay {
+  background: linear-gradient(0deg, rgba(9, 9, 11, 0.94) 0%, rgba(9, 9, 11, 0.52) 52%, transparent 100%) !important;
+}
+
+html[data-skin="cinema-classic"] .btn,
+html[data-skin="cinema-classic"] .btn-secondary,
+html[data-skin="cinema-classic"] .home-category-chip,
+html[data-skin="cinema-classic"] .nav-link {
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  text-shadow: none !important;
+}
+
+html[data-skin="cinema-classic"] .btn-primary,
+html[data-skin="cinema-classic"] .btn-crimson,
+html[data-skin="cinema-classic"] .player-play-btn,
+html[data-skin="cinema-classic"] .playlist-play-all,
+html[data-skin="cinema-classic"] .track-play-btn,
+html[data-skin="cinema-classic"] .home-category-chip.is-active,
+html[data-skin="cinema-classic"] .nav-link.active,
+html[data-skin="cinema-classic"] .admin-tab.is-active {
+  color: #ffffff !important;
+  text-shadow: none !important;
+  border-color: rgba(239, 68, 68, 0.85) !important;
+}
+
+html[data-skin="cinema-classic"] .stat-icon {
+  background: linear-gradient(145deg, #ef4444, #991b1b) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html[data-skin="cinema-classic"] .seek-bar-fill {
+  background: linear-gradient(90deg, #ef4444, #f59e0b) !important;
+}
+
 /* ==========================================================================
    SCROLL PERFORMANCE GUARD (must stay at the very end of the file)
    ========================================================================== */
