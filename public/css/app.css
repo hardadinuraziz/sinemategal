@@ -4853,12 +4853,19 @@ html[data-skin="hantu-indonesia"] .ghost-fx-layer {
 .fx-spider-pocong {
   position: absolute;
   top: 0;
-  right: 18%;
-  width: 78px;
+  width: 72px;
   transform-origin: top center;
   will-change: transform;
   animation: fxSpiderDrop 18s ease-in-out infinite;
 }
+
+.fx-spider-pocong.sp1 { left: 7%;  width: 62px; animation-duration: 16s; animation-delay: -3s; }
+.fx-spider-pocong.sp2 { left: 21%; width: 78px; animation-duration: 21s; animation-delay: -9s; }
+.fx-spider-pocong.sp3 { left: 36%; width: 54px; animation-duration: 15s; animation-delay: -1s; opacity: 0.88; }
+.fx-spider-pocong.sp4 { left: 50%; width: 84px; animation-duration: 23s; animation-delay: -13s; }
+.fx-spider-pocong.sp5 { left: 64%; width: 58px; animation-duration: 17s; animation-delay: -6s; opacity: 0.9; }
+.fx-spider-pocong.sp6 { left: 78%; width: 76px; animation-duration: 19s; animation-delay: -11s; }
+.fx-spider-pocong.sp7 { left: 90%; width: 64px; animation-duration: 22s; animation-delay: -16s; }
 
 .fx-spider-cord {
   position: absolute;
@@ -4889,12 +4896,13 @@ html[data-skin="hantu-indonesia"] .ghost-fx-layer {
 }
 
 @media (max-width: 768px) {
-  .fx-ghost.fg-genderuwo, .fx-wisp.fw3, .fx-wisp.fw6, .fx-wisp.fw8 { display: none; }
+  .fx-ghost.fg-genderuwo, .fx-wisp.fw3, .fx-wisp.fw6, .fx-wisp.fw8,
+  .fx-spider-pocong.sp3, .fx-spider-pocong.sp5, .fx-spider-pocong.sp7 { display: none; }
   .fx-ghost.fg-pocong { width: 48px; }
   .fx-ghost.fg-kunti  { width: 60px; }
   .fx-ghost.fg-tuyul  { width: 42px; }
   .fx-ghost.fg-banaspati { width: 58px; }
-  .fx-spider-pocong { right: 8%; width: 52px; }
+  .fx-spider-pocong { width: 50px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
