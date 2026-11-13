@@ -47,6 +47,7 @@
         <div class="fx-fish ff2 is-reverse"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-blue.svg" alt=""></div></div>
         <div class="fx-fish ff3"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-clown.svg" alt=""></div></div>
         <div class="fx-fish ff4 is-reverse"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-gold.svg" alt=""></div></div>
+        <div class="fx-fish fx-shark"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-shark.svg" alt=""></div></div>
 
         <div class="fx-gull fg1"><img decoding="async" src="/images/aero-gull.svg" alt=""></div>
         <div class="fx-gull fg2"><img decoding="async" src="/images/aero-gull.svg" alt=""></div>
