@@ -4693,14 +4693,32 @@ html[data-skin="winamp-silver"] .site-navbar .brand-title,
 html[data-skin="winamp-silver"] .site-navbar .brand-subtitle,
 html[data-skin="winamp-silver"] .movie-title,
 html[data-skin="winamp-silver"] .section-title,
-html[data-skin="winamp-silver"] .stat-value {
+html[data-skin="winamp-silver"] .stat-value,
+html[data-skin="winamp-silver"] .home-category-chip,
+html[data-skin="winamp-silver"] .skin-trigger-btn,
+html[data-skin="winamp-silver"] .nav-link,
+html[data-skin="winamp-silver"] .btn-outline,
+html[data-skin="winamp-silver"] .btn-glass,
+html[data-skin="winamp-silver"] .player-btn,
+html[data-skin="winamp-silver"] .player-lyrics-btn,
+html[data-skin="winamp-silver"] .right-playlist-title,
+html[data-skin="winamp-silver"] .skin-modal-title,
+html[data-skin="winamp-silver"] .skin-option-card strong {
   color: #0f172a !important;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) !important;
 }
 
 html[data-skin="winamp-silver"] .movie-meta,
-html[data-skin="winamp-silver"] .stat-label {
-  color: #475569 !important;
+html[data-skin="winamp-silver"] .stat-label,
+html[data-skin="winamp-silver"] .player-timeline,
+html[data-skin="winamp-silver"] .right-playlist-eyebrow,
+html[data-skin="winamp-silver"] .right-playlist-subtitle,
+html[data-skin="winamp-silver"] .right-playlist-footer,
+html[data-skin="winamp-silver"] .right-playlist-footer a,
+html[data-skin="winamp-silver"] .player-queue-heading,
+html[data-skin="winamp-silver"] .skin-option-card small {
+  color: #334155 !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) !important;
 }
 
 html[data-skin="winamp-silver"] .hero-overlay,
@@ -4711,8 +4729,11 @@ html[data-skin="winamp-silver"] .home-dashboard .hero-overlay {
 
 html[data-skin="winamp-silver"] .hero-title,
 html[data-skin="winamp-silver"] .hero-synopsis,
-html[data-skin="winamp-silver"] .hero-meta {
+html[data-skin="winamp-silver"] .hero-meta,
+html[data-skin="winamp-silver"] .btn-primary,
+html[data-skin="winamp-silver"] .player-play-btn {
   color: #ffffff !important;
+  text-shadow: none !important;
 }
 
 html[data-skin="winamp-silver"] .bottom-player .player-track-info,
@@ -4730,14 +4751,14 @@ html[data-skin="winamp-silver"] .playlist-track-title,
 html[data-skin="winamp-silver"] .playlist-track-number,
 html[data-skin="winamp-silver"] .playlist-track-duration {
   color: #ffffff !important;
-  text-shadow: 0 0 6px rgba(147, 197, 253, 0.45);
+  text-shadow: 0 0 6px rgba(147, 197, 253, 0.45) !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 html[data-skin="winamp-silver"] .player-track-artist,
-html[data-skin="winamp-silver"] .player-timeline,
-html[data-skin="winamp-silver"] .right-playlist-eyebrow {
+html[data-skin="winamp-silver"] .playlist-track-artist {
   color: #bfdbfe !important;
+  text-shadow: none !important;
 }
 
 html[data-skin="winamp-silver"] .playlist-track-item.is-active,
