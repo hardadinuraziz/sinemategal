@@ -786,13 +786,13 @@
 
             const openModal = () => {
                 if (!modal) return;
-                modal.classList.add('is-open');
+                modal.classList.add('is-active');
                 modal.setAttribute('aria-hidden', 'false');
             };
 
             const closeModal = () => {
                 if (!modal) return;
-                modal.classList.remove('is-open');
+                modal.classList.remove('is-active');
                 modal.setAttribute('aria-hidden', 'true');
             };
 
@@ -808,7 +808,7 @@
                 if (e.target === modal) closeModal();
             });
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal?.classList.contains('is-open')) closeModal();
+                if (e.key === 'Escape' && modal?.classList.contains('is-active')) closeModal();
             });
 
             document.querySelectorAll('.skin-option-card').forEach((btn) => {
