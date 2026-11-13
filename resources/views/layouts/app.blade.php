@@ -94,6 +94,10 @@
         <div class="fx-ghost fg-tuyul"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-tuyul.svg" alt=""></div></div>
         <div class="fx-ghost fg-genderuwo is-reverse"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-genderuwo.svg" alt=""></div></div>
         <div class="fx-ghost fg-banaspati"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-banaspati.svg" alt=""></div></div>
+        <div class="fx-spider-pocong">
+            <div class="fx-spider-cord"></div>
+            <img decoding="async" src="/images/ghost-pocong-spider.png" alt="">
+        </div>
     </div>
 
     <!-- Frutiger Aero Bottom Water Waves -->
