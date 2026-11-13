@@ -134,7 +134,7 @@
                     @foreach($relatedMovies as $rel)
                         <a href="{{ route('movies.show', $rel->slug) }}" style="display: flex; gap: 0.75rem; align-items: center; text-decoration: none; padding: 0.5rem; border-radius: 8px; transition: background 0.2s;" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background='transparent'">
                             <div style="width: 80px; height: 50px; border-radius: 6px; overflow: hidden; flex-shrink: 0; background: #000;">
-                                <img src="{{ $rel->banner_url }}" alt="{{ $rel->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img loading="lazy" decoding="async" src="{{ $rel->banner_url }}" alt="{{ $rel->title }}" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div style="flex-grow: 1; min-width: 0;">
                                 <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">

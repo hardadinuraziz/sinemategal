@@ -16,7 +16,7 @@
     <!-- Track Header Card -->
     <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap;">
         <div style="width: 200px; height: 200px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg), 0 0 25px var(--gold-glow); flex-shrink: 0; border: 2px solid rgba(245, 158, 11, 0.3);">
-            <img src="{{ $track->cover_url }}" alt="{{ $track->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+            <img loading="lazy" decoding="async" src="{{ $track->cover_url }}" alt="{{ $track->title }}" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
 
         <div style="flex: 1; min-width: 280px;">
@@ -75,7 +75,7 @@
                     @foreach($relatedTracks as $rel)
                         <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.5rem; border-radius: 8px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.playTrackById({{ $rel->id }})">
                             <div style="display: flex; align-items: center; gap: 0.75rem; min-width: 0;">
-                                <img src="{{ $rel->cover_url }}" alt="{{ $rel->title }}" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;">
+                                <img loading="lazy" decoding="async" src="{{ $rel->cover_url }}" alt="{{ $rel->title }}" style="width: 44px; height: 44px; border-radius: 6px; object-fit: cover;">
                                 <div style="min-width: 0;">
                                     <div style="font-size: 0.88rem; font-weight: 700; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                         {{ $rel->title }}

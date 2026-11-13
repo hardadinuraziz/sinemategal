@@ -35,7 +35,7 @@
                     <div class="ticket-card">
                         <!-- Left Poster -->
                         <div style="width: 120px; flex-shrink: 0; background: var(--bg-subtle);">
-                            <img src="{{ $ticket->movie->poster_url }}" alt="{{ $ticket->movie->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img loading="lazy" decoding="async" src="{{ $ticket->movie->poster_url }}" alt="{{ $ticket->movie->title }}" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
 
                         <!-- Right Info -->

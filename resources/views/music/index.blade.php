@@ -30,7 +30,7 @@
         </div>
 
         <div style="width: 180px; height: 180px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); flex-shrink: 0; box-shadow: var(--shadow-xs);">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Music Cover" style="width: 100%; height: 100%; object-fit: cover;">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Music Cover" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
     </div>
 
@@ -49,7 +49,7 @@
             @foreach($playlists as $pl)
                 <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.25rem; display: flex; flex-direction: column; gap: 1rem; box-shadow: var(--shadow-xs); transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='translateY(0)'">
                     <div style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 10px; overflow: hidden;">
-                        <img src="{{ $pl->cover_url }}" alt="{{ $pl->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img loading="lazy" decoding="async" src="{{ $pl->cover_url }}" alt="{{ $pl->title }}" style="width: 100%; height: 100%; object-fit: cover;">
                         <button onclick="window.playPlaylist({{ $pl->id }})" class="movie-play-btn" style="opacity: 1;" title="Putar Playlist">
                             ▶
                         </button>
@@ -99,7 +99,7 @@
                     </div>
 
                     <div class="track-cover-wrap" onclick="window.playTrackById({{ $track->id }})">
-                        <img src="{{ $track->cover_url }}" alt="{{ $track->title }}" class="track-cover">
+                        <img loading="lazy" decoding="async" src="{{ $track->cover_url }}" alt="{{ $track->title }}" class="track-cover">
                         <div class="track-play-hover">▶</div>
                     </div>
 

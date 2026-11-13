@@ -21,7 +21,7 @@
         <div class="movie-detail-content">
             <!-- Poster Card -->
             <div class="movie-detail-poster">
-                <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}">
+                <img decoding="async" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}">
             </div>
 
             <!-- Details -->
@@ -181,7 +181,7 @@
             @foreach($relatedMovies as $rel)
                 <div class="movie-card">
                     <div class="movie-poster-wrap">
-                        <img src="{{ $rel->poster_url }}" alt="{{ $rel->title }}" class="movie-poster" loading="lazy">
+                        <img decoding="async" src="{{ $rel->poster_url }}" alt="{{ $rel->title }}" class="movie-poster" loading="lazy">
                         <div class="movie-badge-top">
                             <span class="badge {{ $rel->access_badge['class'] }}">{{ $rel->access_badge['label'] }}</span>
                         </div>

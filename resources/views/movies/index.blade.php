@@ -60,7 +60,7 @@
             @foreach($movies as $movie)
                 <div class="movie-card">
                     <div class="movie-poster-wrap" data-trailer="{{ $movie->trailer_url }}">
-                        <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
+                        <img loading="lazy" decoding="async" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
                         <div class="movie-video-badge"><span class="video-pulse-dot"></span><span>Cuplikan</span></div>
                         <div class="movie-badge-top">
                             <span class="badge {{ $movie->access_badge['class'] }}">

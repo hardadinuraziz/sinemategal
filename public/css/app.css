@@ -4051,3 +4051,67 @@ body > footer {
   .aero-sun-rays, .aero-waves { display: none; }
   .nav-link.active { animation: none; }
 }
+
+/* ==========================================================================
+   SCROLL PERFORMANCE GUARD (must stay at the very end of the file)
+   ========================================================================== */
+
+/* 1. Kill every leftover backdrop-filter (legacy dark-theme rules) - the #1 cause of scroll jank */
+*,
+*::before,
+*::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  background-attachment: scroll !important;
+}
+
+/* 2. Sun rays: static (rotating a 120vmax masked layer is too expensive on laptops) */
+.aero-sun-rays {
+  animation: none !important;
+  will-change: auto;
+}
+
+/* 3. Pause all ambient animations while the user is scrolling, resume when idle */
+body.is-scrolling .aero-fx-layer *,
+body.is-scrolling .frutiger-aero-scene *,
+body.is-scrolling .aero-wave,
+body.is-scrolling .nav-link.active,
+body.is-scrolling .stat-icon {
+  animation-play-state: paused !important;
+}
+
+/* 4. Disable hover lift/shine while scrolling so cards under the cursor don't repaint */
+body.is-scrolling .movie-card,
+body.is-scrolling .track-card,
+body.is-scrolling .stat-card,
+body.is-scrolling .culture-gallery-card,
+body.is-scrolling .btn {
+  pointer-events: none;
+}
+
+/* 5. Skip rendering of off-screen cards until they are near the viewport */
+.movie-card,
+.track-card,
+.culture-gallery-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 320px;
+}
+
+/* 6. Lite mode for low-end devices / small screens: fewer moving parts */
+@media (max-width: 768px), (pointer: coarse) {
+  .aero-sun-rays,
+  .aero-globe-orb,
+  .fx-sparkle,
+  .fx-gull,
+  .aero-wave.w2 {
+    display: none !important;
+  }
+  .aero-bubble:nth-child(n + 6) { display: none !important; }
+}
+
+html.aero-lite .aero-fx-layer,
+html.aero-lite .aero-waves,
+html.aero-lite .aero-sun-rays,
+html.aero-lite .aero-bubble {
+  display: none !important;
+}

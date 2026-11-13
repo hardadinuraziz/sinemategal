@@ -119,7 +119,7 @@
                         <tr>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.85rem;">
-                                    <img src="{{ $m->poster_url }}" alt="{{ $m->title }}" style="width: 44px; height: 56px; border-radius: 8px; object-fit: cover; box-shadow: var(--shadow-xs);">
+                                    <img loading="lazy" decoding="async" src="{{ $m->poster_url }}" alt="{{ $m->title }}" style="width: 44px; height: 56px; border-radius: 8px; object-fit: cover; box-shadow: var(--shadow-xs);">
                                     <div>
                                         <div style="font-weight: 800; color: var(--text-main); font-size: 0.95rem;">{{ $m->title }}</div>
                                         <div style="font-size: 0.78rem; color: var(--text-dim); margin-bottom: 0.25rem;">{{ $m->release_year }} • {{ $m->location_tag ?? 'Tegal' }}</div>
@@ -196,7 +196,7 @@
                         <tr>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.85rem;">
-                                    <img src="{{ $t->cover_url }}" alt="{{ $t->title }}" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover;">
+                                    <img loading="lazy" decoding="async" src="{{ $t->cover_url }}" alt="{{ $t->title }}" style="width: 40px; height: 40px; border-radius: 6px; object-fit: cover;">
                                     <div>
                                         <div style="font-weight: 700; color: var(--text-main); font-size: 0.9rem;">{{ $t->title }}</div>
                                         <div style="font-size: 0.75rem; color: var(--text-muted);">{{ $t->album ?? 'Single Pantura' }} ({{ $t->release_year }})</div>
@@ -325,7 +325,7 @@
                         <tr>
                             <td>
                                 <div style="display: flex; align-items: center; gap: 0.75rem;">
-                                    <img src="{{ $u->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;">
+                                    <img loading="lazy" decoding="async" src="{{ $u->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;">
                                     <div>
                                         <div style="font-weight: 800; color: var(--text-main);">{{ $u->name }}</div>
                                         <div style="font-size: 0.78rem; color: var(--text-dim);">{{ $u->email }}</div>

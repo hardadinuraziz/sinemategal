@@ -43,19 +43,19 @@
         <span class="fx-bubble fb9"></span>
         <span class="fx-bubble fb10"></span>
 
-        <div class="fx-fish ff1"><div class="fx-fish-bob"><img src="/images/aero-fish-gold.svg" alt=""></div></div>
-        <div class="fx-fish ff2 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-blue.svg" alt=""></div></div>
-        <div class="fx-fish ff3"><div class="fx-fish-bob"><img src="/images/aero-fish-clown.svg" alt=""></div></div>
-        <div class="fx-fish ff4 is-reverse"><div class="fx-fish-bob"><img src="/images/aero-fish-gold.svg" alt=""></div></div>
+        <div class="fx-fish ff1"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-gold.svg" alt=""></div></div>
+        <div class="fx-fish ff2 is-reverse"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-blue.svg" alt=""></div></div>
+        <div class="fx-fish ff3"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-clown.svg" alt=""></div></div>
+        <div class="fx-fish ff4 is-reverse"><div class="fx-fish-bob"><img decoding="async" src="/images/aero-fish-gold.svg" alt=""></div></div>
 
-        <div class="fx-gull fg1"><img src="/images/aero-gull.svg" alt=""></div>
-        <div class="fx-gull fg2"><img src="/images/aero-gull.svg" alt=""></div>
-        <div class="fx-gull fg3"><img src="/images/aero-gull.svg" alt=""></div>
+        <div class="fx-gull fg1"><img decoding="async" src="/images/aero-gull.svg" alt=""></div>
+        <div class="fx-gull fg2"><img decoding="async" src="/images/aero-gull.svg" alt=""></div>
+        <div class="fx-gull fg3"><img decoding="async" src="/images/aero-gull.svg" alt=""></div>
 
-        <div class="fx-leaf fl1"><img src="/images/aero-leaf.svg" alt=""></div>
-        <div class="fx-leaf fl2"><img src="/images/aero-leaf.svg" alt=""></div>
-        <div class="fx-leaf fl3"><img src="/images/aero-leaf.svg" alt=""></div>
-        <div class="fx-leaf fl4"><img src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl1"><img decoding="async" src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl2"><img decoding="async" src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl3"><img decoding="async" src="/images/aero-leaf.svg" alt=""></div>
+        <div class="fx-leaf fl4"><img decoding="async" src="/images/aero-leaf.svg" alt=""></div>
 
         <span class="fx-sparkle fs1"></span>
         <span class="fx-sparkle fs2"></span>
@@ -77,8 +77,8 @@
             <!-- Brand Logo (Winamp Style) -->
             <a href="{{ route('home') }}" class="nav-brand">
                 <div class="brand-icon brand-icon-logo">
-                    <img src="/images/logo-icon.svg" alt="Sinema Tegal" class="logo-sidebar-icon" style="height: 48px; width: 48px; object-fit: contain;">
-                    <img src="/images/logo.svg" alt="Sinema Tegal" class="logo-mobile-full" style="height: 46px; width: auto; object-fit: contain;">
+                    <img decoding="async" src="/images/logo-icon.svg" alt="Sinema Tegal" class="logo-sidebar-icon" style="height: 48px; width: 48px; object-fit: contain;">
+                    <img decoding="async" src="/images/logo.svg" alt="Sinema Tegal" class="logo-mobile-full" style="height: 46px; width: auto; object-fit: contain;">
                 </div>
                 <span class="brand-badge">Platform Budaya</span>
             </a>
@@ -126,7 +126,7 @@
 
                     <!-- User Profile Dropdown Pill -->
                     <div class="user-menu-pill">
-                        <img src="{{ Auth::user()->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" class="user-avatar">
+                        <img decoding="async" src="{{ Auth::user()->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" class="user-avatar">
                         <span style="font-weight: 600; color: var(--text-main);">{{ Str::limit(Auth::user()->name, 14) }}</span>
                         @if(Auth::user()->hasVipAccess())
                             <span class="badge badge-vip" style="padding: 1px 5px; font-size: 0.6rem;">VIP</span>
@@ -164,7 +164,7 @@
         <div class="mobile-nav-inner">
             <!-- Drawer Brand Header -->
             <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle); margin-bottom: 0.25rem;">
-                <img src="/images/logo.svg" alt="Sinema Tegal" style="height: 48px; width: auto; object-fit: contain;">
+                <img decoding="async" src="/images/logo.svg" alt="Sinema Tegal" style="height: 48px; width: auto; object-fit: contain;">
                 <span class="brand-badge">Platform Budaya</span>
             </div>
             <nav class="mobile-nav-links">
@@ -202,7 +202,7 @@
             <div class="mobile-nav-footer">
                 @auth
                     <div class="mobile-user-profile">
-                        <img src="{{ Auth::user()->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" class="user-avatar" style="width: 38px; height: 38px;">
+                        <img decoding="async" src="{{ Auth::user()->avatar ?? 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100' }}" alt="Avatar" class="user-avatar" style="width: 38px; height: 38px;">
                         <div style="flex: 1; min-width: 0;">
                             <div style="font-weight: 700; color: var(--text-main); font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ Auth::user()->name }}</div>
                             <div style="font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ Auth::user()->email }}</div>
@@ -254,7 +254,7 @@
         <!-- Top Winamp-Style Brand Header Banner -->
         <div class="container winamp-top-brand-bar" style="padding-top: 1rem; padding-bottom: 0.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
             <a href="{{ route('home') }}" style="display: inline-flex; align-items: center;">
-                <img src="/images/logo.svg" alt="Bahari Pantura - Sinema Tegal" style="height: clamp(54px, 7vw, 76px); width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));">
+                <img decoding="async" src="/images/logo.svg" alt="Bahari Pantura - Sinema Tegal" style="height: clamp(54px, 7vw, 76px); width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));">
             </a>
             <div style="display: flex; align-items: center; gap: 0.6rem;">
                 <span class="badge badge-vip" style="font-size: 0.72rem; padding: 0.35rem 0.85rem;">⚡ STREAMING FILM & NADA PANTURA</span>
@@ -270,7 +270,7 @@
                 <div>
                     <div style="margin-bottom: 0.85rem;">
                         <a href="{{ route('home') }}" style="display: inline-block;">
-                            <img src="/images/logo.svg" alt="Sinema Tegal" style="height: 58px; width: auto; object-fit: contain;">
+                            <img decoding="async" src="/images/logo.svg" alt="Sinema Tegal" style="height: 58px; width: auto; object-fit: contain;">
                         </a>
                     </div>
                     <p style="color: var(--text-dim); font-size: 0.88rem; line-height: 1.6;">
@@ -318,7 +318,7 @@
         <div class="player-inner is-hidden">
             <!-- Left: Current Playing Info -->
             <div class="player-track-info">
-                <img id="playerThumb" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100" alt="Track Cover" class="player-thumb">
+                <img decoding="async" id="playerThumb" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=100" alt="Track Cover" class="player-thumb">
                 <div class="player-details">
                     <div id="playerTitle" class="player-track-title">Tegal Laka-Laka</div>
                     <div id="playerArtist" class="player-track-artist">Alm. Ki Enthus Susmono</div>
@@ -651,6 +651,30 @@
         });
     </script>
     <script>
+        // Scroll performance: pause ambient animations while scrolling + auto lite mode on weak devices
+        (() => {
+            const root = document.documentElement;
+            const cores = navigator.hardwareConcurrency || 8;
+            const memory = navigator.deviceMemory || 8;
+            const saveData = navigator.connection && navigator.connection.saveData;
+            if (cores <= 4 || memory <= 4 || saveData) {
+                root.classList.add('aero-lite');
+            }
+
+            let scrollTimer = null;
+            document.addEventListener('scroll', () => {
+                if (scrollTimer === null) {
+                    document.body.classList.add('is-scrolling');
+                } else {
+                    clearTimeout(scrollTimer);
+                }
+                scrollTimer = setTimeout(() => {
+                    document.body.classList.remove('is-scrolling');
+                    scrollTimer = null;
+                }, 180);
+            }, { passive: true, capture: true });
+        })();
+
         // Frutiger Aero click splash: water ripple + mini bubbles at pointer position
         (() => {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

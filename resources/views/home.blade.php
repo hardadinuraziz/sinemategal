@@ -197,7 +197,7 @@
             @foreach($ticketMovies as $index => $movie)
                 <div class="movie-card">
                     <div class="movie-poster-wrap" data-trailer="{{ $movie->trailer_url }}">
-                        <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
+                        <img loading="lazy" decoding="async" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
                         <div class="movie-video-badge"><span class="video-pulse-dot"></span><span>Cuplikan</span></div>
                         <div style="position: absolute; top: 0.75rem; left: 0.75rem; width: 28px; height: 28px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); color: #fff; font-weight: 700; font-size: 0.85rem; border-radius: 6px; display: flex; align-items: center; justify-content: center; z-index: 3;">
                             {{ $loop->iteration }}
@@ -259,7 +259,7 @@
             @foreach($featuredTracks as $track)
                 <div class="track-card" data-track-id="{{ $track->id }}" onclick="window.playTrackById({{ $track->id }})">
                     <div class="track-cover-wrap">
-                        <img src="{{ $track->cover_url }}" alt="{{ $track->title }}" class="track-cover">
+                        <img loading="lazy" decoding="async" src="{{ $track->cover_url }}" alt="{{ $track->title }}" class="track-cover">
                         <div class="track-play-hover">▶</div>
                     </div>
                     <div class="track-card-info">
@@ -301,7 +301,7 @@
             @foreach($vipMovies as $movie)
                 <div class="movie-card">
                     <div class="movie-poster-wrap" data-trailer="{{ $movie->trailer_url }}">
-                        <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
+                        <img loading="lazy" decoding="async" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
                         <div class="movie-video-badge"><span class="video-pulse-dot"></span><span>Cuplikan</span></div>
                         <div class="movie-badge-top">
                             <span class="badge badge-vip">VIP SEBAYU</span>
@@ -360,7 +360,7 @@
             @foreach($freeMovies as $movie)
                 <div class="movie-card">
                     <div class="movie-poster-wrap" data-trailer="{{ $movie->trailer_url }}">
-                        <img src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
+                        <img loading="lazy" decoding="async" src="{{ $movie->poster_url }}" alt="{{ $movie->title }}" class="movie-poster" loading="lazy">
                         <div class="movie-video-badge"><span class="video-pulse-dot"></span><span>Cuplikan</span></div>
                         <div class="movie-badge-top">
                             <span class="badge badge-free">GRATIS</span>
