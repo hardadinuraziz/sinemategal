@@ -238,6 +238,8 @@
         return;
       }
       stopYoutubeEmbed();
+      document.getElementById('dearGodUnlockBtn')?.remove();
+      audio.loop = false;
       audio.src = data.track.audio_url;
       audio.load();
       await audio.play();

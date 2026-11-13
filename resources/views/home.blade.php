@@ -424,3 +424,97 @@
     </section>
 </div>
 @endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = window.SinemaAudio;
+        if (!audio) {
+            return;
+        }
+
+        const dearGodSrc = '/audio/dear-god-avenged-sevenfold.mp3';
+        const bottomPlayer = document.getElementById('bottomPlayer');
+        const playerInner = bottomPlayer?.querySelector('.player-inner');
+        const playIcon = document.getElementById('playerPlayIcon');
+        const titleEl = document.getElementById('playerTitle');
+        const artistEl = document.getElementById('playerArtist');
+        const thumbImg = document.getElementById('playerThumb');
+
+        const setDearGodUI = (isPlaying) => {
+            if (bottomPlayer) {
+                bottomPlayer.classList.remove('is-hidden');
+                bottomPlayer.classList.toggle('is-playing', isPlaying);
+            }
+            if (playerInner) {
+                playerInner.classList.remove('is-hidden');
+            }
+            if (titleEl) {
+                titleEl.textContent = 'Dear God';
+            }
+            if (artistEl) {
+                artistEl.textContent = 'Avenged Sevenfold';
+            }
+            if (thumbImg) {
+                thumbImg.src = '/images/logo-icon.svg';
+            }
+            if (playIcon) {
+                playIcon.innerHTML = isPlaying ? '&#10074;&#10074;' : '&#9654;';
+            }
+        };
+
+        // Load Dear God if no other track is actively playing
+        if (audio.paused && (!audio.currentSrc || !audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3'))) {
+            audio.src = dearGodSrc;
+            audio.loop = true;
+            audio.volume = audio.volume || 0.75;
+            setDearGodUI(false);
+        }
+
+        const showUnlockPill = () => {
+            if (document.getElementById('dearGodUnlockBtn')) {
+                return;
+            }
+            const btn = document.createElement('button');
+            btn.id = 'dearGodUnlockBtn';
+            btn.type = 'button';
+            btn.className = 'btn btn-primary';
+            btn.style.cssText = 'position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);z-index:2100;padding:0.65rem 1.25rem;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;';
+            btn.innerHTML = '<span>🎵</span><span>Putar: Avenged Sevenfold - Dear God</span>';
+            btn.addEventListener('click', () => startDearGod());
+            document.body.appendChild(btn);
+        };
+
+        const removeUnlockPill = () => {
+            document.getElementById('dearGodUnlockBtn')?.remove();
+        };
+
+        const startDearGod = () => {
+            if (!audio.currentSrc || !audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
+                return;
+            }
+            audio.play().then(() => {
+                setDearGodUI(true);
+                removeUnlockPill();
+            }).catch(() => {
+                showUnlockPill();
+            });
+        };
+
+        if (audio.paused && audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
+            audio.play().then(() => {
+                setDearGodUI(true);
+            }).catch(() => {
+                showUnlockPill();
+                const resumeOnGesture = () => {
+                    if (audio.paused && audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
+                        startDearGod();
+                    }
+                };
+                document.addEventListener('pointerdown', resumeOnGesture, { once: true, passive: true });
+                document.addEventListener('keydown', resumeOnGesture, { once: true, passive: true });
+            });
+        }
+    });
+</script>
+@endsection
