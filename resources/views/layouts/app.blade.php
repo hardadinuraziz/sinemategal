@@ -756,6 +756,13 @@
                         <small>Gelap Sinematik, Merah Crimson &amp; Batik Tegal</small>
                     </div>
                 </button>
+                <button type="button" class="skin-option-card" data-skin-choice="winamp-silver">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 48%, #102b5c 52%, #2563eb 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Winamp Silver Blue</strong>
+                        <small>Brushed Silver Chrome, Royal Blue LCD &amp; LED Biru</small>
+                    </div>
+                </button>
             </div>
         </div>
     </div>
@@ -769,7 +776,8 @@
                 'winamp-classic': 'Winamp Classic',
                 'winamp-bento': 'Winamp Bento',
                 'cyber-synth': 'Cyber Synthwave',
-                'cinema-classic': 'Cinema Film (Original)'
+                'cinema-classic': 'Cinema Film (Original)',
+                'winamp-silver': 'Winamp Silver Blue'
             };
 
             const modal = document.getElementById('skinBrowserModal');

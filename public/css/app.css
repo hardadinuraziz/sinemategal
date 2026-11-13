@@ -4377,8 +4377,14 @@ html[data-skin="winamp-classic"] .movie-card,
 html[data-skin="winamp-classic"] .stat-card,
 html[data-skin="winamp-classic"] .site-navbar,
 html[data-skin="winamp-classic"] .bottom-player {
-  border-radius: 8px !important;
+  border-radius: 6px !important;
   border: 1.5px solid #525866 !important;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.22), inset -1px -1px 0 rgba(0, 0, 0, 0.75), 0 8px 20px rgba(0, 0, 0, 0.65) !important;
+}
+
+html[data-skin="winamp-classic"] .site-navbar,
+html[data-skin="winamp-classic"] .bottom-player {
+  border-top: 3px solid #c8a862 !important;
 }
 
 html[data-skin="winamp-classic"] .movie-card::before,
@@ -4392,17 +4398,45 @@ html[data-skin="winamp-classic"] .home-dashboard .hero-overlay {
   background: linear-gradient(90deg, rgba(16, 18, 24, 0.92) 0%, rgba(24, 27, 35, 0.7) 48%, rgba(24, 27, 35, 0.25) 100%) !important;
 }
 
+html[data-skin="winamp-classic"] .bottom-player .player-track-info,
+html[data-skin="winamp-classic"] .right-playlist-tracks {
+  background: #000000 !important;
+  border: 1px solid #3f4452 !important;
+  border-radius: 4px !important;
+  padding: 6px 8px !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.95) !important;
+}
+
 html[data-skin="winamp-classic"] .player-details,
 html[data-skin="winamp-classic"] .player-timeline,
 html[data-skin="winamp-classic"] .right-playlist-eyebrow,
-html[data-skin="winamp-classic"] .playlist-track-number {
+html[data-skin="winamp-classic"] .playlist-track-number,
+html[data-skin="winamp-classic"] .playlist-track-duration {
   color: #00ff41 !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-skin="winamp-classic"] .playlist-track-title {
+  color: #00e63b !important;
+}
+
+html[data-skin="winamp-classic"] .playlist-track-item.is-active,
+html[data-skin="winamp-classic"] .playlist-track-item:hover {
+  background: #3f4b6e !important;
 }
 
 html[data-skin="winamp-classic"] .player-track-title {
   color: #00ff41 !important;
   text-shadow: 0 0 8px rgba(0, 255, 65, 0.45);
+}
+
+html[data-skin="winamp-classic"] .player-track-artist,
+html[data-skin="winamp-classic"] .right-playlist-eyebrow {
+  color: #fde047 !important;
+}
+
+html[data-skin="winamp-classic"] .winamp-eq-bars span {
+  background: linear-gradient(180deg, #ef4444 0%, #f59e0b 35%, #00ff41 75%, #16a34a 100%) !important;
 }
 
 html[data-skin="winamp-classic"] .seek-bar-fill {
@@ -4597,6 +4631,142 @@ html[data-skin="cinema-classic"] .stat-icon {
 
 html[data-skin="cinema-classic"] .seek-bar-fill {
   background: linear-gradient(90deg, #ef4444, #f59e0b) !important;
+}
+
+/* --------------------------------------------------------------------------
+   SKIN 6: WINAMP SILVER BLUE (Chrome Silver Chassis + Royal Blue LCD)
+   -------------------------------------------------------------------------- */
+html[data-skin="winamp-silver"] {
+  --bg-main: #c7d0de;
+  --bg-surface: #dce2ec;
+  --bg-card: #e2e8f0;
+  --text-main: #0f172a;
+  --text-body: #1e293b;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --primary: #1d4ed8;
+  --neu-surface-grad: linear-gradient(180deg, #f1f5f9 0%, #d5dce7 18%, #b8c2d1 85%, #9aa6b8 100%);
+  --aero-card-grad: linear-gradient(180deg, #f8fafc 0%, #dce3ee 55%, #c5cedd 100%);
+  --aero-gel-primary: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 55%, #1e3a8a 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #60a5fa 0%, #2563eb 55%, #1d4ed8 100%);
+  --aero-gel-pill: linear-gradient(180deg, #ffffff 0%, #e2e8f0 52%, #b8c2d1 100%);
+  --neu-raised: 0 8px 20px rgba(15, 23, 42, 0.22), inset 1px 1px 0 rgba(255, 255, 255, 0.85), inset -1px -1px 0 rgba(71, 85, 105, 0.45);
+  --neu-raised-sm: 0 5px 12px rgba(15, 23, 42, 0.18), inset 1px 1px 0 rgba(255, 255, 255, 0.85), inset -1px -1px 0 rgba(71, 85, 105, 0.4);
+  --neu-raised-xs: 0 2px 6px rgba(15, 23, 42, 0.16), inset 1px 1px 0 rgba(255, 255, 255, 0.85), inset -1px -1px 0 rgba(71, 85, 105, 0.35);
+}
+
+html[data-skin="winamp-silver"] body {
+  background: #b8c2d1 !important;
+  color: #0f172a !important;
+}
+
+html[data-skin="winamp-silver"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(circle at 18% 15%, rgba(255, 255, 255, 0.55), transparent 45%),
+    linear-gradient(180deg, #dce2ec 0%, #b8c2d1 50%, #9aa6b8 100%) !important;
+}
+
+html[data-skin="winamp-silver"] .aero-bubble,
+html[data-skin="winamp-silver"] .aero-globe-orb,
+html[data-skin="winamp-silver"] .aero-sun-rays,
+html[data-skin="winamp-silver"] .aero-fx-layer,
+html[data-skin="winamp-silver"] .aero-waves {
+  display: none !important;
+}
+
+html[data-skin="winamp-silver"] .home-dashboard,
+html[data-skin="winamp-silver"] .movie-card,
+html[data-skin="winamp-silver"] .stat-card,
+html[data-skin="winamp-silver"] .site-navbar,
+html[data-skin="winamp-silver"] .bottom-player,
+html[data-skin="winamp-silver"] .skin-modal-dialog {
+  border-radius: 12px !important;
+  border: 1.5px solid #7c8798 !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(71, 85, 105, 0.4), 0 10px 24px rgba(15, 23, 42, 0.22) !important;
+}
+
+html[data-skin="winamp-silver"] .site-navbar {
+  background: linear-gradient(180deg, #f1f5f9 0%, #cbd5e1 48%, #94a3b8 100%) !important;
+}
+
+html[data-skin="winamp-silver"] .site-navbar .brand-title,
+html[data-skin="winamp-silver"] .site-navbar .brand-subtitle,
+html[data-skin="winamp-silver"] .movie-title,
+html[data-skin="winamp-silver"] .section-title,
+html[data-skin="winamp-silver"] .stat-value {
+  color: #0f172a !important;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) !important;
+}
+
+html[data-skin="winamp-silver"] .movie-meta,
+html[data-skin="winamp-silver"] .stat-label {
+  color: #475569 !important;
+}
+
+html[data-skin="winamp-silver"] .hero-overlay,
+html[data-skin="winamp-silver"] .home-dashboard .hero-overlay {
+  background: linear-gradient(90deg, rgba(13, 47, 107, 0.92) 0%, rgba(23, 65, 138, 0.72) 50%, rgba(15, 23, 42, 0.28) 100%) !important;
+  color: #ffffff !important;
+}
+
+html[data-skin="winamp-silver"] .hero-title,
+html[data-skin="winamp-silver"] .hero-synopsis,
+html[data-skin="winamp-silver"] .hero-meta {
+  color: #ffffff !important;
+}
+
+html[data-skin="winamp-silver"] .bottom-player .player-track-info,
+html[data-skin="winamp-silver"] .right-playlist-tracks {
+  background: linear-gradient(180deg, #0d2f6b 0%, #17418a 58%, #1e4fa3 100%) !important;
+  border: 1.5px solid #3b63a8 !important;
+  border-radius: 8px !important;
+  padding: 8px 10px !important;
+  box-shadow: inset 0 2px 8px rgba(5, 18, 46, 0.75), 0 1px 0 rgba(255, 255, 255, 0.65) !important;
+}
+
+html[data-skin="winamp-silver"] .player-track-title,
+html[data-skin="winamp-silver"] .player-details,
+html[data-skin="winamp-silver"] .playlist-track-title,
+html[data-skin="winamp-silver"] .playlist-track-number,
+html[data-skin="winamp-silver"] .playlist-track-duration {
+  color: #ffffff !important;
+  text-shadow: 0 0 6px rgba(147, 197, 253, 0.45);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-skin="winamp-silver"] .player-track-artist,
+html[data-skin="winamp-silver"] .player-timeline,
+html[data-skin="winamp-silver"] .right-playlist-eyebrow {
+  color: #bfdbfe !important;
+}
+
+html[data-skin="winamp-silver"] .playlist-track-item.is-active,
+html[data-skin="winamp-silver"] .playlist-track-item:hover {
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%) !important;
+  border-radius: 4px !important;
+}
+
+html[data-skin="winamp-silver"] .winamp-eq-bars span {
+  background: linear-gradient(180deg, #ffffff 0%, #93c5fd 55%, #3b82f6 100%) !important;
+}
+
+html[data-skin="winamp-silver"] .seek-bar-fill {
+  background: linear-gradient(90deg, #60a5fa, #1d4ed8) !important;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.65);
+}
+
+html[data-skin="winamp-silver"] .home-category-chip.is-active,
+html[data-skin="winamp-silver"] .nav-link.active,
+html[data-skin="winamp-silver"] .admin-tab.is-active {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  color: #ffffff !important;
+  border-color: #1e40af !important;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.45) !important;
+}
+
+html[data-skin="winamp-silver"] .stat-icon {
+  background: linear-gradient(145deg, #3b82f6, #1d4ed8) !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
