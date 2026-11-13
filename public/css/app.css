@@ -4235,6 +4235,264 @@ body > footer {
 }
 
 /* ==========================================================================
+   WINAMP-STYLE SKIN BROWSER, LIVE EQUALIZER & MULTI-SKIN ENGINE
+   ========================================================================== */
+.skin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.75rem;
+}
+
+.skin-option-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.skin-option-card:hover {
+  transform: translate3d(0, -2px, 0);
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.skin-option-card.is-selected {
+  border-color: #fef08a;
+  background: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 0 0 2px rgba(254, 240, 138, 0.45);
+}
+
+.skin-swatch {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+}
+
+.skin-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.skin-meta strong {
+  font-size: 0.86rem;
+  color: #ffffff;
+}
+
+.skin-meta small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* Live Winamp Equalizer Bars inside Audio Player */
+.winamp-eq-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5px;
+  height: 20px;
+  margin-left: auto;
+  padding: 2px 5px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
+
+.winamp-eq-bars span {
+  width: 3px;
+  height: 4px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #fef08a 0%, #4ade80 55%, #22c55e 100%);
+  transform-origin: bottom;
+}
+
+.bottom-player.is-playing .winamp-eq-bars span {
+  animation: winampEqBounce 0.65s ease-in-out infinite alternate;
+}
+
+.bottom-player.is-playing .winamp-eq-bars span:nth-child(2) { animation-delay: 0.12s; animation-duration: 0.52s; }
+.bottom-player.is-playing .winamp-eq-bars span:nth-child(3) { animation-delay: 0.24s; animation-duration: 0.72s; }
+.bottom-player.is-playing .winamp-eq-bars span:nth-child(4) { animation-delay: 0.08s; animation-duration: 0.48s; }
+.bottom-player.is-playing .winamp-eq-bars span:nth-child(5) { animation-delay: 0.3s; animation-duration: 0.6s; }
+.bottom-player.is-playing .winamp-eq-bars span:nth-child(6) { animation-delay: 0.18s; animation-duration: 0.55s; }
+
+@keyframes winampEqBounce {
+  0%   { height: 4px; }
+  100% { height: 15px; }
+}
+
+/* --------------------------------------------------------------------------
+   SKIN 2: WINAMP CLASSIC (1999 Gunmetal Chassis + Matrix Green LCD + Gold)
+   -------------------------------------------------------------------------- */
+html[data-skin="winamp-classic"] {
+  --bg-main: #1b1d24;
+  --bg-surface: #272a34;
+  --bg-card: #242731;
+  --text-main: #f8fafc;
+  --text-body: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --primary: #16a34a;
+  --neu-surface-grad: linear-gradient(180deg, #3b3f4d 0%, #2a2d37 14%, #20232b 88%, #181a20 100%);
+  --aero-card-grad: linear-gradient(180deg, #323643 0%, #242731 60%, #1b1e26 100%);
+  --aero-gel-primary: linear-gradient(180deg, #fde047 0%, #eab308 50%, #ca8a04 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #fef08a 0%, #facc15 50%, #eab308 100%);
+  --aero-gel-pill: linear-gradient(180deg, #474c5c 0%, #2f333f 50%, #22252e 100%);
+  --neu-raised: 0 8px 20px rgba(0, 0, 0, 0.7), inset 1px 1px 0 rgba(255, 255, 255, 0.22), inset -1px -1px 0 rgba(0, 0, 0, 0.65);
+  --neu-raised-sm: 0 6px 14px rgba(0, 0, 0, 0.6), inset 1px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 0 rgba(0, 0, 0, 0.6);
+  --neu-raised-xs: 0 3px 8px rgba(0, 0, 0, 0.55), inset 1px 1px 0 rgba(255, 255, 255, 0.2), inset -1px -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+html[data-skin="winamp-classic"] body {
+  background: #14161b !important;
+}
+
+html[data-skin="winamp-classic"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 65, 0.08), transparent 45%),
+    linear-gradient(180deg, #1b1d24 0%, #12141a 100%) !important;
+}
+
+html[data-skin="winamp-classic"] .aero-bubble,
+html[data-skin="winamp-classic"] .aero-globe-orb,
+html[data-skin="winamp-classic"] .aero-sun-rays,
+html[data-skin="winamp-classic"] .aero-fx-layer,
+html[data-skin="winamp-classic"] .aero-waves {
+  display: none !important;
+}
+
+html[data-skin="winamp-classic"] .home-dashboard,
+html[data-skin="winamp-classic"] .movie-card,
+html[data-skin="winamp-classic"] .stat-card,
+html[data-skin="winamp-classic"] .site-navbar,
+html[data-skin="winamp-classic"] .bottom-player {
+  border-radius: 8px !important;
+  border: 1.5px solid #525866 !important;
+}
+
+html[data-skin="winamp-classic"] .movie-card::before,
+html[data-skin="winamp-classic"] .stat-card::before,
+html[data-skin="winamp-classic"] .hero-banner::before {
+  display: none !important;
+}
+
+html[data-skin="winamp-classic"] .hero-overlay,
+html[data-skin="winamp-classic"] .home-dashboard .hero-overlay {
+  background: linear-gradient(90deg, rgba(16, 18, 24, 0.92) 0%, rgba(24, 27, 35, 0.7) 48%, rgba(24, 27, 35, 0.25) 100%) !important;
+}
+
+html[data-skin="winamp-classic"] .player-details,
+html[data-skin="winamp-classic"] .player-timeline,
+html[data-skin="winamp-classic"] .right-playlist-eyebrow,
+html[data-skin="winamp-classic"] .playlist-track-number {
+  color: #00ff41 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+html[data-skin="winamp-classic"] .player-track-title {
+  color: #00ff41 !important;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.45);
+}
+
+html[data-skin="winamp-classic"] .seek-bar-fill {
+  background: linear-gradient(90deg, #00ff41, #fde047) !important;
+}
+
+/* --------------------------------------------------------------------------
+   SKIN 3: WINAMP BENTO MODERN (Sleek Charcoal Slate + Electric Cyan)
+   -------------------------------------------------------------------------- */
+html[data-skin="winamp-bento"] {
+  --bg-main: #0f172a;
+  --neu-surface-grad: linear-gradient(180deg, rgba(30, 41, 59, 0.96) 0%, rgba(15, 23, 42, 0.98) 100%);
+  --aero-card-grad: linear-gradient(165deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+  --aero-gel-primary: linear-gradient(180deg, #38bdf8 0%, #0284c7 55%, #0369a1 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #7dd3fc 0%, #0ea5e9 55%, #0284c7 100%);
+  --aero-gel-pill: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+}
+
+html[data-skin="winamp-bento"] body {
+  background: #0b1120 !important;
+}
+
+html[data-skin="winamp-bento"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(circle at 80% 15%, rgba(0, 212, 255, 0.16), transparent 45%),
+    linear-gradient(180deg, #0f172a 0%, #090d16 100%) !important;
+}
+
+html[data-skin="winamp-bento"] .aero-fx-layer,
+html[data-skin="winamp-bento"] .aero-waves,
+html[data-skin="winamp-bento"] .aero-bubble,
+html[data-skin="winamp-bento"] .aero-sun-rays {
+  display: none !important;
+}
+
+html[data-skin="winamp-bento"] .hero-overlay,
+html[data-skin="winamp-bento"] .home-dashboard .hero-overlay {
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 48%, rgba(15, 23, 42, 0.15) 100%) !important;
+}
+
+html[data-skin="winamp-bento"] .btn-primary,
+html[data-skin="winamp-bento"] .btn-crimson,
+html[data-skin="winamp-bento"] .player-play-btn {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   SKIN 4: CYBER SYNTHWAVE (Midnight Violet + Hot Magenta + Neon Cyan)
+   -------------------------------------------------------------------------- */
+html[data-skin="cyber-synth"] {
+  --bg-main: #19052b;
+  --neu-surface-grad: linear-gradient(180deg, rgba(59, 13, 99, 0.94) 0%, rgba(25, 5, 43, 0.96) 100%);
+  --aero-card-grad: linear-gradient(165deg, rgba(76, 17, 122, 0.92) 0%, rgba(29, 7, 51, 0.96) 100%);
+  --aero-gel-primary: linear-gradient(180deg, #ff5ca8 0%, #ec4899 50%, #be185d 100%);
+  --aero-gel-primary-hover: linear-gradient(180deg, #f472b6 0%, #db2777 50%, #9d174d 100%);
+  --aero-gel-pill: linear-gradient(180deg, rgba(107, 33, 168, 0.85) 0%, rgba(59, 7, 100, 0.95) 100%);
+}
+
+html[data-skin="cyber-synth"] body {
+  background: #140424 !important;
+}
+
+html[data-skin="cyber-synth"] .frutiger-aero-scene {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 42, 133, 0.24), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(0, 245, 212, 0.18), transparent 45%),
+    linear-gradient(180deg, #19052b 0%, #0c0217 100%) !important;
+}
+
+html[data-skin="cyber-synth"] .fx-fish,
+html[data-skin="cyber-synth"] .fx-gull,
+html[data-skin="cyber-synth"] .fx-leaf,
+html[data-skin="cyber-synth"] .aero-waves {
+  display: none !important;
+}
+
+html[data-skin="cyber-synth"] .hero-overlay,
+html[data-skin="cyber-synth"] .home-dashboard .hero-overlay {
+  background: linear-gradient(90deg, rgba(25, 5, 43, 0.9) 0%, rgba(88, 28, 135, 0.55) 48%, rgba(25, 5, 43, 0.15) 100%) !important;
+}
+
+html[data-skin="cyber-synth"] .btn-primary,
+html[data-skin="cyber-synth"] .btn-crimson,
+html[data-skin="cyber-synth"] .player-play-btn {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================================================
    SCROLL PERFORMANCE GUARD (must stay at the very end of the file)
    ========================================================================== */
 

@@ -12,6 +12,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
+    <!-- Apply saved Winamp-style skin before first paint -->
+    <script>
+        (function () {
+            try {
+                var savedSkin = localStorage.getItem('sinema_tegal_skin') || 'aero';
+                document.documentElement.dataset.skin = savedSkin;
+            } catch (e) {
+                document.documentElement.dataset.skin = 'aero';
+            }
+        })();
+    </script>
+
     <!-- Vanilla CSS Stylesheet (Root Relative to prevent HTTPS Mixed Content) -->
     <link rel="stylesheet" href="/css/app.css?v={{ filemtime(public_path('css/app.css')) }}">
     @yield('styles')
@@ -198,6 +210,13 @@
                     </div>
                 </a>
                 @endauth
+                <button type="button" class="mobile-nav-link" data-open-skin-browser style="width: 100%; text-align: left; background: transparent; border: 0; cursor: pointer;">
+                    <span style="font-size: 1.05rem;">🎨</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                        <span>Winamp Skin / Tema</span>
+                        <span class="active-skin-label" style="font-size: 0.72rem; opacity: 0.9;">Frutiger Aero</span>
+                    </div>
+                </button>
             </nav>
 
             <div class="mobile-nav-footer">
@@ -257,7 +276,11 @@
             <a href="{{ route('home') }}" style="display: inline-flex; align-items: center;">
                 <img decoding="async" src="/images/logo.svg" alt="Bahari Pantura - Sinema Tegal" style="height: clamp(54px, 7vw, 76px); width: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.35));">
             </a>
-            <div style="display: flex; align-items: center; gap: 0.6rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                <button type="button" class="btn btn-secondary btn-sm winamp-skin-trigger" data-open-skin-browser style="font-size: 0.75rem; padding: 0.35rem 0.85rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                    <span>🎨</span>
+                    <span>Skin: <strong class="active-skin-label">Frutiger Aero</strong></span>
+                </button>
                 <span class="badge badge-vip" style="font-size: 0.72rem; padding: 0.35rem 0.85rem;">⚡ STREAMING FILM & NADA PANTURA</span>
             </div>
         </div>
@@ -324,6 +347,9 @@
                     <div id="playerTitle" class="player-track-title">Tegal Laka-Laka</div>
                     <div id="playerArtist" class="player-track-artist">Alm. Ki Enthus Susmono</div>
                 </div>
+                <div class="winamp-eq-bars" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
             </div>
 
             <!-- Center: Controls & Timeline -->
@@ -350,6 +376,9 @@
 
             <!-- Right: Extra Actions & Volume -->
             <div class="player-extras">
+                <button type="button" class="btn btn-secondary btn-sm" data-open-skin-browser title="Ganti Skin Winamp" style="font-size: 0.75rem; padding: 0.25rem 0.55rem;">
+                    🎨
+                </button>
                 <button type="button" id="playlistToggleBtn" class="btn btn-secondary btn-sm playlist-toggle-btn" aria-expanded="false" aria-controls="rightPlaylistPanel">
                     Koleksi Musik
                 </button>
@@ -671,6 +700,122 @@
                 document.body.appendChild(splash);
                 setTimeout(() => splash.remove(), 750);
             }, { passive: true });
+        })();
+    </script>
+    <!-- Winamp-Style Skin / Theme Browser Modal -->
+    <div id="skinBrowserModal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-dialog winamp-skin-dialog" style="max-width: 560px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-subtle);">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <img decoding="async" src="/images/logo-icon.svg" alt="" style="width: 28px; height: 28px;">
+                    <div>
+                        <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800;">Winamp Skin Browser</h3>
+                        <p style="margin: 0; font-size: 0.75rem; color: var(--text-muted);">Pilih tema tampilan Sinema Tegal secara instan</p>
+                    </div>
+                </div>
+                <button type="button" id="closeSkinBrowserBtn" class="modal-close" aria-label="Tutup">✕</button>
+            </div>
+
+            <div class="skin-grid">
+                <button type="button" class="skin-option-card" data-skin-choice="aero">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #38bdf8 0%, #0284c7 50%, #10b981 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Frutiger Aero</strong>
+                        <small>Sky Aqua, Rumput Segar, Gelembung &amp; Ikan</small>
+                    </div>
+                </button>
+
+                <button type="button" class="skin-option-card" data-skin-choice="winamp-classic">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #333844 0%, #1d2028 60%, #00ff41 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Winamp Classic (1999)</strong>
+                        <small>Bodi Metal Gelap, LCD Hijau Matrix &amp; Emas</small>
+                    </div>
+                </button>
+
+                <button type="button" class="skin-option-card" data-skin-choice="winamp-bento">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 60%, #00d4ff 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Winamp Bento Modern</strong>
+                        <small>Slate Gelap, Aksen Cyan Elektrik &amp; Tajam</small>
+                    </div>
+                </button>
+
+                <button type="button" class="skin-option-card" data-skin-choice="cyber-synth">
+                    <span class="skin-swatch" style="background: linear-gradient(135deg, #2b0945 0%, #19052b 55%, #ff2a85 100%);"></span>
+                    <div class="skin-meta">
+                        <strong>Cyber Synthwave</strong>
+                        <small>Ungu Malam, Neon Magenta &amp; Cyan Glow</small>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Winamp-style Skin / Theme Switcher Engine
+        (() => {
+            const SKIN_KEY = 'sinema_tegal_skin';
+            const SKIN_LABELS = {
+                'aero': 'Frutiger Aero',
+                'winamp-classic': 'Winamp Classic',
+                'winamp-bento': 'Winamp Bento',
+                'cyber-synth': 'Cyber Synthwave'
+            };
+
+            const modal = document.getElementById('skinBrowserModal');
+            const closeBtn = document.getElementById('closeSkinBrowserBtn');
+
+            const applySkin = (skinName) => {
+                const skin = SKIN_LABELS[skinName] ? skinName : 'aero';
+                document.documentElement.dataset.skin = skin;
+                try {
+                    localStorage.setItem(SKIN_KEY, skin);
+                } catch (e) {}
+
+                document.querySelectorAll('.active-skin-label').forEach((el) => {
+                    el.textContent = SKIN_LABELS[skin];
+                });
+                document.querySelectorAll('.skin-option-card').forEach((btn) => {
+                    btn.classList.toggle('is-selected', btn.dataset.skinChoice === skin);
+                });
+            };
+
+            window.setSinemaSkin = applySkin;
+            applySkin(document.documentElement.dataset.skin || 'aero');
+
+            const openModal = () => {
+                if (!modal) return;
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+            };
+
+            const closeModal = () => {
+                if (!modal) return;
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+            };
+
+            document.querySelectorAll('[data-open-skin-browser]').forEach((trigger) => {
+                trigger.addEventListener('click', () => {
+                    document.getElementById('mobileNavDrawer')?.classList.remove('is-open');
+                    openModal();
+                });
+            });
+
+            closeBtn?.addEventListener('click', closeModal);
+            modal?.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal?.classList.contains('is-open')) closeModal();
+            });
+
+            document.querySelectorAll('.skin-option-card').forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    applySkin(btn.dataset.skinChoice);
+                });
+            });
         })();
     </script>
     @yield('scripts')
