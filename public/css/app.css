@@ -4206,15 +4206,24 @@ body > footer {
 }
 
 @media (max-width: 640px) {
+  .brand-icon-logo {
+    height: auto !important;
+  }
+
   .logo-mobile-full {
-    height: 28px !important;
-    max-width: 132px !important;
+    height: 40px !important;
+    max-width: 178px !important;
+    width: auto !important;
+  }
+
+  .nav-actions {
+    gap: 0.3rem !important;
   }
 
   .nav-actions > .btn,
   .nav-actions .user-wallet-badge {
-    padding: 0.36rem 0.68rem !important;
-    font-size: 0.74rem !important;
+    padding: 0.34rem 0.6rem !important;
+    font-size: 0.72rem !important;
   }
 
   .mobile-menu-toggle {
