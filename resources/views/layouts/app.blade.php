@@ -89,11 +89,6 @@
         <span class="fx-wisp fw7"></span>
         <span class="fx-wisp fw8"></span>
 
-        <div class="fx-ghost fg-pocong"><div class="fx-ghost-hop"><img decoding="async" src="/images/ghost-pocong.svg" alt=""></div></div>
-        <div class="fx-ghost fg-kunti is-reverse"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-kuntilanak.svg" alt=""></div></div>
-        <div class="fx-ghost fg-tuyul"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-tuyul.svg" alt=""></div></div>
-        <div class="fx-ghost fg-genderuwo is-reverse"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-genderuwo.svg" alt=""></div></div>
-        <div class="fx-ghost fg-banaspati"><div class="fx-ghost-bob"><img decoding="async" src="/images/ghost-banaspati.svg" alt=""></div></div>
         <div class="fx-spider-pocong sp1"><div class="fx-spider-cord"></div><img decoding="async" src="/images/ghost-pocong-spider.png" alt=""></div>
         <div class="fx-spider-pocong sp2"><div class="fx-spider-cord"></div><img decoding="async" src="/images/ghost-pocong-spider.png" alt=""></div>
         <div class="fx-spider-pocong sp3"><div class="fx-spider-cord"></div><img decoding="async" src="/images/ghost-pocong-spider.png" alt=""></div>
