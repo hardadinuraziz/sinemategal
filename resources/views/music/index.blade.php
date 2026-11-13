@@ -116,11 +116,7 @@
 
                     <div class="track-card-right">
                         <div style="display: flex; align-items: center; gap: 0.75rem;">
-                            @if($track->access_type === 'vip')
-                                <span class="badge badge-vip">VIP</span>
-                            @else
-                                <span class="badge badge-free">GRATIS</span>
-                            @endif
+                            <span class="badge badge-free">GRATIS</span>
 
                             <a href="{{ route('music.show', $track->slug) }}" class="btn btn-secondary btn-sm" style="font-size: 0.75rem; padding: 0.25rem 0.6rem;" title="Lirik & Terjemahan">
                                 Lirik

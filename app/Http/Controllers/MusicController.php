@@ -39,8 +39,7 @@ class MusicController extends Controller
     {
         $track = Track::with('category')->where('slug', $slug)->firstOrFail();
         $relatedTracks = Track::where('id', '!=', $track->id)->take(5)->get();
-        $user = Auth::user();
-        $accessCheck = $user ? $user->canAccessTrack($track) : ['allowed' => ($track->access_type === 'free'), 'reason' => 'guest'];
+        $accessCheck = ['allowed' => true, 'reason' => 'free'];
 
         return view('music.show', compact('track', 'relatedTracks', 'accessCheck'));
     }
@@ -48,17 +47,6 @@ class MusicController extends Controller
     public function playTrack($id)
     {
         $track = Track::findOrFail($id);
-        $user = Auth::user();
-
-        if ($track->access_type === 'vip') {
-            if (!$user || !$user->hasVipAccess()) {
-                return response()->json([
-                    'allowed' => false,
-                    'message' => 'Tembang kiye khusus Anggota VIP Dulur Wasgitel. Monggo langganan dhisit!',
-                    'track' => $track,
-                ], 403);
-            }
-        }
 
         $track->increment('plays_count');
 
@@ -73,7 +61,7 @@ class MusicController extends Controller
                 'audio_url' => $track->audio_url,
                 'duration_seconds' => $track->duration_seconds,
                 'duration_string' => $track->duration_string,
-                'access_type' => $track->access_type,
+                'access_type' => 'free',
                 'lyrics' => $track->lyrics,
             ]
         ]);

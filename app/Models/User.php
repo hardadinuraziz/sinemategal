@@ -114,26 +114,7 @@ class User extends Authenticatable
 
     public function canAccessTrack(Track $track): array
     {
-        if ($this->role === 'admin') {
-            return ['allowed' => true, 'reason' => 'admin'];
-        }
-
-        if ($track->access_type === 'free') {
-            return ['allowed' => true, 'reason' => 'free'];
-        }
-
-        if ($track->access_type === 'vip') {
-            if ($this->hasVipAccess()) {
-                return ['allowed' => true, 'reason' => 'vip_active'];
-            }
-            return [
-                'allowed' => false,
-                'reason' => 'need_vip',
-                'message' => 'Lagu kiye eksklusif nggo Anggota VIP Dulur Wasgitel.'
-            ];
-        }
-
-        return ['allowed' => true, 'reason' => 'default'];
+        return ['allowed' => true, 'reason' => 'free'];
     }
 
     public function subscriptions()
