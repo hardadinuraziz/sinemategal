@@ -467,11 +467,14 @@
         if (audio.paused && (!audio.currentSrc || !audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3'))) {
             audio.src = dearGodSrc;
             audio.loop = true;
+            audio.autoplay = true;
+            audio.playsInline = true;
             audio.volume = audio.volume || 0.75;
+            audio.muted = false;
             setDearGodUI(false);
         }
 
-        const showUnlockPill = () => {
+        const showUnlockPill = (isMutedPlaying = false) => {
             if (document.getElementById('dearGodUnlockBtn')) {
                 return;
             }
@@ -480,7 +483,9 @@
             btn.type = 'button';
             btn.className = 'btn btn-primary';
             btn.style.cssText = 'position:fixed;bottom:1.25rem;left:50%;transform:translateX(-50%);z-index:2100;padding:0.65rem 1.25rem;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;';
-            btn.innerHTML = '<span>🎵</span><span>Putar: Avenged Sevenfold - Dear God</span>';
+            btn.innerHTML = isMutedPlaying
+                ? '<span>🔊</span><span>Aktifkan Suara: Avenged Sevenfold - Dear God</span>'
+                : '<span>🎵</span><span>Putar: Avenged Sevenfold - Dear God</span>';
             btn.addEventListener('click', () => startDearGod());
             document.body.appendChild(btn);
         };
@@ -493,26 +498,39 @@
             if (!audio.currentSrc || !audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
                 return;
             }
+            audio.muted = false;
             audio.play().then(() => {
                 setDearGodUI(true);
                 removeUnlockPill();
             }).catch(() => {
-                showUnlockPill();
+                showUnlockPill(false);
             });
         };
 
         if (audio.paused && audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
+            // 1. Try full unmuted autoplay immediately
             audio.play().then(() => {
+                audio.muted = false;
                 setDearGodUI(true);
             }).catch(() => {
-                showUnlockPill();
-                const resumeOnGesture = () => {
-                    if (audio.paused && audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
+                // 2. Browser blocked unmuted autoplay: start muted autoplay immediately so track runs from 0:00,
+                //    then unmute seamlessly on the first user gesture
+                audio.muted = true;
+                audio.play().then(() => {
+                    setDearGodUI(true);
+                    showUnlockPill(true);
+                }).catch(() => {
+                    showUnlockPill(false);
+                });
+
+                const unmuteOnGesture = () => {
+                    if (audio.currentSrc && audio.currentSrc.includes('dear-god-avenged-sevenfold.mp3')) {
                         startDearGod();
                     }
                 };
-                document.addEventListener('pointerdown', resumeOnGesture, { once: true, passive: true });
-                document.addEventListener('keydown', resumeOnGesture, { once: true, passive: true });
+                document.addEventListener('pointerdown', unmuteOnGesture, { once: true, passive: true });
+                document.addEventListener('touchstart', unmuteOnGesture, { once: true, passive: true });
+                document.addEventListener('keydown', unmuteOnGesture, { once: true, passive: true });
             });
         }
     });
