@@ -4065,16 +4065,21 @@ body > footer {
   background-attachment: scroll !important;
 }
 
-/* 4. Disable hover lift/shine while scrolling so cards under the cursor don't repaint */
-body.is-scrolling .movie-card,
-body.is-scrolling .track-card,
-body.is-scrolling .stat-card,
-body.is-scrolling .culture-gallery-card,
-body.is-scrolling .btn {
-  pointer-events: none;
+/* 2. Keep all ambient Frutiger Aero animations running smoothly on their own GPU compositor layers during scroll */
+.aero-fx-layer,
+.aero-waves {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
-/* 5. Skip rendering of off-screen cards until they are near the viewport */
+.aero-fx-layer *,
+.frutiger-aero-scene *,
+.aero-waves *,
+.nav-link.active {
+  animation-play-state: running !important;
+}
+
+/* 3. Skip rendering of off-screen cards until they are near the viewport */
 .movie-card,
 .track-card,
 .culture-gallery-card {

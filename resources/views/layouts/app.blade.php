@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
     <!-- Vanilla CSS Stylesheet (Root Relative to prevent HTTPS Mixed Content) -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/app.css?v={{ filemtime(public_path('css/app.css')) }}">
     @yield('styles')
 </head>
 <body>
@@ -651,22 +651,6 @@
         });
     </script>
     <script>
-        // Scroll performance: disable card hover hit-testing while scrolling (animations keep running)
-        (() => {
-            let scrollTimer = null;
-            document.addEventListener('scroll', () => {
-                if (scrollTimer === null) {
-                    document.body.classList.add('is-scrolling');
-                } else {
-                    clearTimeout(scrollTimer);
-                }
-                scrollTimer = setTimeout(() => {
-                    document.body.classList.remove('is-scrolling');
-                    scrollTimer = null;
-                }, 180);
-            }, { passive: true, capture: true });
-        })();
-
         // Frutiger Aero click splash: water ripple + mini bubbles at pointer position
         (() => {
             if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
