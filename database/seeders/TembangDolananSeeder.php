@@ -145,6 +145,14 @@ class TembangDolananSeeder extends Seeder
                 'audio_url' => '/audio/dear-god-avenged-sevenfold.mp3',
                 'description' => 'Lagu pilihan pengguna (Avenged Sevenfold - Dear God).',
             ],
+            [
+                'title' => "Doin' Time",
+                'slug' => 'doin-time-lana-del-rey',
+                'artist' => 'Lana Del Rey',
+                'duration_seconds' => 265,
+                'audio_url' => '/audio/musik-jawa/doin-time-lana-del-rey.mp3',
+                'description' => "Lagu pilihan pengguna (Lana Del Rey - Doin' Time).",
+            ],
         ];
 
         $jawaTracks = [];
