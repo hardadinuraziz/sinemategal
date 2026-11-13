@@ -651,16 +651,8 @@
         });
     </script>
     <script>
-        // Scroll performance: pause ambient animations while scrolling + auto lite mode on weak devices
+        // Scroll performance: disable card hover hit-testing while scrolling (animations keep running)
         (() => {
-            const root = document.documentElement;
-            const cores = navigator.hardwareConcurrency || 8;
-            const memory = navigator.deviceMemory || 8;
-            const saveData = navigator.connection && navigator.connection.saveData;
-            if (cores <= 4 || memory <= 4 || saveData) {
-                root.classList.add('aero-lite');
-            }
-
             let scrollTimer = null;
             document.addEventListener('scroll', () => {
                 if (scrollTimer === null) {
