@@ -4,14 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\WalletTransaction;
 
 class WalletController extends Controller
 {
     public function index()
     {
         $user = Auth::user();
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('login');
         }
 
@@ -23,7 +22,7 @@ class WalletController extends Controller
     public function topup(Request $request)
     {
         $user = Auth::user();
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('login');
         }
 
@@ -32,20 +31,25 @@ class WalletController extends Controller
             'method' => 'required|string',
         ]);
 
-        $amount = (float) $validated['amount'];
+        $amount = (int) $validated['amount'];
         $method = $validated['method'];
+        $methodMap = [
+            'QRIS' => 'qris',
+            'BCA' => 'tf_bca',
+            'BRI' => 'tf_bri',
+            'Mandiri' => 'tf_mandiri',
+            'BNI' => 'tf_bni',
+        ];
+        $paymentMethod = $methodMap[$method] ?? (str_starts_with($method, 'tf_') || $method === 'qris' ? $method : 'qris');
 
-        $user->wallet_balance += $amount;
-        $user->save();
+        $order = app(PaymentController::class)->createOrder(
+            user: $user,
+            purpose: 'topup',
+            amount: $amount,
+            paymentMethod: $paymentMethod,
+            itemName: 'Top-up Saldo Dompet Bahari',
+        );
 
-        WalletTransaction::create([
-            'user_id' => $user->id,
-            'type' => 'topup',
-            'amount' => $amount,
-            'reference_id' => 'TOPUP-' . strtoupper(uniqid()),
-            'description' => "Top-up Saldo via {$method}",
-        ]);
-
-        return redirect()->route('wallet.index')->with('success', 'Top-up saldo Dompet Bahari kasil! Tambah Rp ' . number_format($amount, 0, ',', '.') . '.');
+        return redirect()->route('payments.checkout', $order->order_id);
     }
 }

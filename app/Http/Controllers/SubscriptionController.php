@@ -108,38 +108,49 @@ class SubscriptionController extends Controller
             }
 
             $user->wallet_balance -= $price;
+
+            // Hitung masa aktif
+            $startsAt = Carbon::now();
+            $expiresAt = ($user->hasVipAccess() && $user->vip_expires_at)
+                ? $user->vip_expires_at->copy()->addDays($plan['days'])
+                : $startsAt->copy()->addDays($plan['days']);
+
+            $user->is_vip = true;
+            $user->vip_plan = $plan['name'];
+            $user->vip_expires_at = $expiresAt;
+            $user->save();
+
+            Subscription::create([
+                'user_id' => $user->id,
+                'plan_code' => $validated['plan_code'],
+                'plan_name' => $plan['name'],
+                'price_paid' => $price,
+                'payment_method' => $paymentMethod,
+                'status' => 'active',
+                'starts_at' => $startsAt,
+                'expires_at' => $expiresAt,
+            ]);
+
+            WalletTransaction::create([
+                'user_id' => $user->id,
+                'type' => 'purchase_subscription',
+                'amount' => $price,
+                'reference_id' => 'SUB-'.strtoupper(uniqid()),
+                'description' => "Langganan VIP: {$plan['name']} ({$methodLabel})",
+            ]);
+
+            return redirect()->route('subscriptions.index')->with('success', "Pembayaran via {$methodLabel} berhasil! Sampeyan saiki dadi Anggota VIP Sinema Tegal ({$plan['name']}) tekan tanggal ".$expiresAt->format('d M Y').'!');
         }
 
-        // Hitung masa aktif
-        $startsAt = Carbon::now();
-        $expiresAt = ($user->hasVipAccess() && $user->vip_expires_at)
-            ? $user->vip_expires_at->copy()->addDays($plan['days'])
-            : $startsAt->copy()->addDays($plan['days']);
+        $order = app(PaymentController::class)->createOrder(
+            user: $user,
+            purpose: 'subscription',
+            amount: (int) $price,
+            paymentMethod: $paymentMethod,
+            itemName: $plan['name'],
+            targetCode: $validated['plan_code'],
+        );
 
-        $user->is_vip = true;
-        $user->vip_plan = $plan['name'];
-        $user->vip_expires_at = $expiresAt;
-        $user->save();
-
-        Subscription::create([
-            'user_id' => $user->id,
-            'plan_code' => $validated['plan_code'],
-            'plan_name' => $plan['name'],
-            'price_paid' => $price,
-            'payment_method' => $paymentMethod,
-            'status' => 'active',
-            'starts_at' => $startsAt,
-            'expires_at' => $expiresAt,
-        ]);
-
-        WalletTransaction::create([
-            'user_id' => $user->id,
-            'type' => 'purchase_subscription',
-            'amount' => $price,
-            'reference_id' => 'SUB-'.strtoupper(uniqid()),
-            'description' => "Langganan VIP: {$plan['name']} ({$methodLabel})",
-        ]);
-
-        return redirect()->route('subscriptions.index')->with('success', "Pembayaran via {$methodLabel} berhasil! Sampeyan saiki dadi Anggota VIP Sinema Tegal ({$plan['name']}) tekan tanggal ".$expiresAt->format('d M Y').'!');
+        return redirect()->route('payments.checkout', $order->order_id);
     }
 }

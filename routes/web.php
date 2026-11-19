@@ -1,14 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\WalletController;
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 
 // Beranda Sinema Tegal
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -43,6 +44,13 @@ Route::get('/my-tickets', [TicketController::class, 'myTickets'])->name('tickets
 // Dompet Bahari & Transaksi
 Route::get('/wallet', [WalletController::class, 'index'])->name('wallet.index');
 Route::post('/wallet/topup', [WalletController::class, 'topup'])->name('wallet.topup');
+
+// Payment Gateway (Midtrans Snap + Webhook + Checkout)
+Route::post('/payments/midtrans/webhook', [PaymentController::class, 'webhook'])->name('payments.webhook');
+Route::get('/payments/{orderId}', [PaymentController::class, 'checkout'])->name('payments.checkout');
+Route::post('/payments/{orderId}/check-status', [PaymentController::class, 'checkStatus'])->name('payments.check-status');
+Route::post('/payments/{orderId}/simulate-paid', [PaymentController::class, 'simulatePaid'])->name('payments.simulate-paid');
+Route::post('/payments/{orderId}/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
 
 // Admin / Kurator Hub
 Route::prefix('admin')->group(function () {

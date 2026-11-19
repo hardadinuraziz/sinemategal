@@ -117,29 +117,40 @@ class MovieController extends Controller
             // Kurangi saldo user
             $user->wallet_balance -= $ticketPrice;
             $user->save();
+
+            // Buat tiket
+            $ticketCode = 'TGL-'.strtoupper(Str::random(8));
+            Ticket::create([
+                'ticket_code' => $ticketCode,
+                'user_id' => $user->id,
+                'movie_id' => $movie->id,
+                'price_paid' => $ticketPrice,
+                'payment_method' => $paymentMethod,
+                'status' => 'active',
+                'valid_until' => Carbon::now()->addDays(7),
+            ]);
+
+            // Catat transaksi
+            WalletTransaction::create([
+                'user_id' => $user->id,
+                'type' => 'purchase_ticket',
+                'amount' => $ticketPrice,
+                'reference_id' => $ticketCode,
+                'description' => "Pembelian Tiket Premiere: {$movie->title} ({$methodLabel})",
+            ]);
+
+            return redirect()->route('movies.watch', $movie->slug)->with('success', "Pembayaran via {$methodLabel} berhasil! Kode Tiket: {$ticketCode}. Selamat nonton, dulur!");
         }
 
-        // Buat tiket
-        $ticketCode = 'TGL-'.strtoupper(Str::random(8));
-        $ticket = Ticket::create([
-            'ticket_code' => $ticketCode,
-            'user_id' => $user->id,
-            'movie_id' => $movie->id,
-            'price_paid' => $ticketPrice,
-            'payment_method' => $paymentMethod,
-            'status' => 'active',
-            'valid_until' => Carbon::now()->addDays(7),
-        ]);
+        $order = app(PaymentController::class)->createOrder(
+            user: $user,
+            purpose: 'ticket',
+            amount: (int) $ticketPrice,
+            paymentMethod: $paymentMethod,
+            itemName: "Tiket Premiere: {$movie->title}",
+            targetId: $movie->id,
+        );
 
-        // Catat transaksi
-        WalletTransaction::create([
-            'user_id' => $user->id,
-            'type' => 'purchase_ticket',
-            'amount' => $ticketPrice,
-            'reference_id' => $ticketCode,
-            'description' => "Pembelian Tiket Premiere: {$movie->title} ({$methodLabel})",
-        ]);
-
-        return redirect()->route('movies.watch', $movie->slug)->with('success', "Pembayaran via {$methodLabel} berhasil! Kode Tiket: {$ticketCode}. Selamat nonton, dulur!");
+        return redirect()->route('payments.checkout', $order->order_id);
     }
 }

@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Movie;
+use App\Models\PaymentOrder;
 use App\Models\User;
 use App\Providers\AppServiceProvider;
 use Illuminate\Support\Facades\Config;
@@ -48,34 +49,43 @@ class ExampleTest extends TestCase
             $q->where('user_id', $user->id);
         })->first() ?? Movie::where('access_type', 'ticket')->firstOrFail();
 
-        // 1. Order ticket via Bank Transfer BCA (tf_bca)
+        // 1. Order ticket via Bank Transfer BCA (tf_bca) -> checkout -> sandbox confirm
         $ticketResponse = $this->actingAs($user)->post(route('movies.buy-ticket', $ticketMovie->id), [
             'payment_method' => 'tf_bca',
         ]);
-        $ticketResponse->assertRedirect(route('movies.watch', $ticketMovie->slug));
+        $ticketOrder = PaymentOrder::latest('id')->firstOrFail();
+        $ticketResponse->assertRedirect(route('payments.checkout', $ticketOrder->order_id));
+        $this->actingAs($user)->post(route('payments.simulate-paid', $ticketOrder->order_id))
+            ->assertRedirect(route('movies.watch', $ticketMovie->slug));
         $this->assertDatabaseHas('tickets', [
             'user_id' => $user->id,
             'movie_id' => $ticketMovie->id,
             'payment_method' => 'tf_bca',
         ]);
 
-        // 2. Order VIP subscription via QRIS (qris)
+        // 2. Order VIP subscription via QRIS (qris) -> checkout -> sandbox confirm
         $subResponse = $this->actingAs($user)->post(route('subscriptions.subscribe'), [
             'plan_code' => 'cilik_1m',
             'payment_method' => 'qris',
         ]);
-        $subResponse->assertRedirect(route('subscriptions.index'));
+        $subOrder = PaymentOrder::latest('id')->firstOrFail();
+        $subResponse->assertRedirect(route('payments.checkout', $subOrder->order_id));
+        $this->actingAs($user)->post(route('payments.simulate-paid', $subOrder->order_id))
+            ->assertRedirect(route('subscriptions.index'));
         $this->assertDatabaseHas('subscriptions', [
             'user_id' => $user->id,
             'plan_code' => 'cilik_1m',
             'payment_method' => 'qris',
         ]);
 
-        // 3. Top-up wallet via Bank Transfer Mandiri
+        // 3. Top-up wallet via Bank Transfer Mandiri -> checkout -> sandbox confirm
         $topupResponse = $this->actingAs($user)->post(route('wallet.topup'), [
             'amount' => 50000,
             'method' => 'Virtual Account Mandiri',
         ]);
-        $topupResponse->assertRedirect(route('wallet.index'));
+        $topupOrder = PaymentOrder::latest('id')->firstOrFail();
+        $topupResponse->assertRedirect(route('payments.checkout', $topupOrder->order_id));
+        $this->actingAs($user)->post(route('payments.simulate-paid', $topupOrder->order_id))
+            ->assertRedirect(route('wallet.index'));
     }
 }
