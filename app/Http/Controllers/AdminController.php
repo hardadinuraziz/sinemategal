@@ -10,6 +10,7 @@ use App\Models\Track;
 use App\Models\User;
 use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -74,44 +75,7 @@ class AdminController extends Controller
             'banner_file' => 'nullable|image|max:10240',
         ]);
 
-        if (! file_exists(public_path('videos'))) {
-            @mkdir(public_path('videos'), 0777, true);
-        }
-        if (! file_exists(public_path('images'))) {
-            @mkdir(public_path('images'), 0777, true);
-        }
-
-        // Handle uploaded video file
-        if ($request->hasFile('video_file')) {
-            $file = $request->file('video_file');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('videos'), $filename);
-            $validated['video_url'] = '/videos/'.$filename;
-        }
-
-        // Handle uploaded trailer file
-        if ($request->hasFile('trailer_file')) {
-            $file = $request->file('trailer_file');
-            $filename = 'trailer_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('videos'), $filename);
-            $validated['trailer_url'] = '/videos/'.$filename;
-        }
-
-        // Handle uploaded poster image
-        if ($request->hasFile('poster_file')) {
-            $file = $request->file('poster_file');
-            $filename = 'poster_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);
-            $validated['poster_url'] = '/images/'.$filename;
-        }
-
-        // Handle uploaded banner image
-        if ($request->hasFile('banner_file')) {
-            $file = $request->file('banner_file');
-            $filename = 'banner_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);
-            $validated['banner_url'] = '/images/'.$filename;
-        }
+        $this->handleMovieMediaUploads($request, $validated);
 
         // Fallbacks
         $validated['poster_url'] = $validated['poster_url'] ?? '/images/poster-sintren.jpg';
@@ -157,44 +121,7 @@ class AdminController extends Controller
             'banner_file' => 'nullable|image|max:10240',
         ]);
 
-        if (! file_exists(public_path('videos'))) {
-            @mkdir(public_path('videos'), 0777, true);
-        }
-        if (! file_exists(public_path('images'))) {
-            @mkdir(public_path('images'), 0777, true);
-        }
-
-        // Handle uploaded video file
-        if ($request->hasFile('video_file')) {
-            $file = $request->file('video_file');
-            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('videos'), $filename);
-            $validated['video_url'] = '/videos/'.$filename;
-        }
-
-        // Handle uploaded trailer file
-        if ($request->hasFile('trailer_file')) {
-            $file = $request->file('trailer_file');
-            $filename = 'trailer_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('videos'), $filename);
-            $validated['trailer_url'] = '/videos/'.$filename;
-        }
-
-        // Handle uploaded poster image
-        if ($request->hasFile('poster_file')) {
-            $file = $request->file('poster_file');
-            $filename = 'poster_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);
-            $validated['poster_url'] = '/images/'.$filename;
-        }
-
-        // Handle uploaded banner image
-        if ($request->hasFile('banner_file')) {
-            $file = $request->file('banner_file');
-            $filename = 'banner_'.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);
-            $validated['banner_url'] = '/images/'.$filename;
-        }
+        $this->handleMovieMediaUploads($request, $validated);
 
         $validated['ticket_price'] = $validated['access_type'] === 'ticket' ? ($validated['ticket_price'] ?? 15000) : 0;
         $validated['featured'] = $request->has('featured');
@@ -329,5 +256,88 @@ class AdminController extends Controller
         $targetUser->save();
 
         return back()->with('success', "Peran {$targetUser->name} kasil diubah dadi {$role}.");
+    }
+
+    /**
+     * @param  array<string, mixed>  $validated
+     */
+    private function handleMovieMediaUploads(Request $request, array &$validated): void
+    {
+        $uploads = [
+            'video_file' => ['dir' => 'videos', 'prefix' => '', 'column' => 'video_url'],
+            'trailer_file' => ['dir' => 'videos', 'prefix' => 'trailer_', 'column' => 'trailer_url'],
+            'poster_file' => ['dir' => 'images', 'prefix' => 'poster_', 'column' => 'poster_url'],
+            'banner_file' => ['dir' => 'images', 'prefix' => 'banner_', 'column' => 'banner_url'],
+        ];
+
+        foreach ($uploads as $field => $spec) {
+            if ($request->hasFile($field)) {
+                $validated[$spec['column']] = $this->storeUploadedMedia(
+                    $request->file($field),
+                    $spec['dir'],
+                    $spec['prefix'],
+                );
+            }
+        }
+    }
+
+    private function storeUploadedMedia(UploadedFile $file, string $subDir, string $prefix = ''): string
+    {
+        $ext = $file->getClientOriginalExtension() ?: 'bin';
+        $filename = $prefix.time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$ext;
+        $publicDir = public_path($subDir);
+
+        if ((is_dir($publicDir) || @mkdir($publicDir, 0775, true)) && is_writable($publicDir)) {
+            $file->move($publicDir, $filename);
+
+            return '/'.$subDir.'/'.$filename;
+        }
+
+        // Vercel / read-only serverless filesystem: persist images as compact data URIs in DB
+        if ($subDir === 'images') {
+            return $this->encodeImageAsDataUri($file);
+        }
+
+        // Videos on read-only serverless: move to /tmp/uploads/{subDir}
+        $tmpDir = "/tmp/uploads/{$subDir}";
+        if (! is_dir($tmpDir)) {
+            @mkdir($tmpDir, 0775, true);
+        }
+        $file->move($tmpDir, $filename);
+
+        return route('tmp-media.show', ['dir' => $subDir, 'filename' => $filename], false);
+    }
+
+    private function encodeImageAsDataUri(UploadedFile $file): string
+    {
+        $realPath = $file->getRealPath();
+        $mime = $file->getMimeType() ?: 'image/jpeg';
+        $raw = $realPath ? file_get_contents($realPath) : '';
+
+        if ($realPath && function_exists('imagecreatefromstring') && $raw !== '') {
+            $src = @imagecreatefromstring($raw);
+            if ($src !== false) {
+                $w = imagesx($src);
+                $h = imagesy($src);
+                $maxW = 900;
+                if ($w > $maxW) {
+                    $newW = $maxW;
+                    $newH = (int) round($h * ($maxW / $w));
+                    $dst = imagecreatetruecolor($newW, $newH);
+                    imagecopyresampled($dst, $src, 0, 0, 0, 0, $newW, $newH, $w, $h);
+                    imagedestroy($src);
+                    $src = $dst;
+                }
+                ob_start();
+                imagejpeg($src, null, 82);
+                $jpegBytes = ob_get_clean();
+                imagedestroy($src);
+                if (is_string($jpegBytes) && $jpegBytes !== '') {
+                    return 'data:image/jpeg;base64,'.base64_encode($jpegBytes);
+                }
+            }
+        }
+
+        return 'data:'.$mime.';base64,'.base64_encode($raw ?: '');
     }
 }

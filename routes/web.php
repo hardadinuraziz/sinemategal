@@ -52,6 +52,16 @@ Route::post('/payments/{orderId}/check-status', [PaymentController::class, 'chec
 Route::post('/payments/{orderId}/simulate-paid', [PaymentController::class, 'simulatePaid'])->name('payments.simulate-paid');
 Route::post('/payments/{orderId}/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
 
+// Fallback media route when running on read-only serverless filesystems (e.g. Vercel /tmp)
+Route::get('/tmp-media/{dir}/{filename}', function (string $dir, string $filename) {
+    abort_unless(in_array($dir, ['images', 'videos'], true), 404);
+    $safeName = basename($filename);
+    $path = "/tmp/uploads/{$dir}/{$safeName}";
+    abort_unless(is_file($path), 404);
+
+    return response()->file($path);
+})->where('filename', '[A-Za-z0-9._-]+')->name('tmp-media.show');
+
 // Admin / Kurator Hub
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
